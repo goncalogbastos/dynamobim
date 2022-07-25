@@ -1,0 +1,176 @@
+{
+  "Uuid": "55236e34-d697-42cb-a531-508277c57854",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_SurfaceStyle",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.DocumentExtensions.SetStyle@Autodesk.AutoCAD.DynamoNodes.Object,string",
+      "Id": "2ade952d5645488a973a7b1c77bc62e1",
+      "Inputs": [
+        {
+          "Id": "81f1e42da2154064b66100cc9abe0593",
+          "Name": "obj",
+          "Description": "The Object\n\nObject",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0b4a7c442be441b4901e5e2bd45b0c05",
+          "Name": "styleName",
+          "Description": "The name of the style, if empty it will try to apply the default style\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c988f494bc574ec08a191baae3a6d48a",
+          "Name": "Object",
+          "Description": "The Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the Style for the Object\n\nDocumentExtensions.SetStyle (obj: Object, styleName: string = \"\"): Object"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.SurfaceNamesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": -1,
+      "SelectedString": "",
+      "NodeType": "ExtensionNode",
+      "Id": "23fc29423806478d81f8cfe4584fc1ef",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3154d7fc402e4a07893ae530cf5590d0",
+          "Name": "Surface",
+          "Description": "The selected Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selects a Surface in the document"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "TRIÂNGULOS E PONTOS",
+      "Id": "73f933a60f2b40aa935e6a08fc76f3a8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c3aa5ea770624de99960011c4e6c5bae",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "3154d7fc402e4a07893ae530cf5590d0",
+      "End": "81f1e42da2154064b66100cc9abe0593",
+      "Id": "08b6a993ce7c4f39833c5a789155a6e4"
+    },
+    {
+      "Start": "c3aa5ea770624de99960011c4e6c5bae",
+      "End": "0b4a7c442be441b4901e5e2bd45b0c05",
+      "Id": "c16cc6ce4d4b42739ad8f1d4000ac421"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.30",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "2ade952d5645488a973a7b1c77bc62e1",
+        "23fc29423806478d81f8cfe4584fc1ef"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "2ade952d5645488a973a7b1c77bc62e1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "DocumentExtensions.SetStyle",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 747.5,
+        "Y": 394.0
+      },
+      {
+        "Id": "23fc29423806478d81f8cfe4584fc1ef",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Surfaces",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 395.44763375877113,
+        "Y": 314.56484664541176
+      },
+      {
+        "Id": "73f933a60f2b40aa935e6a08fc76f3a8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 387.734582655913,
+        "Y": 499.86383381423843
+      }
+    ],
+    "Annotations": [],
+    "X": 14.093637597863562,
+    "Y": 41.255401917366385,
+    "Zoom": 0.74769281712332525
+  }
+}

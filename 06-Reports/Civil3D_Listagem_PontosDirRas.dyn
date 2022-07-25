@@ -1,0 +1,792 @@
+{
+  "Uuid": "f262d6cc-7c1d-4563-a602-fe6305c912cd",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_ListagemPontosDirRas",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Profile": {
+        "Key": "Autodesk.Civil.DynamoNodes.Profile",
+        "Value": "Civil3DNodes.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "7326b697c2134295aae2239dd1dad4f3",
+      "Name": "Intervalo",
+      "Type": "number",
+      "Value": "25",
+      "NumberType": "Double",
+      "Description": "Creates a number."
+    },
+    {
+      "Id": "aaea02189d4d495fb31e4df8273f307d",
+      "Name": "File Path:",
+      "Type": "string",
+      "Value": "C:\\Users\\GGB\\Desktop",
+      "Description": "Allows you to select a directory on the system to get its path"
+    },
+    {
+      "Id": "82d6e1b08e134b0f952eee86f6be3a48",
+      "Name": "File Name:",
+      "Type": "string",
+      "Value": "",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Alignment.Profiles",
+      "Id": "c670b62c14df4e7aa73f83b9cb0f0380",
+      "Inputs": [
+        {
+          "Id": "9f4c9d79490947c880b076a9d1d11277",
+          "Name": "alignment",
+          "Description": "Autodesk.Civil.DynamoNodes.Alignment",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "96eea1c348884fe2b5404eefcbcfe550",
+          "Name": "Profile[]",
+          "Description": "Profile[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all profiles from the alignment.\n\nAlignment.Profiles: Profile[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Alignment.Stations@double,bool",
+      "Id": "980fb466a8824b64be7cdd8b52fbb662",
+      "Inputs": [
+        {
+          "Id": "cc441dca624140e3abc6601e4b1ffb3e",
+          "Name": "alignment",
+          "Description": "Autodesk.Civil.DynamoNodes.Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4ec2e26a4ce14c408ce3079bdbd1d2bb",
+          "Name": "interval",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ad06d3e700f94c14b8d12635198ba66f",
+          "Name": "includeGeometryStations",
+          "Description": "bool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b56126903dca4ad5b4e64eb77e0ce6da",
+          "Name": "double[]",
+          "Description": "double[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the stations of the alignment.\n\nAlignment.Stations (interval: double, includeGeometryStations: bool = true): double[]"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.AlignmentNamesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": -1,
+      "SelectedString": "",
+      "NodeType": "ExtensionNode",
+      "Id": "36452348b8b24474a7afa06665f930cd",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0722507f1ac34b60924eafcc51bae0a7",
+          "Name": "Alignment",
+          "Description": "The selected Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selects an Alignment in the document"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 25.0,
+      "Id": "7326b697c2134295aae2239dd1dad4f3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cba9b389f34646d5aaf1da4519f3cd63",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "9e0926d3a618401d919e16f5102bd619",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "027e92236c7446028edaabd883082be8",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Transpose@var[]..[]",
+      "Id": "482a6c05237445328863d5f7e2af96c2",
+      "Inputs": [
+        {
+          "Id": "18c3af74b8e2449e8517397c4f8a2787",
+          "Name": "lists",
+          "Description": "A list of lists to be transposed.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "24323d5c184c4d829e64ecf6cccf2479",
+          "Name": "lists",
+          "Description": "A list of transposed lists.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Swaps rows and columns in a list of lists. If there are some rows that are shorter than others, null values are inserted as place holders in the resultant array such that it is always rectangular.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ExportExcel@string,string,int,int,var[][],bool",
+      "Id": "de0e04f34fa545029687d8483abe5ab4",
+      "Inputs": [
+        {
+          "Id": "b7e32770ebcc4db49d063fa5e5a49cc2",
+          "Name": "filePath",
+          "Description": "File path to the Microsoft Excel spreadsheet.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f7ff486aa14f4b44a41819df526833c9",
+          "Name": "sheetName",
+          "Description": "Name of the workseet to write data to.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "77bd9f013dff4a3db035552b30515c52",
+          "Name": "startRow",
+          "Description": "Start row for writing data. Enter 0 for Row 1, 1 for Row 2, etc.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0c10c45370c04a96aef1b396cf73e409",
+          "Name": "startCol",
+          "Description": "Start column for writing data. Enter 0 for Column A, 1 for Column B, etc.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "17d92aa69a814e16a5fa8830e2ebe118",
+          "Name": "data",
+          "Description": "Data to write to the spreadsheet.\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cffd7684aefa4278aea0eed5ad5369ec",
+          "Name": "overWrite",
+          "Description": "bool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "605501b885b14173947fccaa6d3c13ac",
+          "Name": "data",
+          "Description": "Data written to the spreadsheet.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Write data to a Microsoft Excel spreadsheet. Data is written by row with sublists to be written in successive rows. Rows and columns are zero-indexed; for example, the value in the data list at [0,0] will be written to cell A1. Null values and empty lists are written to Excel as empty cells. This node requires Microsoft Excel to be installed.\n\nData.ExportExcel (filePath: string, sheetName: string, startRow: int, startCol: int, data: var[][], overWrite: bool = false): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Sheet1",
+      "Id": "d1530be1e9a2410d8afa96c93376f4da",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cba97d3fdac94e29ae2d1423a1cd168a",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 0.0,
+      "Id": "68503d5e447f44b98a7be05a75cb0295",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b0884f84661343c9b4f2487aa587ea1f",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "04e9df6d9b9f40e3b9a5cd52bc0fe644",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "379ed0df5b1246e4b53a26cc3ef8a882",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\Users\\GGB\\Desktop",
+      "InputValue": "C:\\Users\\GGB\\Desktop",
+      "NodeType": "ExtensionNode",
+      "Id": "aaea02189d4d495fb31e4df8273f307d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "03c990167d304a34b7e1f34923b42bde",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a directory on the system to get its path"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "",
+      "Id": "82d6e1b08e134b0f952eee86f6be3a48",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5b820b2806f845a285d3a15d21bc434e",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "path = IN[0];\r\nname = IN[1];\r\nOUT = str(path) + '\\\\' + str(name) + \".xls\";",
+      "VariableInputPorts": true,
+      "Id": "2968762a08724e90a828e0ec383ce470",
+      "Inputs": [
+        {
+          "Id": "39a3e600a0914eb18e2a59dcb4578aeb",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "54f92dbddc2948bdb4345a11d509cec2",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6218f5677db34d20b9aaf63b2b09569b",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil3D\r\nclr.AddReference('AcMgd')\r\nclr.AddReference('AcCoreMgd')\r\nclr.AddReference('AcDbMgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\nclr.AddReference('ProtoGeometry')\r\n\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references from Civil3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n#from Autodesk.Civil.DynamoNodes import *\r\n\r\n#pyt_path = r'C:\\Users\\GGB\\AppData\\Roaming\\Autodesk\\C3D 2021\\Dynamo\\2.5\\packages\\Civil3DToolkit\\bin'\r\n#sys.path.append(pyt_path)\r\n\r\nclr.AddReference('AutoCADNodes')\r\nclr.AddReference('Civil3DNodes')   \r\nclr.AddReference('Autodesk.Civil3DToolkit')\r\nimport Autodesk.AutoCAD.DynamoNodes as DA\r\nimport Autodesk.Civil.DynamoNodes as DC\r\nfrom Autodesk.AutoCAD.DynamoNodes import *\r\nfrom Autodesk.Civil.DynamoNodes import *\r\n\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nprofile = IN[0][0]\r\nstations = IN[1]\r\nelevations = []\r\nstations_ = []\r\n\r\nfor s in stations:\r\n\ttry:\r\n\t\televations.append(Profile.ElevationByStation(profile,s))\r\n\t\tstations_.append(s)\r\n\texcept:\r\n\t\tpass\r\n\t\r\n\t\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = stations_,elevations\r\n\r\n",
+      "VariableInputPorts": true,
+      "Id": "06795cb295c540d5bb7d4c8ce191e4a0",
+      "Inputs": [
+        {
+          "Id": "270a062a1cbb4fc6a3b514e7e8b6c127",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8e58a79ce40c4d7badf3a6b4cca8e1dd",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "199da306724f40ed9b855a3e0238a185",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "96eea1c348884fe2b5404eefcbcfe550",
+      "End": "270a062a1cbb4fc6a3b514e7e8b6c127",
+      "Id": "4d2929780cce49b996c7b922168cdafc"
+    },
+    {
+      "Start": "b56126903dca4ad5b4e64eb77e0ce6da",
+      "End": "8e58a79ce40c4d7badf3a6b4cca8e1dd",
+      "Id": "fdd187d4272545f8a12ba88ef81a6ba8"
+    },
+    {
+      "Start": "0722507f1ac34b60924eafcc51bae0a7",
+      "End": "9f4c9d79490947c880b076a9d1d11277",
+      "Id": "fb1a23718905416596b16e0de063a4a2"
+    },
+    {
+      "Start": "0722507f1ac34b60924eafcc51bae0a7",
+      "End": "cc441dca624140e3abc6601e4b1ffb3e",
+      "Id": "ce9d2bc8b65344e5b289a65f66ba9ea2"
+    },
+    {
+      "Start": "cba9b389f34646d5aaf1da4519f3cd63",
+      "End": "4ec2e26a4ce14c408ce3079bdbd1d2bb",
+      "Id": "4ac243c6db394deb8749216bd429d178"
+    },
+    {
+      "Start": "027e92236c7446028edaabd883082be8",
+      "End": "ad06d3e700f94c14b8d12635198ba66f",
+      "Id": "f5213c010135441eb8dd59c03cff2ad7"
+    },
+    {
+      "Start": "24323d5c184c4d829e64ecf6cccf2479",
+      "End": "17d92aa69a814e16a5fa8830e2ebe118",
+      "Id": "0020fea9dbf54fd0a60d1fdf26da9cf3"
+    },
+    {
+      "Start": "cba97d3fdac94e29ae2d1423a1cd168a",
+      "End": "f7ff486aa14f4b44a41819df526833c9",
+      "Id": "9a4296b6b6664410bf41afd61e2b3dc8"
+    },
+    {
+      "Start": "b0884f84661343c9b4f2487aa587ea1f",
+      "End": "77bd9f013dff4a3db035552b30515c52",
+      "Id": "6e60eadf86f5459b897e4b47fa8abcee"
+    },
+    {
+      "Start": "b0884f84661343c9b4f2487aa587ea1f",
+      "End": "0c10c45370c04a96aef1b396cf73e409",
+      "Id": "a67112f5de7b498395223ca1aa69dadf"
+    },
+    {
+      "Start": "379ed0df5b1246e4b53a26cc3ef8a882",
+      "End": "cffd7684aefa4278aea0eed5ad5369ec",
+      "Id": "e2a4c5c7c4e149c08b36dcd380c49c9d"
+    },
+    {
+      "Start": "03c990167d304a34b7e1f34923b42bde",
+      "End": "39a3e600a0914eb18e2a59dcb4578aeb",
+      "Id": "30496cf7df4c4330a618416f1ad0c9ed"
+    },
+    {
+      "Start": "5b820b2806f845a285d3a15d21bc434e",
+      "End": "54f92dbddc2948bdb4345a11d509cec2",
+      "Id": "d51922ac4e8e4105bd31c0bfd7385312"
+    },
+    {
+      "Start": "6218f5677db34d20b9aaf63b2b09569b",
+      "End": "b7e32770ebcc4db49d063fa5e5a49cc2",
+      "Id": "b1f8028eab1845fcb8829b18f22cc23b"
+    },
+    {
+      "Start": "199da306724f40ed9b855a3e0238a185",
+      "End": "18c3af74b8e2449e8517397c4f8a2787",
+      "Id": "a7457ac926df4b40bf315756746f3c35"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.30",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "36452348b8b24474a7afa06665f930cd"
+      ]
+    }
+  ],
+  "Bindings": [
+    {
+      "NodeId": "c670b62c-14df-4e7a-a73f-83b9cb0f0380",
+      "Binding": {
+        "get_Profiles_InClassDecl-1_InFunctionScope-1_Instance0_c670b62c-14df-4e7a-a73f-83b9cb0f0380": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNS4yLjc5MTUlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpNdU9EWXdMakFsTWtNbE1qQkRkV3gwZFhKbEpUTkVibVYxZEhKaGJDVXlReVV5TUZCMVlteHBZMHRsZVZSdmEyVnVKVE5FYm5Wc2JDSStEUW84YzNSeWFXNW5TVVFnYVdROUluSmxaaTB6SWo1Q1JESkdQQzl6ZEhKcGJtZEpSRDROQ2p3dllURTZVMlZ5YVdGc2FYcGhZbXhsU0dGdVpHeGxQZzBLUEM5VFQwRlFMVVZPVmpwQ2IyUjVQZzBLUEM5VFQwRlFMVVZPVmpwRmJuWmxiRzl3WlQ0TkNnPT08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 905.56189888549784,
+      "EyeY": 371.41899377148957,
+      "EyeZ": 48.942200359721454,
+      "LookX": -440.70088908919513,
+      "LookY": -521.64148836931133,
+      "LookZ": -372.28098472831419,
+      "UpX": 0.621915687610316,
+      "UpY": -0.58070295571094044,
+      "UpZ": 0.525361737027708
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Alignment.Profiles",
+        "Id": "c670b62c14df4e7aa73f83b9cb0f0380",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -215.00533727747995,
+        "Y": -112.67118180646582
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Alignment.Stations",
+        "Id": "980fb466a8824b64be7cdd8b52fbb662",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -242.1231541518232,
+        "Y": 184.739424604958
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Alignments",
+        "Id": "36452348b8b24474a7afa06665f930cd",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -934.35098151306443,
+        "Y": 156.58060957732306
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Intervalo",
+        "Id": "7326b697c2134295aae2239dd1dad4f3",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -911.81571761476971,
+        "Y": 298.32892627903476
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "9e0926d3a618401d919e16f5102bd619",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -415.51285045356974,
+        "Y": 354.51693831772832
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Transpose",
+        "Id": "482a6c05237445328863d5f7e2af96c2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 585.14207883344466,
+        "Y": -45.8670655192505
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ExportExcel",
+        "Id": "de0e04f34fa545029687d8483abe5ab4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1430.2529383270441,
+        "Y": 110.22966924548786
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "d1530be1e9a2410d8afa96c93376f4da",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1212.830912319891,
+        "Y": 107.42400769284995
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "68503d5e447f44b98a7be05a75cb0295",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1200.2374122812287,
+        "Y": 184.55919542965785
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "04e9df6d9b9f40e3b9a5cd52bc0fe644",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1219.718020636165,
+        "Y": 344.06364445335061
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path:",
+        "Id": "aaea02189d4d495fb31e4df8273f307d",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1053.6193415216298,
+        "Y": -140.56050103225743
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Name:",
+        "Id": "82d6e1b08e134b0f952eee86f6be3a48",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1088.2709386744764,
+        "Y": -37.933967373673113
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "2968762a08724e90a828e0ec383ce470",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1299.4520382295445,
+        "Y": -108.53853153611783
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ElevationAtStation",
+        "Id": "06795cb295c540d5bb7d4c8ce191e4a0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 262.752079883742,
+        "Y": -20.688428575254761
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "40d71c416b894900b6dcabfde17c71ce",
+        "Title": "INPUT",
+        "Nodes": [
+          "36452348b8b24474a7afa06665f930cd",
+          "7326b697c2134295aae2239dd1dad4f3"
+        ],
+        "Left": -944.35098151306443,
+        "Top": 103.58060957732306,
+        "Width": 194.0,
+        "Height": 262.7483167017117,
+        "FontSize": 36.0,
+        "InitialTop": 156.58060957732306,
+        "InitialHeight": 249.74132251206294,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "7056d847418146f991f502d3c70332a9",
+        "Title": "EXPORT TO EXCEL",
+        "Nodes": [
+          "de0e04f34fa545029687d8483abe5ab4",
+          "d1530be1e9a2410d8afa96c93376f4da",
+          "68503d5e447f44b98a7be05a75cb0295",
+          "04e9df6d9b9f40e3b9a5cd52bc0fe644",
+          "aaea02189d4d495fb31e4df8273f307d",
+          "82d6e1b08e134b0f952eee86f6be3a48",
+          "2968762a08724e90a828e0ec383ce470"
+        ],
+        "Left": 1043.6193415216298,
+        "Top": -193.56050103225743,
+        "Width": 612.6335968054143,
+        "Height": 605.6241454856081,
+        "FontSize": 36.0,
+        "InitialTop": -140.56050103225743,
+        "InitialHeight": 601.55151599810824,
+        "TextblockHeight": 43.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "ed22a99f7a2e49a1ab530bef6e79f3cd",
+        "Title": "STATIONS & ELEVATIONS",
+        "Nodes": [
+          "c670b62c14df4e7aa73f83b9cb0f0380",
+          "980fb466a8824b64be7cdd8b52fbb662",
+          "9e0926d3a618401d919e16f5102bd619",
+          "482a6c05237445328863d5f7e2af96c2",
+          "06795cb295c540d5bb7d4c8ce191e4a0"
+        ],
+        "Left": -425.51285045356974,
+        "Top": -165.67118180646582,
+        "Width": 1187.6549292870145,
+        "Height": 588.18812012419414,
+        "FontSize": 36.0,
+        "InitialTop": -112.67118180646582,
+        "InitialHeight": 565.18812012419414,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFFC999"
+      }
+    ],
+    "X": 607.47663820401726,
+    "Y": 462.4135720624829,
+    "Zoom": 0.40051599082967243
+  }
+}

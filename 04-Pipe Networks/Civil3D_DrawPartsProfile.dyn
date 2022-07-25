@@ -1,0 +1,957 @@
+{
+  "Uuid": "aceb3054-827c-4da6-8cc4-aa5936912554",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "JJH_DrawPipesInProfileView",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.DocumentExtensions.AddNewTypes",
+      "Id": "20d8235695b34696bc0cfe6a97762a05",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8f3c20dae48c4188962b3bd987c9afcb",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adds object types defined in the Civil 3D Toolkit\n\nDocumentExtensions.AddNewTypes ( ): void"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Object.Type@var",
+      "Id": "b615029e921d453fb2d78bf6413252b9",
+      "Inputs": [
+        {
+          "Id": "b0a0b95f7c49443280997ba8bb956f5a",
+          "Name": "obj",
+          "Description": "An object.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a7d3747093954bcf82aba861f67c5ccb",
+          "Name": "string",
+          "Description": "Type of object.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the type of object represented as string.\n\nObject.Type (obj: var): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.String.Contains@string,string,bool",
+      "Id": "4863929e4df74eaea69b572df4eb7680",
+      "Inputs": [
+        {
+          "Id": "f2e6082d228849379d947b2d606c7a9d",
+          "Name": "str",
+          "Description": "String to search in.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "60d52718dc98459382f5a2ac20503a7b",
+          "Name": "searchFor",
+          "Description": "Substring to search for.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "43c5bdb075304a7ba364975dca20a82e",
+          "Name": "ignoreCase",
+          "Description": "Whether or not comparison takes case into account.\n\nbool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6127273d01804470a09154362267bbac",
+          "Name": "bool",
+          "Description": "Whether the string contains the substring.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Determines if the given string contains the given substring.\n\nString.Contains (str: string, searchFor: string, ignoreCase: bool = false): bool"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "PipeNetworks.Pipe",
+      "Id": "748beda0990f45468230ebd2d935e786",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d6e8aaa4f263453b834556bfe7a67775",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "e94ee2de2ad34b029685f9d4e4985b81",
+      "Inputs": [
+        {
+          "Id": "50088130af024aa191ebcaa3a376077b",
+          "Name": "list",
+          "Description": "List to filter.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8821b0a772704f769bdf8bab7c6177a6",
+          "Name": "mask",
+          "Description": "List of booleans representing a mask.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9c559719973741df9762d389e488b223",
+          "Name": "in",
+          "Description": "Items whose mask index is true.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0d1d101e474346818f413e8010f94c44",
+          "Name": "out",
+          "Description": "Items whose mask index is false.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Filters a sequence by looking up corresponding indices in a separate list of booleans.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "5bf8a6ba2ddf48b296d42f063bc85a39",
+      "Inputs": [
+        {
+          "Id": "629f4454daa94a358d05147ccfdfb2aa",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "08a168883363416ba0e0656907ae750f",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "36e7a44ec0e44252aedbe77e46618e5a",
+      "Inputs": [
+        {
+          "Id": "6a1919cfbcaf424186643a24b3bf9dc3",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f1e5e9969da64630bf47225ec09d1cee",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectsSelection, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "Id": "1571fd3d85db4e89b8200e814a7593e9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3442140517bb4b97aa4ba65b4b6ea130",
+          "Name": "Objects",
+          "Description": "Objects",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import sys\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil 3D APIs\r\nclr.AddReference('acmgd')\r\nclr.AddReference('acdbmgd')\r\nclr.AddReference('accoremgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\nclr.AddReference('AeccPressurePipesMgd')\r\nclr.AddReference('acdbmgdbrep')\r\nclr.AddReference('System.Windows.Forms')\r\nclr.AddReference('Civil3DNodes')\r\n\r\n# Create an alias to the Autodesk.AutoCAD.ApplicationServices.Application class\r\nimport Autodesk.AutoCAD.ApplicationServices.Application as acapp\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references for Civil 3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\nadoc = acapp.DocumentManager.MdiActiveDocument\r\ned = adoc.Editor\r\ncivdoc = CivilApplication.ActiveDocument\r\n\r\n\r\n\r\nPipe = IN[0]\r\n\r\nsPipe = IN[1]\r\n\r\nPROFILE_VIEW = IN[2]\r\n\r\n\r\n\r\n\r\n\r\ndef move_labels(ids,PROFILE_VIEW):\r\n\tif not hasattr(PROFILE_VIEW, \"__iter__\"):\r\n\t\tPROFILE_VIEW = [PROFILE_VIEW]\r\n\r\n\tif not hasattr(ids, \"__iter__\"):\r\n\t\tids = [ids]\r\n\terror_report = None\r\n\tres = []\r\n\ttry:\r\n\t\twith adoc.LockDocument():\t\t\r\n\t\t    with adoc.Database as db:\t\t\r\n\t\t        with db.TransactionManager.StartTransaction() as t:\t\t    \r\n\t\t            sampleLineId = PROFILE_VIEW[0].InternalObjectId\r\n\t\t            objVIEW = t.GetObject(sampleLineId, OpenMode.ForWrite)\r\n\t\t            for i in  ids:\r\n\t\t\t\t\t\tsampleLineIdp = i.InternalObjectId\r\n\t\t\t\t\t\tobjp = t.GetObject(sampleLineIdp, OpenMode.ForWrite)\r\n\t\t\t\t\t\tobjp.AddToProfileView(objVIEW.Id)\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\tres.append('Success')\r\n\t\t            t.Commit()\r\n\texcept:\r\n\t\timport traceback\r\n\t\terror_report = traceback.format_exc()\r\n\tif error_report is None:\r\n\t\treturn res\r\n\telse:\r\n\t\treturn error_report\r\n\r\n\r\n\r\nOUTq =[]\r\n\r\nif PROFILE_VIEW != None:\r\n  for iPROFILE in PROFILE_VIEW:\r\n     OUTq.append(move_labels(Pipe,iPROFILE))\r\n     OUTq.append(move_labels(sPipe,iPROFILE))\r\n     OUT = OUTq\r\nelse:\r\n    OUTq.append(\"NO DATA\")\r\n\r\n\r\n",
+      "VariableInputPorts": true,
+      "Id": "e04e14b373e148988357c3166f13df92",
+      "Inputs": [
+        {
+          "Id": "f9f1b043bc1b420090b335976bbcfddf",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b8d185247079439bad004fb756c429ce",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "21086d59a79848459b49ed5330299112",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c61a9e02d8eb40e1b6f2aeea12348e1b",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "54fbbbc262c24325aca3a44d1705ce24",
+      "Inputs": [
+        {
+          "Id": "ab638aa656194df4ad8e8953825f6dbf",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b2ff4506d6f8441780174f13b9e214c8",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectsSelection, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "Id": "326cbe77d8d34ccaa84e4930219ea75e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "27097cbbfa0d43139253006f14bcb18b",
+          "Name": "Objects",
+          "Description": "Objects",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "a7d3747093954bcf82aba861f67c5ccb",
+      "End": "f2e6082d228849379d947b2d606c7a9d",
+      "Id": "a9614f3dc61f407bac3816e0dfc57881"
+    },
+    {
+      "Start": "6127273d01804470a09154362267bbac",
+      "End": "8821b0a772704f769bdf8bab7c6177a6",
+      "Id": "bba62ebac0a34a139ea908c75d68279a"
+    },
+    {
+      "Start": "d6e8aaa4f263453b834556bfe7a67775",
+      "End": "60d52718dc98459382f5a2ac20503a7b",
+      "Id": "b868e7932777455587bbfd8b75407b7c"
+    },
+    {
+      "Start": "9c559719973741df9762d389e488b223",
+      "End": "629f4454daa94a358d05147ccfdfb2aa",
+      "Id": "3d8e4a126d4f4b41891e178321b0147b"
+    },
+    {
+      "Start": "0d1d101e474346818f413e8010f94c44",
+      "End": "6a1919cfbcaf424186643a24b3bf9dc3",
+      "Id": "0dd96ff465344e8a8175d09be802bcf8"
+    },
+    {
+      "Start": "08a168883363416ba0e0656907ae750f",
+      "End": "f9f1b043bc1b420090b335976bbcfddf",
+      "Id": "bcd13fda52704b87b0593783ee8311cc"
+    },
+    {
+      "Start": "f1e5e9969da64630bf47225ec09d1cee",
+      "End": "b8d185247079439bad004fb756c429ce",
+      "Id": "a78aad157e6a488b81bcbc1d1d2699ad"
+    },
+    {
+      "Start": "3442140517bb4b97aa4ba65b4b6ea130",
+      "End": "21086d59a79848459b49ed5330299112",
+      "Id": "5121bf83ab784d2fad557e5f4334b280"
+    },
+    {
+      "Start": "c61a9e02d8eb40e1b6f2aeea12348e1b",
+      "End": "ab638aa656194df4ad8e8953825f6dbf",
+      "Id": "6a493a6790e44c1882255fa5f26bc707"
+    },
+    {
+      "Start": "27097cbbfa0d43139253006f14bcb18b",
+      "End": "50088130af024aa191ebcaa3a376077b",
+      "Id": "165431b035eb42c5a545c7dd5263805c"
+    },
+    {
+      "Start": "27097cbbfa0d43139253006f14bcb18b",
+      "End": "b0a0b95f7c49443280997ba8bb956f5a",
+      "Id": "12a22bb344b4440c98e228422ee0b380"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.28",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "20d8235695b34696bc0cfe6a97762a05",
+        "1571fd3d85db4e89b8200e814a7593e9",
+        "326cbe77d8d34ccaa84e4930219ea75e"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 10000.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "DocumentExtensions.AddNewTypes",
+        "Id": "20d8235695b34696bc0cfe6a97762a05",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 135.80309681075778,
+        "Y": -348.54498444810326
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Type",
+        "Id": "b615029e921d453fb2d78bf6413252b9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 570.47382387944288,
+        "Y": 138.89666275498809
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String.Contains",
+        "Id": "4863929e4df74eaea69b572df4eb7680",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 839.16231125404681,
+        "Y": 138.89666275498809
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "748beda0990f45468230ebd2d935e786",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 570.47382387944288,
+        "Y": 271.30293689381159
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "e94ee2de2ad34b029685f9d4e4985b81",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1115.4877200936346,
+        "Y": -17.419076903204314
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "5bf8a6ba2ddf48b296d42f063bc85a39",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1439.7089712092288,
+        "Y": -212.01114871286438
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "36e7a44ec0e44252aedbe77e46618e5a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1439.7089712092288,
+        "Y": 138.89666275498809
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Profile View",
+        "Id": "1571fd3d85db4e89b8200e814a7593e9",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1667.1919241301539,
+        "Y": 413.74415448323361
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "e04e14b373e148988357c3166f13df92",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1979.7753048412026,
+        "Y": -17.419076903204314
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "54fbbbc262c24325aca3a44d1705ce24",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2278.4229372589257,
+        "Y": -17.419076903204314
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Pipes&Pressure Pipes",
+        "Id": "326cbe77d8d34ccaa84e4930219ea75e",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 134.857214249529,
+        "Y": -17.4190769032043
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "e5348b8cbc2d4d8abd3a1c19e804336f",
+        "Title": "INPUT - SELECT PROFILE VIEW",
+        "Nodes": [
+          "1571fd3d85db4e89b8200e814a7593e9"
+        ],
+        "Left": 1657.1919241301539,
+        "Top": 345.74415448323361,
+        "Width": 275.0,
+        "Height": 236.0,
+        "FontSize": 24.0,
+        "InitialTop": 413.74415448323361,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 58.0,
+        "Background": "#FFD4B6DB"
+      },
+      {
+        "Id": "7c16b05639e743569128a27dfbbef27d",
+        "Title": "Generate separate lists of Pipes and Pressure Pipes from the selection",
+        "Nodes": [
+          "b615029e921d453fb2d78bf6413252b9",
+          "4863929e4df74eaea69b572df4eb7680",
+          "748beda0990f45468230ebd2d935e786",
+          "e94ee2de2ad34b029685f9d4e4985b81",
+          "5bf8a6ba2ddf48b296d42f063bc85a39",
+          "36e7a44ec0e44252aedbe77e46618e5a"
+        ],
+        "Left": 560.47382387944288,
+        "Top": -251.01114871286438,
+        "Width": 1110.2351473297858,
+        "Height": 590.31408560667592,
+        "FontSize": 24.0,
+        "InitialTop": -212.01114871286438,
+        "InitialHeight": 628.31408560667592,
+        "TextblockHeight": 29.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "d3d44da80d7c4ec991efc1fb98666b77",
+        "Title": "Python script adds selected Pipes and Pressure Pipes to selected Profile View",
+        "Nodes": [
+          "e04e14b373e148988357c3166f13df92",
+          "54fbbbc262c24325aca3a44d1705ce24"
+        ],
+        "Left": 1969.7753048412026,
+        "Top": -85.419076903204314,
+        "Width": 608.64763241772312,
+        "Height": 446.0,
+        "FontSize": 24.0,
+        "InitialTop": -17.419076903204314,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 58.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "157a635a2769486d85282c9c6ef2385c",
+        "Title": "INPUT - SELECT PIPES & PRESSURE PIPES",
+        "Nodes": [
+          "326cbe77d8d34ccaa84e4930219ea75e"
+        ],
+        "Left": 124.857214249529,
+        "Top": -85.4190769032043,
+        "Width": 264.0,
+        "Height": 236.0,
+        "FontSize": 24.0,
+        "InitialTop": -17.4190769032043,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 58.0,
+        "Background": "#FFD4B6DB"
+      }
+    ],
+    "X": -1337.9651391875452,
+    "Y": -96.161718220312821,
+    "Zoom": 0.94571119226870726
+  }
+}

@@ -1,0 +1,446 @@
+{
+  "Uuid": "8eefd87d-5f9b-49c1-8630-1247546c70f3",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_ImportLayerNameFromExcel",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "e54bd8f8c483447d88430897d29e4157",
+      "Name": "File Path",
+      "Type": "string",
+      "Value": "C:\\Users\\GGB\\Desktop\\LAYERS.xlsx",
+      "Description": "Allows you to select a file on the system to get its filename"
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Id": "c20ba91e3cb04a51915dceca1c71aaba",
+      "Inputs": [
+        {
+          "Id": "f4cca4da62be47b883028a954aede2bd",
+          "Name": "file",
+          "Description": "File representing the Microsoft Excel spreadsheet.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0a6227319aa8419796378f685e8868ed",
+          "Name": "sheetName",
+          "Description": "Name of the worksheet containing the data.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6a6f73e624d74dc49e1f392ad130943a",
+          "Name": "readAsStrings",
+          "Description": "Toggle to switch between reading Excel file as strings.\n\nbool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9989f66d0daa4865996c659a27b504e6",
+          "Name": "showExcel",
+          "Description": "Toggle to switch between showing and hiding the main Excel window.\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e9063c8352864ef4aed38411f2007a79",
+          "Name": "data",
+          "Description": "Rows of data from the Excel worksheet.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Read data from a Microsoft Excel spreadsheet. Data is read by row and returned in a series of lists by row. Rows and columns are zero-indexed; for example, the value in cell A1 will appear in the data list at [0,0]. This node requires Microsoft Excel to be installed.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Sheet1",
+      "Id": "1639ed6dc73449399fa7aedc906ece92",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "01dc346a98254c7db9c5f6eb61b401d4",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "5f929c59594a4cd6b1d5492065bccc1f",
+      "Inputs": [
+        {
+          "Id": "911d2d843eeb47a98515d529992505fb",
+          "Name": "path",
+          "Description": "Path to the file.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7c9611fa7b2a4dd28531b150b1e6cf04",
+          "Name": "file",
+          "Description": "File object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a file object from a path."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "1a64bedbdb05467b88c9e7e0463e4c00",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "64e22eb655ed4175a42a339830a906d8",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "a44fd43de30e4d4998a0d7879b591523",
+      "Inputs": [
+        {
+          "Id": "4f860f4ba78e4fc38ddab57e5ac06a30",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "32bbab52e3b54402a680541a78df2f79",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1994a93db8274b97ba43877380b1540b",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Layer.Create@string,Autodesk.AutoCAD.DynamoNodes.Document,DSCore.Color,string,string",
+      "Id": "3f488789493d430eaf082a1a9c45606a",
+      "Inputs": [
+        {
+          "Id": "72d2f9d47d7a41be957a6ae9ad0ef1c5",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dc6749bdba7746f29729cfeff6950391",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eb13c60a5e074923b718e2baa5b14cb2",
+          "Name": "color",
+          "Description": "Color\nDefault value : DSCore.Color.ByARGB(255, 255, 255, 255)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e84852488e57431b80c95850209a6c17",
+          "Name": "linetype",
+          "Description": "string\nDefault value : \"Continuous\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d9e2bd29d31546538fd308c11adc205b",
+          "Name": "lineweight",
+          "Description": "string\nDefault value : \"ByLineWeightDefault\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b5a76835f7c446a9964c7828dc52df62",
+          "Name": "Layer",
+          "Description": "Layer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a layer in the document.\n\nLayer.Create (name: string, document: Document, color: Color = DSCore.Color.ByARGB(255, 255, 255, 255), linetype: string = \"Continuous\", lineweight: string = \"ByLineWeightDefault\"): Layer"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "acfd1e8c2dd844ab90985580a02303ba",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8c357372a89d4c5db93b333693ff71f7",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\GGB\\Desktop\\LAYERS.xlsx",
+      "InputValue": "C:\\Users\\GGB\\Desktop\\LAYERS.xlsx",
+      "NodeType": "ExtensionNode",
+      "Id": "e54bd8f8c483447d88430897d29e4157",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "794cfb985de04e1c8b9ba3796cb3b1f4",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "e9063c8352864ef4aed38411f2007a79",
+      "End": "4f860f4ba78e4fc38ddab57e5ac06a30",
+      "Id": "187d5394b87445dcbfc592a46b8ce69a"
+    },
+    {
+      "Start": "01dc346a98254c7db9c5f6eb61b401d4",
+      "End": "0a6227319aa8419796378f685e8868ed",
+      "Id": "efcb7b6e5c174352bd4bcdeb519504f8"
+    },
+    {
+      "Start": "7c9611fa7b2a4dd28531b150b1e6cf04",
+      "End": "f4cca4da62be47b883028a954aede2bd",
+      "Id": "75f01478c43c4cc092014f7ffce72480"
+    },
+    {
+      "Start": "64e22eb655ed4175a42a339830a906d8",
+      "End": "9989f66d0daa4865996c659a27b504e6",
+      "Id": "285755228ac948ba980367ed9537a216"
+    },
+    {
+      "Start": "64e22eb655ed4175a42a339830a906d8",
+      "End": "6a6f73e624d74dc49e1f392ad130943a",
+      "Id": "16a01e43d7294a7f82accba09d6952fd"
+    },
+    {
+      "Start": "1994a93db8274b97ba43877380b1540b",
+      "End": "72d2f9d47d7a41be957a6ae9ad0ef1c5",
+      "Id": "c1627d7c73874d4abdb6af6355299f36"
+    },
+    {
+      "Start": "8c357372a89d4c5db93b333693ff71f7",
+      "End": "dc6749bdba7746f29729cfeff6950391",
+      "Id": "f25d4026012349f2bcda74ce933b7aa3"
+    },
+    {
+      "Start": "794cfb985de04e1c8b9ba3796cb3b1f4",
+      "End": "911d2d843eeb47a98515d529992505fb",
+      "Id": "9a15dbc380924ea79400541e364d8af6"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ImportExcel",
+        "Id": "c20ba91e3cb04a51915dceca1c71aaba",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 402.0,
+        "Y": 382.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "1639ed6dc73449399fa7aedc906ece92",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 114.0,
+        "Y": 419.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File From Path",
+        "Id": "5f929c59594a4cd6b1d5492065bccc1f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 235.0,
+        "Y": 242.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "1a64bedbdb05467b88c9e7e0463e4c00",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 165.0,
+        "Y": 522.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "a44fd43de30e4d4998a0d7879b591523",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 879.0,
+        "Y": 157.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Layer.Create",
+        "Id": "3f488789493d430eaf082a1a9c45606a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1673.1319101952267,
+        "Y": 161.85525468672969
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "acfd1e8c2dd844ab90985580a02303ba",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1182.0,
+        "Y": 331.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "e54bd8f8c483447d88430897d29e4157",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -24.705278213954387,
+        "Y": 217.20858904211812
+      }
+    ],
+    "Annotations": [],
+    "X": 149.79890978462561,
+    "Y": 404.650211449444,
+    "Zoom": 0.4751826748984741
+  }
+}

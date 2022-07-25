@@ -1,0 +1,255 @@
+{
+  "Uuid": "55236e34-d697-42cb-a531-508277c57854",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "PIPES-DeleteAllAlignments",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.ModelSpace",
+      "Id": "f8608f28c0794aa08958d9e3d21c10e0",
+      "Inputs": [
+        {
+          "Id": "203214030dca4c0ba213731d4bd50a57",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ca53ec9f77a8411fb69f53e2f5d98987",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the model space block table record.\n\nDocument.ModelSpace: Block"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.AcObjectTypes, AutoCADNodesUI",
+      "SelectedIndex": 5,
+      "SelectedString": "Line",
+      "NodeType": "ExtensionNode",
+      "Id": "d8a76c23105a40fda284b0a5f91a947e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9dae8f7772014f24a289e4839a62e890",
+          "Name": "Object Type",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select object type."
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.AcObjectsOfType, AutoCADNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "04d3a47ebe194e6e9f55423ceaced522",
+      "Inputs": [
+        {
+          "Id": "23ea89e2fe3f4a68bbe63250715c095a",
+          "Name": "type",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "95ee939f9383424eb98dfb244c9e97a9",
+          "Name": "block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "294add2b52b1404daa49d989691786ba",
+          "Name": "Object[]",
+          "Description": "Object[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select all objects of the type."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "d2e61a271db54ffda5525938b952d8e7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "abc3d322018c4abc8352a560583f5975",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Delete",
+      "Id": "4d65f3f8041044e4a2559c8f42b0a380",
+      "Inputs": [
+        {
+          "Id": "ca4e59844fce44b381af1a3a625c15dc",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "160820273d5c45bb94595ba70d94a52c",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Delete this object.\n\nObject.Delete ( ): void"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "ca53ec9f77a8411fb69f53e2f5d98987",
+      "End": "95ee939f9383424eb98dfb244c9e97a9",
+      "Id": "8510b2786a084addbac36b95c162e307"
+    },
+    {
+      "Start": "9dae8f7772014f24a289e4839a62e890",
+      "End": "23ea89e2fe3f4a68bbe63250715c095a",
+      "Id": "947132bca3ca4368add5e0f40a72eb52"
+    },
+    {
+      "Start": "294add2b52b1404daa49d989691786ba",
+      "End": "ca4e59844fce44b381af1a3a625c15dc",
+      "Id": "6e69f12c8bbf4200ab72febef99e92aa"
+    },
+    {
+      "Start": "abc3d322018c4abc8352a560583f5975",
+      "End": "203214030dca4c0ba213731d4bd50a57",
+      "Id": "89f5b5cd42eb47029675751aa55323e9"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Document.ModelSpace",
+        "Id": "f8608f28c0794aa08958d9e3d21c10e0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1138.4568816803994,
+        "Y": 901.65221305270381
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Objects Types",
+        "Id": "d8a76c23105a40fda284b0a5f91a947e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1142.9488203401297,
+        "Y": 583.751484825056
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Objects of Type",
+        "Id": "04d3a47ebe194e6e9f55423ceaced522",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1520.9954842896796,
+        "Y": 695.026386482338
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "d2e61a271db54ffda5525938b952d8e7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 634.0,
+        "Y": 210.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Delete",
+        "Id": "4d65f3f8041044e4a2559c8f42b0a380",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1800.1413654296189,
+        "Y": 699.48411879079777
+      }
+    ],
+    "Annotations": [],
+    "X": -2.5593969854548959,
+    "Y": 105.64515959265896,
+    "Zoom": 0.53804629768857071
+  }
+}

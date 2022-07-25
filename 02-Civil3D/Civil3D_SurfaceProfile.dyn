@@ -1,0 +1,501 @@
+{
+  "Uuid": "4f35137d-b4f8-418e-a3e5-826b582d6c4a",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_SurfaceProfile",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.AlignmentExtensions.AddProfileBySurface@Autodesk.Civil.DynamoNodes.Alignment,string,string,string,string,double,double,double,string",
+      "Id": "e757076c02024469b7a4aefebfa323aa",
+      "Inputs": [
+        {
+          "Id": "5b757e288d50483da0dd05ba4c99f83f",
+          "Name": "alignment",
+          "Description": "The alignment\n\nAlignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f130a8f0ab734acda2fbf3a3577beef6",
+          "Name": "profileName",
+          "Description": "The name of the new Profile\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ec47c34b226b4c8ba838639d990740bc",
+          "Name": "surface",
+          "Description": "The Surface name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "00d2bdb8189f4dcf93c5bcfbd0a6e56c",
+          "Name": "style",
+          "Description": "The Profile Style name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fc4b3909dbb7441c973ac2b2944a4939",
+          "Name": "labelSet",
+          "Description": "The label set name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5d9a2abe3aa0478cb18472bd48b56295",
+          "Name": "offset",
+          "Description": "The offset value\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c7c3f755bd294938986b7029825337a5",
+          "Name": "sampleStart",
+          "Description": "The sample Start value\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6d109bf48308476bbea64ab57c7d957a",
+          "Name": "sampleEnd",
+          "Description": "The sample End value\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1449a262aaca4ff88418f757ade4f4d4",
+          "Name": "layer",
+          "Description": "The layer name of the Profile\n\nstring\nDefault value : \"0\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "89e9467bafea4f17bd55b3ad4e3497e7",
+          "Name": "Profile",
+          "Description": "A Profile",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adds a Surface Profile to the Alignment\n\nAlignmentExtensions.AddProfileBySurface (alignment: Alignment, profileName: string, surface: string, style: string, labelSet: string, offset: double, sampleStart: double, sampleEnd: double, layer: string = \"0\"): Profile"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.AlignmentNamesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": -1,
+      "SelectedString": "",
+      "NodeType": "ExtensionNode",
+      "Id": "dd94c3af034b45f994d5316c2ec7f207",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6d001d96936747c3b048789d07a0e8f9",
+          "Name": "Alignment",
+          "Description": "The selected Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selects an Alignment in the document"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.SurfaceNamesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": -1,
+      "SelectedString": "",
+      "NodeType": "ExtensionNode",
+      "Id": "3093426b457d423ca3386da2c44a9650",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ccb83208246b4ea9a7131142e473da16",
+          "Name": "Surface",
+          "Description": "The selected Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selects a Surface in the document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"COBA_TERRENO NATURAL\";\n\"_Aucun affichage\";\n\"Terrreno Natural\";\n0;",
+      "Id": "39907ffaae354a6d9ae6fd020185677d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d95c75f49a7a4c3fb5d2cae36c2f7c17",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8422fba369234d1d9bc52b673953b2f2",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "338346048709439d8fa0e86b262cf727",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eb6846746b85443195b81122308b445e",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Alignment.StartStation",
+      "Id": "52113676df584fc7a7769450062ede49",
+      "Inputs": [
+        {
+          "Id": "3ac07d8358cd4e6f840f2282bd213e22",
+          "Name": "alignment",
+          "Description": "Autodesk.Civil.DynamoNodes.Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "40361746db8c497da1ae21a26d3550a1",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the start station of the alignment.\n\nAlignment.StartStation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Alignment.EndStation",
+      "Id": "5618683cbb964903a57b79b29e23a56d",
+      "Inputs": [
+        {
+          "Id": "8575eea604f84d94830ed88a887f64ff",
+          "Name": "alignment",
+          "Description": "Autodesk.Civil.DynamoNodes.Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f715061f12ad4d80b7929c82752c9335",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the end station of the alignment.\n\nAlignment.EndStation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CivilObject.Name",
+      "Id": "e175c472cdb44f6d8a7af63a5fa6cd3f",
+      "Inputs": [
+        {
+          "Id": "128b42272b4f4f7591dd1cd8e2a63156",
+          "Name": "civilObject",
+          "Description": "Autodesk.Civil.DynamoNodes.CivilObject",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "db4df80facbe4ca8a05cb3a80c34aa91",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the name of the civil object.\n\nCivilObject.Name: string"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "6d001d96936747c3b048789d07a0e8f9",
+      "End": "5b757e288d50483da0dd05ba4c99f83f",
+      "Id": "8c182f9b1db64021a828b5506742a362"
+    },
+    {
+      "Start": "6d001d96936747c3b048789d07a0e8f9",
+      "End": "3ac07d8358cd4e6f840f2282bd213e22",
+      "Id": "dde9b943615e43fe8e8409c95f88382c"
+    },
+    {
+      "Start": "6d001d96936747c3b048789d07a0e8f9",
+      "End": "8575eea604f84d94830ed88a887f64ff",
+      "Id": "a06e322bcaa24d8785e0628e26e77014"
+    },
+    {
+      "Start": "ccb83208246b4ea9a7131142e473da16",
+      "End": "128b42272b4f4f7591dd1cd8e2a63156",
+      "Id": "9d7eca3826114310b45ab0e39ab9d867"
+    },
+    {
+      "Start": "d95c75f49a7a4c3fb5d2cae36c2f7c17",
+      "End": "00d2bdb8189f4dcf93c5bcfbd0a6e56c",
+      "Id": "6bb741b61be0413a88616139a1639f32"
+    },
+    {
+      "Start": "8422fba369234d1d9bc52b673953b2f2",
+      "End": "fc4b3909dbb7441c973ac2b2944a4939",
+      "Id": "50195f55347e489b98e4bc06123ab0f5"
+    },
+    {
+      "Start": "338346048709439d8fa0e86b262cf727",
+      "End": "f130a8f0ab734acda2fbf3a3577beef6",
+      "Id": "dd7e4531074b4d218afba5a0341f9310"
+    },
+    {
+      "Start": "eb6846746b85443195b81122308b445e",
+      "End": "5d9a2abe3aa0478cb18472bd48b56295",
+      "Id": "fea1027be485465c9a7623b85f1a97b8"
+    },
+    {
+      "Start": "40361746db8c497da1ae21a26d3550a1",
+      "End": "c7c3f755bd294938986b7029825337a5",
+      "Id": "9369f75169f540e5923662c6e3701899"
+    },
+    {
+      "Start": "f715061f12ad4d80b7929c82752c9335",
+      "End": "6d109bf48308476bbea64ab57c7d957a",
+      "Id": "1702f24ac4c844a09a77eebe6d2ea2b0"
+    },
+    {
+      "Start": "db4df80facbe4ca8a05cb3a80c34aa91",
+      "End": "ec47c34b226b4c8ba838639d990740bc",
+      "Id": "4a0d0db110bc4f3abb5ed958d308121c"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.30",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "e757076c02024469b7a4aefebfa323aa",
+        "dd94c3af034b45f994d5316c2ec7f207",
+        "3093426b457d423ca3386da2c44a9650"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "AlignmentExtensions.AddProfileBySurface",
+        "Id": "e757076c02024469b7a4aefebfa323aa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 586.5327879697079,
+        "Y": 313.26527546143006
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Alignments",
+        "Id": "dd94c3af034b45f994d5316c2ec7f207",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -672.34986363586177,
+        "Y": 423.55261817126132
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surfaces",
+        "Id": "3093426b457d423ca3386da2c44a9650",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -673.45416066394182,
+        "Y": 532.08322514370775
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "39907ffaae354a6d9ae6fd020185677d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -71.490489298031662,
+        "Y": 605.8321614590526
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Alignment.StartStation",
+        "Id": "52113676df584fc7a7769450062ede49",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -83.699512953534793,
+        "Y": 252.31787000990198
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Alignment.EndStation",
+        "Id": "5618683cbb964903a57b79b29e23a56d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -68.262971041737273,
+        "Y": 370.19691733635568
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CivilObject.Name",
+        "Id": "e175c472cdb44f6d8a7af63a5fa6cd3f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -104.66879071408914,
+        "Y": 479.0379659846725
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "a5b4d14a3c634ae4b500f411ed609588",
+        "Title": "INPUT",
+        "Nodes": [
+          "dd94c3af034b45f994d5316c2ec7f207",
+          "3093426b457d423ca3386da2c44a9650"
+        ],
+        "Left": -683.45416066394182,
+        "Top": 370.55261817126132,
+        "Width": 195.10429702808005,
+        "Height": 254.53060697244644,
+        "FontSize": 36.0,
+        "InitialTop": 423.55261817126132,
+        "InitialHeight": 231.53060697244644,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "baf561588c264cf1983a8300ce4d18d3",
+        "Title": "SURFACE PROFILE",
+        "Nodes": [
+          "e757076c02024469b7a4aefebfa323aa",
+          "39907ffaae354a6d9ae6fd020185677d",
+          "52113676df584fc7a7769450062ede49",
+          "5618683cbb964903a57b79b29e23a56d",
+          "e175c472cdb44f6d8a7af63a5fa6cd3f"
+        ],
+        "Left": -114.66879071408914,
+        "Top": 199.31787000990198,
+        "Width": 985.201578683797,
+        "Height": 545.51429144915062,
+        "FontSize": 36.0,
+        "InitialTop": 252.31787000990198,
+        "InitialHeight": 522.51429144915062,
+        "TextblockHeight": 43.0,
+        "Background": "#FFB9F9E1"
+      }
+    ],
+    "X": 680.8373195976867,
+    "Y": -45.35545063725715,
+    "Zoom": 0.76152673577534391
+  }
+}

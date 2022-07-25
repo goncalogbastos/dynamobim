@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<LandPart desc="Part Table" version="1.0" xmlns:xlink="http://www.w3.org/1999/xlink" fixColumn="C1">
+	<ColumnConstView desc="Parameter-driven Display" id="CCV1" viewKey="3d" viewName="AeccPartRecipe" pathsRelativeTo="Table">
+		<Images>
+			<Image>
+				<URL xlink:title="Part Reference Image" xlink:href="Boca Aterro Tipo I.bmp"/>
+			</Image>
+		</Images>
+		<Recipe>Boca Aterro Tipo I.dwg</Recipe>
+	</ColumnConstView>
+	<ColumnUnique desc="Primary Key" datatype="string" name="UUID" visible="0">
+		<RowUnique id="r0">AC2999C4-BC2E-4B46-AB2D-718686A7F436</RowUnique>
+		<RowUnique id="r1">2F40043C-8610-4938-889B-B783738089F4</RowUnique>
+		<RowUnique id="r2">D11E7878-4C31-41EF-9BD0-009B61D206D3</RowUnique>
+		<RowUnique id="r3">887D2D03-FCAF-4C91-A09E-ECEFF27A33F8</RowUnique>
+		<RowUnique id="r4">1BF7537D-2858-4943-999B-9B8043A7D604</RowUnique>
+		<RowUnique id="r5">8E07515B-AF95-4E21-942E-180816F8B507</RowUnique>
+		<RowUnique id="r6">7CB05FE3-3BF1-42F3-83A3-24C8A52AB13C</RowUnique>
+		<RowUnique id="r7">FC39CBE5-81CF-4D77-9880-B465C2DF30E7</RowUnique>
+		<RowUnique id="r8">D015D87E-29CA-4935-9326-2A68441A9B4E</RowUnique>
+		<RowUnique id="r9">31546E3F-6A2E-4E2B-8F7A-A1DB597BFC89</RowUnique>
+		<RowUnique id="r10">491B34EE-C9DA-4FC0-AA3A-248FF819D5E4</RowUnique>
+		<RowUnique id="r11">70088020-8348-4C6B-A6BC-543FBF301FF2</RowUnique>
+		<RowUnique id="r12">0B2FCC13-C7F9-4C99-B9D2-86CB9B5D630D</RowUnique>
+		<RowUnique id="r13">ADDBAF32-046C-4B98-B1AE-6A7658AF2D8C</RowUnique>
+		<RowUnique id="r14">CD0DDD8E-F15E-4723-A699-62C6B2A2250E</RowUnique>
+		<RowUnique id="r15">89653B40-7D5E-4F6A-A138-2F1D1D2C70DF</RowUnique>
+		<RowUnique id="r16">61DB7206-8255-4804-9E2C-85699808716B</RowUnique>
+		<RowUnique id="r17">2687FF86-C4B5-48EC-8BC4-41452BA6C35B</RowUnique>
+		<RowUnique id="r18">AB917B34-7E0A-49DB-87B1-016F320C6D89</RowUnique>
+		<RowUnique id="r19">1521DFD0-CEC3-4556-A8F5-4488B06A3EFB</RowUnique>
+		<RowUnique id="r20">5A8C356E-123D-4458-9155-5320BBF34AB2</RowUnique>
+		<RowUnique id="r21">094507C3-F513-42AD-AC64-721626B2DAE1</RowUnique>
+		<RowUnique id="r22">562D3CB1-F31A-4676-85F5-DBC0FAEC6CEF</RowUnique>
+		<RowUnique id="r23">6D850CE6-E70D-45CA-88E6-DE564AE01FCD</RowUnique>
+		<RowUnique id="r24">172586D3-20C3-42B9-88F6-EC6142EF38BC</RowUnique>
+		<RowUnique id="r25">2F3E0CBC-E54D-4B35-8589-EDE56CE902B1</RowUnique>
+		<RowUnique id="r26">DA63E0A0-2548-490C-932B-275AEBBA2D3D</RowUnique>
+		<RowUnique id="r27">82429B82-B063-4498-859E-39DA089CC47A</RowUnique>
+		<RowUnique id="r28">C8A45806-9E63-4823-A978-F85C03EABEC0</RowUnique>
+		<RowUnique id="r29">9D0714E6-A464-484A-838E-C7D78E263468</RowUnique>
+		<RowUnique id="r30">5AF3BFE8-9769-41BE-8661-D5310A918F64</RowUnique>
+		<RowUnique id="r31">9E113AFA-EDA5-4BC2-8988-92A78858BF1A</RowUnique>
+		<RowUnique id="r32">F7F7A8D9-DA37-4E1E-B7AA-FB6F1A811E13</RowUnique>
+		<RowUnique id="r33">C16C3081-8CD5-45A2-95F5-3B5E7E38384F</RowUnique>
+		<RowUnique id="r34">2EA9952B-0EE6-4ECD-B3B9-202653580AF8</RowUnique>
+		<RowUnique id="r35">EAE1EC05-5CA4-4E3F-999A-6FB76D7758F0</RowUnique>
+		<RowUnique id="r36">001B7407-A1E6-4C29-BD40-B2814D5AD93B</RowUnique>
+		<RowUnique id="r37">D7301E3E-FBBE-4AFF-BFD4-5B3C7C6EF181</RowUnique>
+		<RowUnique id="r38">E21643F9-CE58-4C68-AC0E-85A030441F3F</RowUnique>
+	</ColumnUnique>
+	<Column desc="Part Size Name" dataType="string" unit="" name="PrtSN" id="C1" visible="1" context="Catalog_PartSizeName" index="0">
+		<Row id="r0">BA Tipo I: 300 R IV / V</Row>
+		<Row id="r1">BA Tipo I: 400 R III / IV / V</Row>
+		<Row id="r2">BA Tipo I: 500 R III / IV</Row>
+		<Row id="r3">BA Tipo I: 500 R V</Row>
+		<Row id="r4">BA Tipo I: 600 R III / IV</Row>
+		<Row id="r5">BA Tipo I: 600 R V</Row>
+		<Row id="r6">BA Tipo I: 700 R II / III / IV</Row>
+		<Row id="r7">BA Tipo I: 800 R II / III</Row>
+		<Row id="r8">BA Tipo I: 800 R IV / V</Row>
+		<Row id="r9">BA Tipo I: 900 R II / III / IV</Row>
+		<Row id="r10">BA Tipo I: 900 R V</Row>
+		<Row id="r11">BA Tipo I: 1000 R II / III / IV</Row>
+		<Row id="r12">BA Tipo I: 1000 R V</Row>
+		<Row id="r13">BA Tipo I: 1200 R II / III</Row>
+		<Row id="r14">BA Tipo I: 1200 R IV / V</Row>
+		<Row id="r15">BA Tipo I: 1300 R II / III / IV</Row>
+		<Row id="r16">BA Tipo I: 1400 R II / III / IV</Row>
+		<Row id="r17">BA Tipo I: 1500 R II / III / IV</Row>
+		<Row id="r18">BA Tipo I: 1500 R V</Row>
+		<Row id="r19">BA Tipo I: 1600 R II / III / IV</Row>
+		<Row id="r20">BA Tipo I: 1800 R II / III / IV / V</Row>
+		<Row id="r21">BA Tipo I: 2000 R II / III / IV</Row>
+		<Row id="r22">BA Tipo I: 2000 R V</Row>
+		<Row id="r23">BA Tipo I: 2500 R II / III / IV</Row>
+		<Row id="r24">BA Tipo I: 315 SN4 / SN8</Row>
+		<Row id="r25">BA Tipo I: 400 SN4 / SN8</Row>
+		<Row id="r26">BA Tipo I: 500 SN4 /  SN8</Row>
+		<Row id="r27">BA Tipo I: 630 SN4 / SN8</Row>
+		<Row id="r28">BA Tipo I: 800 SN4 / SN8</Row>
+		<Row id="r29">BA Tipo I: Existente 300</Row>
+		<Row id="r30">BA Tipo I: Existente 400</Row>
+		<Row id="r31">BA Tipo I: Existente 500</Row>
+		<Row id="r32">BA Tipo I: Existente 600</Row>
+		<Row id="r33">BA Tipo I: Existente 700</Row>
+		<Row id="r34">BA Tipo I: Existente 800</Row>
+		<Row id="r35">BA Tipo I: Existente 900</Row>
+		<Row id="r36">BA Tipo I: Existente 1000</Row>
+		<Row id="r37">BA Tipo I: Existente 1200</Row>
+		<Row id="r38">BA Tipo I: Existente 1500</Row>
+	</Column>
+	<Column desc="Ms" dataType="float" unit="mm" name="SHBTh" id="C2" visible="1" context="StructHwBaseThickness" index="0">
+		<Row id="r0">555.0000</Row>
+		<Row id="r1">705.0000</Row>
+		<Row id="r2">842.0000</Row>
+		<Row id="r3">863.0000</Row>
+		<Row id="r4">999.0000</Row>
+		<Row id="r5">1013.0000</Row>
+		<Row id="r6">1158.0000</Row>
+		<Row id="r7">1326.0000</Row>
+		<Row id="r8">1365.0000</Row>
+		<Row id="r9">1500.0000</Row>
+		<Row id="r10">1575.0000</Row>
+		<Row id="r11">1662.0000</Row>
+		<Row id="r12">1695.0000</Row>
+		<Row id="r13">1980.0000</Row>
+		<Row id="r14">2025.0000</Row>
+		<Row id="r15">2235.0000</Row>
+		<Row id="r16">2310.0000</Row>
+		<Row id="r17">2490.0000</Row>
+		<Row id="r18">2565.0000</Row>
+		<Row id="r19">2640.0000</Row>
+		<Row id="r20">3000.0000</Row>
+		<Row id="r21">3288.0000</Row>
+		<Row id="r22">3375.0000</Row>
+		<Row id="r23">4125.0000</Row>
+		<Row id="r24">534.0000</Row>
+		<Row id="r25">675.0000</Row>
+		<Row id="r26">837.0000</Row>
+		<Row id="r27">1068.0000</Row>
+		<Row id="r28">1353.0000</Row>
+		<Row id="r29">555.0000</Row>
+		<Row id="r30">705.0000</Row>
+		<Row id="r31">870.0000</Row>
+		<Row id="r32">1020.0000</Row>
+		<Row id="r33">1170.0000</Row>
+		<Row id="r34">1320.0000</Row>
+		<Row id="r35">1500.0000</Row>
+		<Row id="r36">1665.0000</Row>
+		<Row id="r37">1980.0000</Row>
+		<Row id="r38">2490.0000</Row>
+	</Column>
+	<Column desc="Bs" dataType="float" unit="mm" name="SHBW" id="C3" visible="1" context="StructHwBaseWidth" index="0">
+		<Row id="r0">1073.0000</Row>
+		<Row id="r1">1344.0000</Row>
+		<Row id="r2">1582.0000</Row>
+		<Row id="r3">1634.0000</Row>
+		<Row id="r4">1872.0000</Row>
+		<Row id="r5">1905.0000</Row>
+		<Row id="r6">2165.0000</Row>
+		<Row id="r7">2481.0000</Row>
+		<Row id="r8">2577.0000</Row>
+		<Row id="r9">2811.0000</Row>
+		<Row id="r10">2997.0000</Row>
+		<Row id="r11">3112.0000</Row>
+		<Row id="r12">3194.0000</Row>
+		<Row id="r13">3699.0000</Row>
+		<Row id="r14">3810.0000</Row>
+		<Row id="r15">4230.0000</Row>
+		<Row id="r16">4315.0000</Row>
+		<Row id="r17">4661.0000</Row>
+		<Row id="r18">4846.0000</Row>
+		<Row id="r19">4932.0000</Row>
+		<Row id="r20">5622.0000</Row>
+		<Row id="r21">6135.0000</Row>
+		<Row id="r22">6350.0000</Row>
+		<Row id="r23">7706.0000</Row>
+		<Row id="r24">1006.0000</Row>
+		<Row id="r25">1271.0000</Row>
+		<Row id="r26">1570.0000</Row>
+		<Row id="r27">2012.0000</Row>
+		<Row id="r28">2546.0000</Row>
+		<Row id="r29">1344.0000</Row>
+		<Row id="r30">1652.0000</Row>
+		<Row id="r31">1924.0000</Row>
+		<Row id="r32">2195.0000</Row>
+		<Row id="r33">2466.0000</Row>
+		<Row id="r34">2811.0000</Row>
+		<Row id="r35">3119.0000</Row>
+		<Row id="r36">3699.0000</Row>
+		<Row id="r37">4661.0000</Row>
+		<Row id="r38">2546.0000</Row>
+	</Column>
+	<Column desc="H" dataType="float" unit="mm" name="SBSH" id="C4" visible="1" context="StructHeight" index="0">
+		<Row id="r0">520.0000</Row>
+		<Row id="r1">620.0000</Row>
+		<Row id="r2">711.0000</Row>
+		<Row id="r3">725.0000</Row>
+		<Row id="r4">816.0000</Row>
+		<Row id="r5">825.0000</Row>
+		<Row id="r6">922.0000</Row>
+		<Row id="r7">1034.0000</Row>
+		<Row id="r8">1060.0000</Row>
+		<Row id="r9">1150.0000</Row>
+		<Row id="r10">1200.0000</Row>
+		<Row id="r11">1258.0000</Row>
+		<Row id="r12">1280.0000</Row>
+		<Row id="r13">1470.0000</Row>
+		<Row id="r14">1500.0000</Row>
+		<Row id="r15">1640.0000</Row>
+		<Row id="r16">1690.0000</Row>
+		<Row id="r17">1810.0000</Row>
+		<Row id="r18">1860.0000</Row>
+		<Row id="r19">1910.0000</Row>
+		<Row id="r20">2150.0000</Row>
+		<Row id="r21">2342.0000</Row>
+		<Row id="r22">2400.0000</Row>
+		<Row id="r23">2900.0000</Row>
+		<Row id="r24">465.0000</Row>
+		<Row id="r25">550.0000</Row>
+		<Row id="r26">650.0000</Row>
+		<Row id="r27">780.0000</Row>
+		<Row id="r28">950.0000</Row>
+		<Row id="r29">520.0000</Row>
+		<Row id="r30">620.0000</Row>
+		<Row id="r31">730.0000</Row>
+		<Row id="r32">830.0000</Row>
+		<Row id="r33">930.0000</Row>
+		<Row id="r34">1030.0000</Row>
+		<Row id="r35">1150.0000</Row>
+		<Row id="r36">1260.0000</Row>
+		<Row id="r37">1470.0000</Row>
+		<Row id="r38">1810.0000</Row>
+	</Column>
+	<Column desc="e" dataType="float" unit="mm" name="LenA3" id="C5" visible="1" context="Geometry_Distance2D" index="3">
+		<Row id="r0">70.0000</Row>
+		<Row id="r1">70.0000</Row>
+		<Row id="r2">61.0000</Row>
+		<Row id="r3">75.0000</Row>
+		<Row id="r4">66.0000</Row>
+		<Row id="r5">75.0000</Row>
+		<Row id="r6">72.0000</Row>
+		<Row id="r7">84.0000</Row>
+		<Row id="r8">110.0000</Row>
+		<Row id="r9">100.0000</Row>
+		<Row id="r10">150.0000</Row>
+		<Row id="r11">108.0000</Row>
+		<Row id="r12">130.0000</Row>
+		<Row id="r13">120.0000</Row>
+		<Row id="r14">150.0000</Row>
+		<Row id="r15">190.0000</Row>
+		<Row id="r16">140.0000</Row>
+		<Row id="r17">160.0000</Row>
+		<Row id="r18">210.0000</Row>
+		<Row id="r19">160.0000</Row>
+		<Row id="r20">200.0000</Row>
+		<Row id="r21">192.0000</Row>
+		<Row id="r22">250.0000</Row>
+		<Row id="r23">250.0000</Row>
+		<Row id="r24">41.0000</Row>
+		<Row id="r25">50.0000</Row>
+		<Row id="r26">58.0000</Row>
+		<Row id="r27">82.0000</Row>
+		<Row id="r28">102.0000</Row>
+		<Row id="r29">70.0000</Row>
+		<Row id="r30">70.0000</Row>
+		<Row id="r31">80.0000</Row>
+		<Row id="r32">80.0000</Row>
+		<Row id="r33">80.0000</Row>
+		<Row id="r34">80.0000</Row>
+		<Row id="r35">100.0000</Row>
+		<Row id="r36">110.0000</Row>
+		<Row id="r37">120.0000</Row>
+		<Row id="r38">160.0000</Row>
+	</Column>
+	<Column desc="L" dataType="float" unit="mm" name="LenA1" id="C6" visible="1" context="Geometry_Distance2D" index="1">
+		<Row id="r0">440.0000</Row>
+		<Row id="r1">540.0000</Row>
+		<Row id="r2">622.0000</Row>
+		<Row id="r3">650.0000</Row>
+		<Row id="r4">732.0000</Row>
+		<Row id="r5">750.0000</Row>
+		<Row id="r6">844.0000</Row>
+		<Row id="r7">968.0000</Row>
+		<Row id="r8">1020.0000</Row>
+		<Row id="r9">1100.0000</Row>
+		<Row id="r10">1200.0000</Row>
+		<Row id="r11">1216.0000</Row>
+		<Row id="r12">1260.0000</Row>
+		<Row id="r13">1440.0000</Row>
+		<Row id="r14">1500.0000</Row>
+		<Row id="r15">1680.0000</Row>
+		<Row id="r16">1680.0000</Row>
+		<Row id="r17">1820.0000</Row>
+		<Row id="r18">1920.0000</Row>
+		<Row id="r19">1920.0000</Row>
+		<Row id="r20">2200.0000</Row>
+		<Row id="r21">2384.0000</Row>
+		<Row id="r22">2500.0000</Row>
+		<Row id="r23">3000.0000</Row>
+		<Row id="r24">356.0000</Row>
+		<Row id="r25">450.0000</Row>
+		<Row id="r26">558.0000</Row>
+		<Row id="r27">712.0000</Row>
+		<Row id="r28">902.0000</Row>
+		<Row id="r29">440.0000</Row>
+		<Row id="r30">540.0000</Row>
+		<Row id="r31">660.0000</Row>
+		<Row id="r32">760.0000</Row>
+		<Row id="r33">860.0000</Row>
+		<Row id="r34">960.0000</Row>
+		<Row id="r35">1100.0000</Row>
+		<Row id="r36">1220.0000</Row>
+		<Row id="r37">1440.0000</Row>
+		<Row id="r38">1820.0000</Row>
+	</Column>
+	<ColumnConst desc="Part Domain" dataType="string" unit="" name="PDom" id="CC0" visible="0" context="Catalog_Domain" index="0">Structure_Domain</ColumnConst>
+	<ColumnConst desc="Part Type" dataType="string" unit="" name="PTyp" id="CC1" visible="1" context="Catalog_PartType" index="0">Struct_InletOutlet</ColumnConst>
+	<ColumnConst desc="Part Subtype" dataType="string" unit="" name="PSTyp" id="CC2" visible="1" context="Catalog_SubType" index="0">Undefined</ColumnConst>
+	<ColumnConst desc="Part Name" dataType="string" unit="" name="PrtNm" id="CC3" visible="0" context="Catalog_PartName" index="0">Boca Aterro Tipo I</ColumnConst>
+	<ColumnConst desc="Part Description" dataType="string" unit="" name="PrtD" id="CC4" visible="1" context="Catalog_PartDesc" index="0">Boca Aterro Tipo I</ColumnConst>
+	<ColumnConst desc="Part ID" dataType="string" unit="" name="PrtID" id="CC5" visible="0" context="Catalog_PartID" index="0">BE9ED898-ACFC-4B12-B437-4A56454D3364</ColumnConst>
+	<ColumnConst desc="Data Version" dataType="string" unit="" name="DVer" id="CC6" visible="0" context="DataVersion" index="0">2.0</ColumnConst>
+	<ColumnConst desc="Content Type" dataType="int" unit="" name="CntTy" id="CC7" visible="0" context="Content_Type" index="0">4</ColumnConst>
+	<ColumnConst desc="Hide Part Flag" dataType="bool" unit="" name="HPrtF" id="CC8" visible="0" context="Catalog_PartHide" index="0">0</ColumnConst>
+	<ColumnConst desc="Structure Shape" dataType="string" unit="" name="SBS" id="CC9" visible="1" context="StructBoundingShape" index="0">BoundingShape_Box</ColumnConst>
+	<ColumnConst desc="Custom Sizing Flag" dataType="bool" unit="" name="CusSF" id="CC10" visible="0" context="CustomPartSizing_Flag" index="0">0</ColumnConst>
+	<ColumnConst desc="Vertical Pipe Clearance" dataType="float" unit="mm" name="SVPC" id="CC11" visible="1" context="StructVertPipeClearance" index="0">200.0000</ColumnConst>
+	<ColumnConst desc="Menor altura muro ala incluindo laje" dataType="float" unit="mm" name="LenA9" id="CC12" visible="1" context="Geometry_Distance2D" index="9">350.0000</ColumnConst>
+	<ColumnCalc desc="=H" dataType="float" unit="mm" name="LenA2" id="CCA0" visible="0" context="Geometry_Distance2D" index="2">$SBSH</ColumnCalc>
+	<ColumnCalc desc="=Bs" dataType="float" unit="mm" name="LenA4" id="CCA1" visible="0" context="Geometry_Distance2D" index="4">$SHBW</ColumnCalc>
+	<ColumnCalc desc="=H" dataType="float" unit="mm" name="LenA5" id="CCA2" visible="0" context="Geometry_Distance2D" index="5">$SBSH</ColumnCalc>
+	<ColumnCalc desc="=e" dataType="float" unit="mm" name="LenA6" id="CCA3" visible="0" context="Geometry_Distance2D" index="6">$LenA3</ColumnCalc>
+	<ColumnCalc desc="=e" dataType="float" unit="mm" name="LenA7" id="CCA4" visible="0" context="Geometry_Distance2D" index="7">$LenA3</ColumnCalc>
+	<ColumnCalc desc="=e" dataType="float" unit="mm" name="LenA8" id="CCA5" visible="0" context="Geometry_Distance2D" index="8">$LenA3</ColumnCalc>
+	<ColumnCalc desc="Structure Length " dataType="float" unit="mm" name="SBSL" id="CCA6" visible="1" context="StructLength" index="0">$SHBW</ColumnCalc>
+	<ColumnCalc desc="Structure Width " dataType="float" unit="mm" name="SBSW" id="CCA7" visible="1" context="StructWidth" index="0">$SHBTh</ColumnCalc>
+	<ColumnCalc desc="Espessura do muro atrás" dataType="float" unit="mm" name="WPOf2" id="CCA8" visible="1" context="Geometry_WorkplaneOffset" index="2">$LenA3</ColumnCalc>
+	<ColumnCalc desc="=Comprimento em planta da boca" dataType="float" unit="mm" name="WPOf3" id="CCA9" visible="0" context="Geometry_WorkplaneOffset" index="3">$SHBTh</ColumnCalc>
+	<ColumnCalc desc="Workplane Offset 1" dataType="float" unit="mm" name="WPOf1" id="CCA10" visible="0" context="Geometry_WorkplaneOffset" index="1">$WPOf2</ColumnCalc>
+</LandPart>

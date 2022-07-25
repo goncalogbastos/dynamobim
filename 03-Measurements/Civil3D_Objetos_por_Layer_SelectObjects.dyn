@@ -1,0 +1,770 @@
+{
+  "Uuid": "8eefd87d-5f9b-49c1-8630-1247546c70f3",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_Objetos_por_Layer_SelectObjects",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "06b308c672a042df80d3aa3d35a451bc",
+      "Name": "ID",
+      "Type": "string",
+      "Value": "600",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "552881ef69454d95927007098c8dd75c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3d78b39d7a0640cca97f8217a9da6a4c",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "layers = IN[0]\r\n\r\nDrawing = IN[1]\r\n\r\n#ls =  [layer for layer in layers for i in range(N)]\r\nfor i in range(0,len(layers)):\r\n\tlayers[i] = str(Drawing)+\"_\"+layers[i]\r\n\t\r\n\r\n\r\nOUT = layers",
+      "VariableInputPorts": true,
+      "Id": "32a3bf54ea034b7c99636864a2b1c852",
+      "Inputs": [
+        {
+          "Id": "b5dde5ac7feb49408c576d07050e143e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "56f8b1bb41664d58a401a9192c8e7b25",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1066eb535ea5440596322e33406fd6f6",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "600",
+      "Id": "06b308c672a042df80d3aa3d35a451bc",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0d7415cb096e4a648b7083c979d943be",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Layer",
+      "Id": "0c55f371ff164279b0d1bfae9dc467da",
+      "Inputs": [
+        {
+          "Id": "a93fc25799474a5c9b2abdd0ceb40543",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5772f5a1ed7f428780aa641397b4c997",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the layer name of this object.\n\nObject.Layer: string"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectsSelection, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "968",
+        "862",
+        "861",
+        "3DA",
+        "3A4",
+        "254",
+        "241",
+        "240",
+        "23F",
+        "866",
+        "3D9"
+      ],
+      "Id": "9e985c5bd2834fb28dc960af8b33c535",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a47c22ff45c44812bcff112a14c06d36",
+          "Name": "Objects",
+          "Description": "Objects",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Layer.Create@string,Autodesk.AutoCAD.DynamoNodes.Document,DSCore.Color,string,string",
+      "Id": "90fee83462034124b57ac1bfbcb0ab66",
+      "Inputs": [
+        {
+          "Id": "9ffdbe818dde4907bf642d07d6f0b4b6",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4d2313be669c4527a63ba8ba7239612c",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2ec4c4e6e17b4bac8863f96210d38b84",
+          "Name": "color",
+          "Description": "Color\nDefault value : DSCore.Color.ByARGB(255, 255, 255, 255)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b985301cad6c4754a9c31552119a6ca4",
+          "Name": "linetype",
+          "Description": "string\nDefault value : \"Continuous\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "47176d9666944cf9a622cbcd5a881491",
+          "Name": "lineweight",
+          "Description": "string\nDefault value : \"ByLineWeightDefault\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5de21c1c87914403bf694d9b5b1f1d8f",
+          "Name": "Layer",
+          "Description": "Layer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a layer in the document.\n\nLayer.Create (name: string, document: Document, color: Color = DSCore.Color.ByARGB(255, 255, 255, 255), linetype: string = \"Continuous\", lineweight: string = \"ByLineWeightDefault\"): Layer"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.SetLayer@string",
+      "Id": "c99f9c19f1484da8ad45451c54383de6",
+      "Inputs": [
+        {
+          "Id": "d3f3c8803fdf48228736008e1cb41d45",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c490962b3fda4c9ca073a548f373e3f9",
+          "Name": "layer",
+          "Description": "Name of the layer\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "97d67570c34345ae81f19b2c418ab5a0",
+          "Name": "Object",
+          "Description": "Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Set the layer of this object.\n\nObject.SetLayer (layer: string): Object"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.UniqueItems@var[]..[]",
+      "Id": "898e919e7d1b41cba759764ac258a327",
+      "Inputs": [
+        {
+          "Id": "4dfebd350e92421e99bfdbf1b5e2f399",
+          "Name": "list",
+          "Description": "List to filter duplicates out of.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "572e59a32858450d8b98f25f212afdc3",
+          "Name": "list",
+          "Description": "Filtered list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a new list containing all unique items in the given list.\n\nList.UniqueItems (list: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.LayerByName@string",
+      "Id": "96f404ffe813450e9c3c251aa9b55cff",
+      "Inputs": [
+        {
+          "Id": "8fd47f3fc9c74cda8f4df432175ad06f",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "29f5b65cdf5040c48f7a1b79164ee994",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eb3b7311b8e34a7798c3bf06749169e4",
+          "Name": "Layer",
+          "Description": "Layer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get a layer by a specified name.\n\nDocument.LayerByName (name: string): Layer"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DesignScript.Builtin.Dictionary.ByKeysValues@string[],var[]..[]",
+      "Id": "d4bfa1730f214fe084c9149c75dc2dba",
+      "Inputs": [
+        {
+          "Id": "cd1bfe62c0de412ab4d3d15bdfa0cf6f",
+          "Name": "keys",
+          "Description": "The string keys of the Dictionary\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "39c6ae07fc444081928e62ad4fb3ce21",
+          "Name": "values",
+          "Description": "The values of the Dictionary\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9edd0cbe6d0a45d5a07cf0a462609559",
+          "Name": "dictionary",
+          "Description": "The result Dictionary",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Produces a Dictionary with the supplied keys and values. The number of entries is the shorter of keys or values.\n\nDictionary.ByKeysValues (keys: string[], values: var[]..[]): Dictionary"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Layer.Name",
+      "Id": "4805995dc31346eb9732a210c3bea101",
+      "Inputs": [
+        {
+          "Id": "fdfb8d64df704e288d78cb4450af6c6b",
+          "Name": "layer",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Layer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bab204232e254cdc8e0c750943d313fe",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the name of the layer.\n\nLayer.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Layer.Name",
+      "Id": "3db8a775c1084053b8903d556375abce",
+      "Inputs": [
+        {
+          "Id": "ec1476a952164b16996aeae2136b3f5d",
+          "Name": "layer",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Layer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9ff806ce0771472686f8bc5b86d47f55",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the name of the layer.\n\nLayer.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DesignScript.Builtin.Dictionary.ValueAtKey@string",
+      "Id": "67c7531026a043ab9793f19ec092faab",
+      "Inputs": [
+        {
+          "Id": "b3ad3c4220ef43b1ac0d8c50c6d1a6b0",
+          "Name": "dictionary",
+          "Description": "DesignScript.Builtin.Dictionary",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0906829983e241528a24e3e4ffb990d7",
+          "Name": "key",
+          "Description": "The key in the Dictionary to obtain.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ef3b49c7872a42daa065b2393bb873ce",
+          "Name": "value",
+          "Description": "The value at the specified key or null if it is not set.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Obtain the value at a specified key\n\nDictionary.ValueAtKey (key: string): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "3d78b39d7a0640cca97f8217a9da6a4c",
+      "End": "4d2313be669c4527a63ba8ba7239612c",
+      "Id": "a256c65c397c4bf589cbf561c5e7e021"
+    },
+    {
+      "Start": "3d78b39d7a0640cca97f8217a9da6a4c",
+      "End": "8fd47f3fc9c74cda8f4df432175ad06f",
+      "Id": "85b71d80f3a3483e92e577bbc89e555c"
+    },
+    {
+      "Start": "1066eb535ea5440596322e33406fd6f6",
+      "End": "9ffdbe818dde4907bf642d07d6f0b4b6",
+      "Id": "9d3ff4d3386f43d0970bb824b0c9a8e1"
+    },
+    {
+      "Start": "0d7415cb096e4a648b7083c979d943be",
+      "End": "56f8b1bb41664d58a401a9192c8e7b25",
+      "Id": "25491a4d2a9a420899afd2a939582d55"
+    },
+    {
+      "Start": "5772f5a1ed7f428780aa641397b4c997",
+      "End": "4dfebd350e92421e99bfdbf1b5e2f399",
+      "Id": "89f5ef40e4694ea3bd2c07ea431fd9ec"
+    },
+    {
+      "Start": "5772f5a1ed7f428780aa641397b4c997",
+      "End": "0906829983e241528a24e3e4ffb990d7",
+      "Id": "c13efd2148a24094b7ffd6647abfadb3"
+    },
+    {
+      "Start": "a47c22ff45c44812bcff112a14c06d36",
+      "End": "a93fc25799474a5c9b2abdd0ceb40543",
+      "Id": "ffd75645d5554e6bb3997d5ab478b5e9"
+    },
+    {
+      "Start": "a47c22ff45c44812bcff112a14c06d36",
+      "End": "d3f3c8803fdf48228736008e1cb41d45",
+      "Id": "72e0939c1a034dcdae8532e7500b3457"
+    },
+    {
+      "Start": "5de21c1c87914403bf694d9b5b1f1d8f",
+      "End": "ec1476a952164b16996aeae2136b3f5d",
+      "Id": "d6422669d4c84ec28ecde0d3754985a1"
+    },
+    {
+      "Start": "572e59a32858450d8b98f25f212afdc3",
+      "End": "b5dde5ac7feb49408c576d07050e143e",
+      "Id": "75b4adacc35947e9b698c901c864514a"
+    },
+    {
+      "Start": "572e59a32858450d8b98f25f212afdc3",
+      "End": "29f5b65cdf5040c48f7a1b79164ee994",
+      "Id": "f641607e4c9745948237d081a65e2987"
+    },
+    {
+      "Start": "eb3b7311b8e34a7798c3bf06749169e4",
+      "End": "fdfb8d64df704e288d78cb4450af6c6b",
+      "Id": "6fa4699b0ba84ae39a8926da8098db14"
+    },
+    {
+      "Start": "9edd0cbe6d0a45d5a07cf0a462609559",
+      "End": "b3ad3c4220ef43b1ac0d8c50c6d1a6b0",
+      "Id": "e7feb16b91c6417082432a17ec8d2a85"
+    },
+    {
+      "Start": "bab204232e254cdc8e0c750943d313fe",
+      "End": "cd1bfe62c0de412ab4d3d15bdfa0cf6f",
+      "Id": "b2c119f7306b41428c2ab62df55a46b5"
+    },
+    {
+      "Start": "9ff806ce0771472686f8bc5b86d47f55",
+      "End": "39c6ae07fc444081928e62ad4fb3ce21",
+      "Id": "336ce46ca7e0427ab3503bcca6894dec"
+    },
+    {
+      "Start": "ef3b49c7872a42daa065b2393bb873ce",
+      "End": "c490962b3fda4c9ca073a548f373e3f9",
+      "Id": "862ef87b620a4a8d81d5dba6c974c3d0"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.30",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "9e985c5bd2834fb28dc960af8b33c535"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "552881ef69454d95927007098c8dd75c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.Current",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 372.24077824334495,
+        "Y": -1350.0153629070235
+      },
+      {
+        "Id": "32a3bf54ea034b7c99636864a2b1c852",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -286.48655910176217,
+        "Y": -878.410324869244
+      },
+      {
+        "Id": "06b308c672a042df80d3aa3d35a451bc",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "ID",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1466.7295808147267,
+        "Y": -1012.8450472617449
+      },
+      {
+        "Id": "0c55f371ff164279b0d1bfae9dc467da",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Object.Layer",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -616.00991619122692,
+        "Y": -1375.7259277255139
+      },
+      {
+        "Id": "9e985c5bd2834fb28dc960af8b33c535",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Select Objects",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1555.6618018857778,
+        "Y": -1239.8160730573843
+      },
+      {
+        "Id": "90fee83462034124b57ac1bfbcb0ab66",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Layer.Create",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 795.31971564784112,
+        "Y": -1199.938686210354
+      },
+      {
+        "Id": "c99f9c19f1484da8ad45451c54383de6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Object.SetLayer",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 2242.9096872081705,
+        "Y": -1797.6978667638944
+      },
+      {
+        "Id": "898e919e7d1b41cba759764ac258a327",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "List.UniqueItems",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -412.00108455010673,
+        "Y": -1159.2140070607784
+      },
+      {
+        "Id": "96f404ffe813450e9c3c251aa9b55cff",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.LayerByName",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 523.35381761928852,
+        "Y": -891.12601250476268
+      },
+      {
+        "Id": "d4bfa1730f214fe084c9149c75dc2dba",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Dictionary.ByKeysValues",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1618.2622272574822,
+        "Y": -1067.0137982627566
+      },
+      {
+        "Id": "4805995dc31346eb9732a210c3bea101",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Layer.Name",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1219.5833910113815,
+        "Y": -994.290582835244
+      },
+      {
+        "Id": "3db8a775c1084053b8903d556375abce",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Layer.Name",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1519.9730757002915,
+        "Y": -735.510705998126
+      },
+      {
+        "Id": "67c7531026a043ab9793f19ec092faab",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Dictionary.ValueAtKey",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1548.13046975601,
+        "Y": -1613.0707485652706
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "7cd897292f194ac080e93835333e1790",
+        "Title": "Input",
+        "Nodes": [
+          "06b308c672a042df80d3aa3d35a451bc",
+          "9e985c5bd2834fb28dc960af8b33c535"
+        ],
+        "Left": -1565.6618018857778,
+        "Top": -1292.8160730573843,
+        "Width": 185.0,
+        "Height": 347.97102579563943,
+        "FontSize": 36.0,
+        "InitialTop": -1239.8160730573843,
+        "InitialHeight": 371.97102579563943,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "2d5ea5496ece47c09e20001c42422b0e",
+        "Title": "Set Layer",
+        "Nodes": [
+          "552881ef69454d95927007098c8dd75c",
+          "32a3bf54ea034b7c99636864a2b1c852",
+          "0c55f371ff164279b0d1bfae9dc467da",
+          "90fee83462034124b57ac1bfbcb0ab66",
+          "c99f9c19f1484da8ad45451c54383de6",
+          "898e919e7d1b41cba759764ac258a327",
+          "96f404ffe813450e9c3c251aa9b55cff",
+          "d4bfa1730f214fe084c9149c75dc2dba",
+          "4805995dc31346eb9732a210c3bea101",
+          "3db8a775c1084053b8903d556375abce",
+          "67c7531026a043ab9793f19ec092faab"
+        ],
+        "Left": -626.00991619122692,
+        "Top": -1850.6978667638944,
+        "Width": 3073.9196033993976,
+        "Height": 1208.1871607657683,
+        "FontSize": 36.0,
+        "InitialTop": -1797.6978667638944,
+        "InitialHeight": 1207.1871607657683,
+        "TextblockHeight": 43.0,
+        "Background": "#FFA4E1FF"
+      }
+    ],
+    "X": -65.873309153701825,
+    "Y": 1029.2745002979364,
+    "Zoom": 0.54726810369313816
+  }
+}

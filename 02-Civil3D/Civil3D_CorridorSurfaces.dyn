@@ -1,0 +1,357 @@
+{
+  "Uuid": "f262d6cc-7c1d-4563-a602-fe6305c912cd",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_CorridorSurfaces",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Corridor": {
+        "Key": "Autodesk.Civil.DynamoNodes.Corridor",
+        "Value": "Civil3DNodes.dll"
+      },
+      "Corridor.Add": {
+        "Key": "Autodesk.Civil.DynamoNodes.Corridor",
+        "Value": "Civil3DNodes.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "50cf07e3aea340f0a80151856d129081",
+      "Name": "Nome Pavimento:",
+      "Type": "string",
+      "Value": "Pavimento",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "ae00c52da932486381137f5a7e058938",
+      "Name": "Nome Caixa Pavimento:",
+      "Type": "string",
+      "Value": "Cx",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.CorridorNameDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 0,
+      "SelectedString": "eco_",
+      "NodeType": "ExtensionNode",
+      "Id": "5fb9e6035f6d408eac51b0919059e0b2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bfb4f0f2cdd241579b490e937faae05f",
+          "Name": "Corridor",
+          "Description": "The selected Corridor",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selects a Corridor in the document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CivilObject.Name",
+      "Id": "ef68bd261b5a4e8e9f13bdac4b4d1d93",
+      "Inputs": [
+        {
+          "Id": "f003257b30964f61a569296c012c2565",
+          "Name": "civilObject",
+          "Description": "Autodesk.Civil.DynamoNodes.CivilObject",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "162dd52e709947c0929c55be11f6d271",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the name of the civil object.\n\nCivilObject.Name: string"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil3D\r\nclr.AddReference('AcMgd')\r\nclr.AddReference('AcCoreMgd')\r\nclr.AddReference('AcDbMgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references from Civil3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\nadoc = Application.DocumentManager.MdiActiveDocument\r\ncivdoc = CivilApplication.ActiveDocument\r\neditor = adoc.Editor\r\n\r\n\r\ndef corr_surf(cor_,surf_,link_):\r\n\twith adoc.LockDocument():\r\n\t\twith adoc.Database as db:\r\n\t\t\twith db.TransactionManager.StartTransaction() as t:\r\n\t\t\t\t\t# Get corridor from corridor collection               \r\n\t\t\t\tcorId = civdoc.CorridorCollection[cor_]\r\n\t\t\t\tcor = t.GetObject(corId, OpenMode.ForWrite)\r\n\r\n\t\t\t\ttry:\r\n\t\t\t\t\tsurf = cor.CorridorSurfaces[surf_]\r\n\t\t\t\t\tsurf.AddLinkCode(link_,True)\r\n\t\t\t\texcept:\r\n\t\t\t\t\tcor.CorridorSurfaces.Add(surf_)\r\n\t\t\t\t\tsurf = cor.CorridorSurfaces[surf_]\r\n\t\t\t\t\tsurf.AddLinkCode(link_,True)\r\n\t\t\t\t\r\n\t\t\t\t#surf.IsBuild = True\r\n\t\t\t\t\r\n\t\t\t\tbndyCount = surf.Boundaries.Count\r\n\t\t\t\tif bndyCount == 0:\r\n\t\t\t\t\tsurf.Boundaries.AddCorridorExtentsBoundary(\"Corridor Boundary(1)\")\r\n\t\t\t\t\r\n\t\t\t\tcor.Rebuild()\r\n\t\t\t\t\r\n\t\t\t\tt.Commit()\r\n\treturn surf\r\n\r\ncorr_ = IN[0]\r\nsurfaces_ = IN[1]\r\nlinks_ = IN[2]\r\n\r\noutput_ = []\r\n\r\noutput_.append(corr_surf(corr_,surfaces_[0],links_[0]))\r\noutput_.append(corr_surf(corr_,surfaces_[1],links_[1]))\r\n\r\n#editor.Regen()\r\n\r\nOUT = output_\r\n            \r\n\r\n",
+      "VariableInputPorts": true,
+      "Id": "8a41a8cfed0e4bf098a38833f0d74f9d",
+      "Inputs": [
+        {
+          "Id": "331d490b77be40c6a30b5d054035ca0d",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a45d273aa118412d9a040f6bc134b7ce",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a08b3eefcb334ab4a0c2fa937fea7deb",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1859eb8bf07144a1add90aff435144f1",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Pavimento",
+      "Id": "50cf07e3aea340f0a80151856d129081",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f16abee5eb2141559d6a4bcfc37d7004",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Cx",
+      "Id": "ae00c52da932486381137f5a7e058938",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e8bb4bdb810a45b79c3a5a7ffb47b6b1",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[pav,cx];\n[\"Top\",\"Datum\"];",
+      "Id": "f13abc6e16054fa4b54ddf88b875a320",
+      "Inputs": [
+        {
+          "Id": "20dd82cded4b4131a12a51e3b771f1a6",
+          "Name": "pav",
+          "Description": "pav",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8527aa2edbe84df29bc7c30cafce2812",
+          "Name": "cx",
+          "Description": "cx",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f2a6710d4223400eb0121830779a22b8",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8fe6511081244854ab1a1e27226670f1",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "bfb4f0f2cdd241579b490e937faae05f",
+      "End": "f003257b30964f61a569296c012c2565",
+      "Id": "72f124923efc422b856ae7c7d353836a"
+    },
+    {
+      "Start": "162dd52e709947c0929c55be11f6d271",
+      "End": "331d490b77be40c6a30b5d054035ca0d",
+      "Id": "e4dd4336058f484797db2797a8deac58"
+    },
+    {
+      "Start": "f16abee5eb2141559d6a4bcfc37d7004",
+      "End": "20dd82cded4b4131a12a51e3b771f1a6",
+      "Id": "5505c789779b413384cb4f484d1c265b"
+    },
+    {
+      "Start": "e8bb4bdb810a45b79c3a5a7ffb47b6b1",
+      "End": "8527aa2edbe84df29bc7c30cafce2812",
+      "Id": "1473999e34d1492cadcf43dce04a5aa8"
+    },
+    {
+      "Start": "f2a6710d4223400eb0121830779a22b8",
+      "End": "a45d273aa118412d9a040f6bc134b7ce",
+      "Id": "87679d55f332449492cb173666f2df7d"
+    },
+    {
+      "Start": "8fe6511081244854ab1a1e27226670f1",
+      "End": "a08b3eefcb334ab4a0c2fa937fea7deb",
+      "Id": "2749c4d0877b43088c4a85b825cb1d31"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.30",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "5fb9e6035f6d408eac51b0919059e0b2"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "5fb9e6035f6d408eac51b0919059e0b2",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Corridor",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 171.40224992971199,
+        "Y": 32.14477012506245
+      },
+      {
+        "Id": "ef68bd261b5a4e8e9f13bdac4b4d1d93",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CivilObject.Name",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 475.67345862217741,
+        "Y": 148.75263114266318
+      },
+      {
+        "Id": "8a41a8cfed0e4bf098a38833f0d74f9d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 899.05952474867524,
+        "Y": 225.39155236852469
+      },
+      {
+        "Id": "50cf07e3aea340f0a80151856d129081",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Nome Pavimento:",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 185.81514820694861,
+        "Y": 286.85997302019371
+      },
+      {
+        "Id": "ae00c52da932486381137f5a7e058938",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Nome Caixa Pavimento:",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 182.84512620753139,
+        "Y": 406.18503781355344
+      },
+      {
+        "Id": "f13abc6e16054fa4b54ddf88b875a320",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 505.10301038863406,
+        "Y": 301.26983319490432
+      }
+    ],
+    "Annotations": [],
+    "X": -539.06821291662254,
+    "Y": 152.42222405061432,
+    "Zoom": 0.81924933832278479
+  }
+}

@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<LandPart desc="Part Table" version="1.0" xmlns:xlink="http://www.w3.org/1999/xlink" fixColumn="C1">
+	<ColumnConstView desc="Parameter-driven Display" id="CCV1" viewKey="3d" viewName="AeccPartRecipe" pathsRelativeTo="Table">
+		<Images>
+			<Image>
+				<URL xlink:title="Part Reference Image" xlink:href="Tubagens.bmp"/>
+			</Image>
+		</Images>
+		<Recipe>Tubagens.dwg</Recipe>
+	</ColumnConstView>
+	<ColumnUnique desc="Primary Key" datatype="string" name="UUID" visible="0">
+		<RowUnique id="r0">C724014D-B9F0-4D12-A6E1-21540B37111F</RowUnique>
+		<RowUnique id="r1">9C5733A1-8181-4811-8DDE-E1B46684E625</RowUnique>
+		<RowUnique id="r2">B5930E3F-A457-4877-8037-67F3F4B28A88</RowUnique>
+		<RowUnique id="r3">EB43EF50-9979-4A3C-BB0A-EDAAF48608B8</RowUnique>
+		<RowUnique id="r4">F5FDFC69-F32D-47E1-ABA2-C18871989A24</RowUnique>
+		<RowUnique id="r5">75BF86F5-A8CC-43C9-82DA-77013D8C262C</RowUnique>
+		<RowUnique id="r6">CFE060CD-8A72-4D5A-8554-ABBC9C50B5BC</RowUnique>
+		<RowUnique id="r7">DF57F2D1-209E-4776-868D-A57B811DB75C</RowUnique>
+		<RowUnique id="r8">8D7C47EB-4A9D-4E92-87B9-18A53EBB0CB7</RowUnique>
+		<RowUnique id="r9">1B0D60D9-B5E2-47DF-86CC-C0F32C59FC78</RowUnique>
+		<RowUnique id="r10">FA6C9597-E9BE-4E7D-A4D3-17F60ACD0CFC</RowUnique>
+		<RowUnique id="r11">4AA08F89-3C59-4C8C-8F9A-F95DEF139D4B</RowUnique>
+		<RowUnique id="r12">93C3FE59-2FE1-4205-B65B-B6A9E17D602B</RowUnique>
+		<RowUnique id="r13">996917D6-2832-49E9-B97A-77F850636E11</RowUnique>
+		<RowUnique id="r14">073424CA-55A1-4CFF-BB21-228EE1E15A56</RowUnique>
+		<RowUnique id="r15">A9FC7AEA-05C2-4028-9DE3-3CDDB5738972</RowUnique>
+		<RowUnique id="r16">A22BAA11-E5A4-4D24-8426-415612083A5D</RowUnique>
+		<RowUnique id="r17">2E9110F7-5A45-42A2-9594-0CB63C5A3276</RowUnique>
+		<RowUnique id="r18">E99CB3EA-92AF-431B-963D-60AC5CFB26EB</RowUnique>
+		<RowUnique id="r19">0D700ADA-1386-4279-A6B3-4FBC589195D3</RowUnique>
+		<RowUnique id="r20">6B98CA65-426A-49CD-9D96-40B58E6428C9</RowUnique>
+		<RowUnique id="r21">9731B039-562B-4CD6-91D3-369AB82778D1</RowUnique>
+		<RowUnique id="r22">D73DB841-2CD2-482E-BB9A-7F3F2FFC68B3</RowUnique>
+		<RowUnique id="r23">00880D8D-F014-4F7E-AD63-BD1CD12A3AEF</RowUnique>
+		<RowUnique id="r24">3DBA3DE7-8F1D-477D-9BEF-2F84E4D62D9F</RowUnique>
+		<RowUnique id="r25">EE379036-5863-40A8-92B9-0BE9BEFE5692</RowUnique>
+		<RowUnique id="r26">3D42432E-F818-417B-A795-7AF8AA141344</RowUnique>
+		<RowUnique id="r27">74292C19-4131-48A8-A1DE-1F7B534C4216</RowUnique>
+		<RowUnique id="r28">BA78F981-D595-4C55-BCFF-BDB2F8AAE088</RowUnique>
+		<RowUnique id="r29">B0203346-CA1A-4B8E-AF1E-93D93A33B5FF</RowUnique>
+		<RowUnique id="r30">0549C688-83F3-4974-B93C-621E4F0D2C5B</RowUnique>
+		<RowUnique id="r31">C1867529-B680-4B7C-BE30-E25386A52921</RowUnique>
+		<RowUnique id="r32">90230A64-D300-45D6-92DF-6CDA7EB5D807</RowUnique>
+		<RowUnique id="r33">AA8ED0B4-80F2-40DC-842C-2F616211FA94</RowUnique>
+		<RowUnique id="r34">9EBE8770-2B75-40E3-A6E0-6D0B8D8D835E</RowUnique>
+		<RowUnique id="r35">9A4872DB-3F7B-42AF-BC4B-86AD3B61A66B</RowUnique>
+		<RowUnique id="r36">A54765CD-F21F-49BE-9744-CCB701F76A78</RowUnique>
+		<RowUnique id="r37">0D120B4F-5BC5-4F28-8142-459E21FC653A</RowUnique>
+		<RowUnique id="r38">CEA2D15C-6072-48A3-A96D-A6698503866D</RowUnique>
+		<RowUnique id="r39">503A74CD-ED9E-41BF-9436-7B483301D2E9</RowUnique>
+		<RowUnique id="r40">F1D64A21-69BE-464D-A084-5E14FB9928A0</RowUnique>
+		<RowUnique id="r41">0EE1BB05-915F-4EE1-A606-FC55A6A923AE</RowUnique>
+		<RowUnique id="r42">29A1866D-2907-447D-A0D8-79D01AE027ED</RowUnique>
+	</ColumnUnique>
+	<Column desc="Inner Pipe Diameter" dataType="float" unit="mm" name="PID" id="C1" visible="1" context="PipeInnerDiameter" index="0">
+		<Row id="r0">300.0000</Row>
+		<Row id="r1">300.0000</Row>
+		<Row id="r2">400.0000</Row>
+		<Row id="r3">400.0000</Row>
+		<Row id="r4">400.0000</Row>
+		<Row id="r5">500.0000</Row>
+		<Row id="r6">500.0000</Row>
+		<Row id="r7">500.0000</Row>
+		<Row id="r8">600.0000</Row>
+		<Row id="r9">600.0000</Row>
+		<Row id="r10">600.0000</Row>
+		<Row id="r11">700.0000</Row>
+		<Row id="r12">700.0000</Row>
+		<Row id="r13">700.0000</Row>
+		<Row id="r14">800.0000</Row>
+		<Row id="r15">800.0000</Row>
+		<Row id="r16">800.0000</Row>
+		<Row id="r17">800.0000</Row>
+		<Row id="r18">900.0000</Row>
+		<Row id="r19">900.0000</Row>
+		<Row id="r20">900.0000</Row>
+		<Row id="r21">900.0000</Row>
+		<Row id="r22">1000.0000</Row>
+		<Row id="r23">1000.0000</Row>
+		<Row id="r24">1000.0000</Row>
+		<Row id="r25">1000.0000</Row>
+		<Row id="r26">1200.0000</Row>
+		<Row id="r27">1200.0000</Row>
+		<Row id="r28">1200.0000</Row>
+		<Row id="r29">1200.0000</Row>
+		<Row id="r30">1500.0000</Row>
+		<Row id="r31">1500.0000</Row>
+		<Row id="r32">1500.0000</Row>
+		<Row id="r33">1500.0000</Row>
+		<Row id="r34">1800.0000</Row>
+		<Row id="r35">1800.0000</Row>
+		<Row id="r36">1800.0000</Row>
+		<Row id="r37">1800.0000</Row>
+		<Row id="r38">2000.0000</Row>
+		<Row id="r39">2000.0000</Row>
+		<Row id="r40">2000.0000</Row>
+		<Row id="r41">2000.0000</Row>
+		<Row id="r42">300.0000</Row>
+	</Column>
+	<Column desc="Wall Thickness" dataType="float" unit="mm" name="WTh" id="C2" visible="1" context="WallThickness" index="0">
+		<Row id="r0">70.0000</Row>
+		<Row id="r1">70.0000</Row>
+		<Row id="r2">70.0000</Row>
+		<Row id="r3">70.0000</Row>
+		<Row id="r4">70.0000</Row>
+		<Row id="r5">61.0000</Row>
+		<Row id="r6">61.0000</Row>
+		<Row id="r7">75.0000</Row>
+		<Row id="r8">66.0000</Row>
+		<Row id="r9">66.0000</Row>
+		<Row id="r10">75.0000</Row>
+		<Row id="r11">72.0000</Row>
+		<Row id="r12">72.0000</Row>
+		<Row id="r13">72.0000</Row>
+		<Row id="r14">84.0000</Row>
+		<Row id="r15">84.0000</Row>
+		<Row id="r16">110.0000</Row>
+		<Row id="r17">110.0000</Row>
+		<Row id="r18">100.0000</Row>
+		<Row id="r19">100.0000</Row>
+		<Row id="r20">100.0000</Row>
+		<Row id="r21">150.0000</Row>
+		<Row id="r22">108.0000</Row>
+		<Row id="r23">108.0000</Row>
+		<Row id="r24">108.0000</Row>
+		<Row id="r25">130.0000</Row>
+		<Row id="r26">120.0000</Row>
+		<Row id="r27">120.0000</Row>
+		<Row id="r28">150.0000</Row>
+		<Row id="r29">150.0000</Row>
+		<Row id="r30">160.0000</Row>
+		<Row id="r31">160.0000</Row>
+		<Row id="r32">160.0000</Row>
+		<Row id="r33">210.0000</Row>
+		<Row id="r34">200.0000</Row>
+		<Row id="r35">200.0000</Row>
+		<Row id="r36">200.0000</Row>
+		<Row id="r37">200.0000</Row>
+		<Row id="r38">192.0000</Row>
+		<Row id="r39">192.0000</Row>
+		<Row id="r40">192.0000</Row>
+		<Row id="r41">250.0000</Row>
+		<Row id="r42">250.0000</Row>
+	</Column>
+	<Column desc="Part Size Name" dataType="string" unit="" name="PrtSN" id="C3" visible="1" context="Catalog_PartSizeName" index="0">
+		<Row id="r0">Manilha Betão: 300 R IV</Row>
+		<Row id="r1">Manilha Betão: 300 R V</Row>
+		<Row id="r2">Manilha Betão: 400 R III</Row>
+		<Row id="r3">Manilha Betão: 400 R IV</Row>
+		<Row id="r4">Manilha Betão: 400 R V</Row>
+		<Row id="r5">Manilha Betão: 500 R III</Row>
+		<Row id="r6">Manilha Betão: 500 R IV</Row>
+		<Row id="r7">Manilha Betão: 500 R V</Row>
+		<Row id="r8">Manilha Betão: 600 R III</Row>
+		<Row id="r9">Manilha Betão: 600 R IV</Row>
+		<Row id="r10">Manilha Betão: 600 R V</Row>
+		<Row id="r11">Manilha Betão: 700 R II</Row>
+		<Row id="r12">Manilha Betão: 700 R III</Row>
+		<Row id="r13">Manilha Betão: 700 R IV</Row>
+		<Row id="r14">Manilha Betão: 800 R II</Row>
+		<Row id="r15">Manilha Betão: 800 R III</Row>
+		<Row id="r16">Manilha Betão: 800 R IV</Row>
+		<Row id="r17">Manilha Betão: 800 R V</Row>
+		<Row id="r18">Manilha Betão: 900 R II</Row>
+		<Row id="r19">Manilha Betão: 900 R III</Row>
+		<Row id="r20">Manilha Betão: 900 R IV</Row>
+		<Row id="r21">Manilha Betão: 900 R V</Row>
+		<Row id="r22">Manilha Betão: 1000 R II</Row>
+		<Row id="r23">Manilha Betão: 1000 R III</Row>
+		<Row id="r24">Manilha Betão: 1000 R IV</Row>
+		<Row id="r25">Manilha Betão: 1000 R V</Row>
+		<Row id="r26">Manilha Betão: 1200 R II</Row>
+		<Row id="r27">Manilha Betão: 1200 R III</Row>
+		<Row id="r28">Manilha Betão: 1200 R IV</Row>
+		<Row id="r29">Manilha Betão: 1200 R V</Row>
+		<Row id="r30">Tubo Betão Armado: 1500 R II</Row>
+		<Row id="r31">Tubo Betão Armado: 1500 R III</Row>
+		<Row id="r32">Tubo Betão Armado: 1500 R IV</Row>
+		<Row id="r33">Tubo Betão Armado: 1500 R V</Row>
+		<Row id="r34">Tubo Betão Armado: 1800 R II</Row>
+		<Row id="r35">Tubo Betão Armado: 1800 R III</Row>
+		<Row id="r36">Tubo Betão Armado: 1800 R IV</Row>
+		<Row id="r37">Tubo Betão Armado: 1800 R V</Row>
+		<Row id="r38">Tubo Betão Armado: 2000 R II</Row>
+		<Row id="r39">Tubo Betão Armado: 2000 R III</Row>
+		<Row id="r40">Tubo Betão Armado: 2000 R IV</Row>
+		<Row id="r41">Tubo Betão Armado: 2000 R V</Row>
+		<Row id="r42">Desconhecida: Desconhecida</Row>
+	</Column>
+	<ColumnConstList desc="Manning Coefficient" dataType="float" unit="" name="ACMan" id="CCL1" visible="1" context="FlowAnalysis_Manning" index="0">
+		<Item id="i0">0.0130</Item>
+		<Item id="i1">0.0080</Item>
+		<Item id="i2">0.0090</Item>
+		<Item id="i3">0.0100</Item>
+		<Item id="i4">0.0110</Item>
+		<Item id="i5">0.0120</Item>
+		<Item id="i6">0.0140</Item>
+		<Item id="i7">0.0150</Item>
+	</ColumnConstList>
+	<ColumnConst desc="Part Domain" dataType="string" unit="" name="PDom" id="CC0" visible="0" context="Catalog_Domain" index="0">Pipe_Domain</ColumnConst>
+	<ColumnConst desc="Part Type" dataType="string" unit="" name="PTyp" id="CC1" visible="1" context="Catalog_PartType" index="0">Pipe</ColumnConst>
+	<ColumnConst desc="Part Subtype" dataType="string" unit="" name="PSTyp" id="CC2" visible="1" context="Catalog_SubType" index="0">Undefined</ColumnConst>
+	<ColumnConst desc="Part Name" dataType="string" unit="" name="PrtNm" id="CC3" visible="0" context="Catalog_PartName" index="0">Tubagens</ColumnConst>
+	<ColumnConst desc="Part Description" dataType="string" unit="" name="PrtD" id="CC4" visible="1" context="Catalog_PartDesc" index="0">Tubagens</ColumnConst>
+	<ColumnConst desc="Part ID" dataType="string" unit="" name="PrtID" id="CC5" visible="0" context="Catalog_PartID" index="0">D7141A0D-2DAA-460D-A05E-5D6222558EB3</ColumnConst>
+	<ColumnConst desc="Data Version" dataType="string" unit="" name="DVer" id="CC6" visible="0" context="DataVersion" index="0">2.0</ColumnConst>
+	<ColumnConst desc="Content Type" dataType="int" unit="" name="CntTy" id="CC7" visible="0" context="Content_Type" index="0">4</ColumnConst>
+	<ColumnConst desc="Hide Part Flag" dataType="bool" unit="" name="HPrtF" id="CC8" visible="0" context="Catalog_PartHide" index="0">0</ColumnConst>
+	<ColumnConst desc="Cross Sectional Shape" dataType="string" unit="" name="CSS" id="CC9" visible="1" context="SweptShape" index="0">SweptShape_Circular</ColumnConst>
+	<ColumnCalc desc="Body Diameter  1" dataType="float" unit="mm" name="BdyD1" id="CCA0" visible="0" context="BodyGeometry_Diameter" index="1">$PID</ColumnCalc>
+</LandPart>

@@ -1,0 +1,140 @@
+{
+  "Uuid": "7768a82a-e59a-4e1f-bd15-902192bdcb7b",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_SampleLines_AddSources",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil3D\r\nclr.AddReference('AcMgd')\r\nclr.AddReference('AcCoreMgd')\r\nclr.AddReference('AcDbMgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references from Civil3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\nadoc = Application.DocumentManager.MdiActiveDocument\r\neditor = adoc.Editor\r\n\r\nsampleline = IN[0]\r\n\r\ndef addsource(sampleline):\r\n\r\n\twith adoc.LockDocument():\r\n\t    with adoc.Database as db:\r\n\t\t\twith db.TransactionManager.StartTransaction() as t:\r\n\t        \t#Get sample line ID\r\n\t\t\t\tslId = sampleline.InternalObjectId\r\n\t\t\t\t#Get sample line group ID\r\n\t\t\t\tslgroupId = slId.GroupId\r\n\t\t\t\t#Open SLGroup\r\n\t\t\t\tslg = t.GetObject(slgroupId, OpenMode.ForWrite)\r\n\t\t\t\t#Get sources\r\n\t\t\t\tslgs = slg.GetSectionSources()\r\n\t\t\t\t#Get source item\r\n\t\t\t\tsource = slgs.Item[0]\r\n\t\t\t\t#Add the source item above\r\n\t\t\t\t#source.IsSampled = True\r\n\t\t\t\t#Add all sources\r\n\t\t\t\tfor source in slgs:\r\n\t\t\t\t\tst = source.SourceType\r\n\t\t\t\t\tif str(st) == \"TinSurface\":\r\n\t\t\t\t\t\tsource.IsSampled = True\r\n\t\t\t\t\telse:\r\n\t\t\t\t\t\tpass\r\n\t\t\t\t# Commit before end transaction\r\n\t\t\t\tt.Commit()\r\n\r\n\treturn st\r\n# Assign your output to the OUT variable.\r\nOUT = addsource(sampleline)\r\n\r\n",
+      "VariableInputPorts": true,
+      "Id": "92ccedb4c164426d918e325495bec084",
+      "Inputs": [
+        {
+          "Id": "7872310a40344599885e5df07210cdad",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "52c5707092f04bd099c07138c60e16b3",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectSelection, AutoCADNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "BD6C"
+      ],
+      "Id": "1b1703df62a24a7e848ccbf4566dd5d3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b3b993d048174c1d9a84a2b5a8461dee",
+          "Name": "Object",
+          "Description": "Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b3b993d048174c1d9a84a2b5a8461dee",
+      "End": "7872310a40344599885e5df07210cdad",
+      "Id": "66dd7442dc7d43bc90b6cd99e315b151"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "92ccedb4c164426d918e325495bec084",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 512.00096418226349,
+        "Y": 492.77734925232744
+      },
+      {
+        "Id": "1b1703df62a24a7e848ccbf4566dd5d3",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Select Object",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 303.291723653833,
+        "Y": 480.569425448722
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "660ed124377148338a92acd9090b78f8",
+        "Title": "Select sample line from the group that you want to add the source to",
+        "Nodes": [
+          "1b1703df62a24a7e848ccbf4566dd5d3"
+        ],
+        "Left": 293.291723653833,
+        "Top": 124.56942544872197,
+        "Width": 178.0,
+        "Height": 475.0,
+        "FontSize": 36.0,
+        "InitialTop": 480.569425448722,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 346.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 260.19944420575871,
+    "Y": 76.466327539447036,
+    "Zoom": 0.96023320580217952
+  }
+}

@@ -1,0 +1,590 @@
+{
+  "Uuid": "55236e34-d697-42cb-a531-508277c57854",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_SampleLines",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "AlignmentExtensions": {
+        "Key": "Autodesk.Civil.DynamoNodes.AlignmentExtensions",
+        "Value": "Autodesk.Civil3DToolkit.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "aab526db83294a3caaa140164d763617",
+      "Name": "Nome SampleLine",
+      "Type": "string",
+      "Value": "PT",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "ee80fd909fd545588ccd5dd06e133fcc",
+      "Name": "Width",
+      "Type": "number",
+      "Value": "10",
+      "NumberType": "Double",
+      "Description": "Creates a number."
+    },
+    {
+      "Id": "53fcdd53ec454430a2c530864612bd58",
+      "Name": "Offset",
+      "Type": "number",
+      "Value": "25",
+      "NumberType": "Double",
+      "Description": "Creates a number."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.AlignmentNamesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 0,
+      "SelectedString": "Ecopista",
+      "NodeType": "ExtensionNode",
+      "Id": "74d635263798496e8fb2552266e5dda8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "4f37eb43966a4dfd93f10c1fa70f243c",
+          "Name": "Alignment",
+          "Description": "The selected Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selects an Alignment in the document"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "PT",
+      "Id": "aab526db83294a3caaa140164d763617",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d753c01d90ae4cb389de887a4e017cd3",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 10.0,
+      "Id": "ee80fd909fd545588ccd5dd06e133fcc",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2b12977a6bde4dc58ddeaea7f40d96f7",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Alignment.StartStation",
+      "Id": "8bfb114f226d4e58b78cb84c7b0666cb",
+      "Inputs": [
+        {
+          "Id": "16769a4e1950452eaf666d58170508a4",
+          "Name": "alignment",
+          "Description": "Autodesk.Civil.DynamoNodes.Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b281f395bd1c45fbadf0efcf8a337f44",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the start station of the alignment.\n\nAlignment.StartStation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Alignment.EndStation",
+      "Id": "ee69984559d648fd9722d4667619c13e",
+      "Inputs": [
+        {
+          "Id": "85616957b12f4cc4aa700b014768b2d8",
+          "Name": "alignment",
+          "Description": "Autodesk.Civil.DynamoNodes.Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d2649d681d874489a99a54f2c073a409",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the end station of the alignment.\n\nAlignment.EndStation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "x=[a..b..N];\nx[0];",
+      "Id": "031e41b1357e47839c3991f36d6dd67b",
+      "Inputs": [
+        {
+          "Id": "db905b7666d9402083111ddf2a06ddad",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ed0f8d84bae944c79421ae7f677a4115",
+          "Name": "b",
+          "Description": "b",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b25cd3423356400996cf4ebf2d6ebe7f",
+          "Name": "N",
+          "Description": "N",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5893874cd51147d494fad7a0257acaaa",
+          "Name": "",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b970fadb089a400486e02fd4e6eea7f4",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 25.0,
+      "Id": "53fcdd53ec454430a2c530864612bd58",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ee496569c1354098abcdb98697349078",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
+      "FunctionSignature": "DSCore.List.Join@var[]..[]",
+      "FunctionType": "VariableArgument",
+      "NodeType": "FunctionNode",
+      "Id": "68df1a7f148249bbb3f0d1a7a8f2a07c",
+      "Inputs": [
+        {
+          "Id": "328545f7981147af91a4cc99f8dc4734",
+          "Name": "list0",
+          "Description": "Lists to join into one.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "08476354d6a84e518b22c2ee93b03d8b",
+          "Name": "list1",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "30ff1d42a55c43f7b9deb34764f628e2",
+          "Name": "list",
+          "Description": "Joined list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Concatenates all given lists into a single list.\n\nList.Join (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.AlignmentExtensions.SampleLineByStation@Autodesk.Civil.DynamoNodes.Alignment,string,double,string,double,double",
+      "Id": "b7d601878d4f4912b9a8f79db1f3c350",
+      "Inputs": [
+        {
+          "Id": "2b8a10b2eb214bafbe602da859422507",
+          "Name": "alignment",
+          "Description": "The alignment\n\nAlignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "056434d0b6d44b11868e157d2de31dd8",
+          "Name": "group",
+          "Description": "The name of the sample line group\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a5c3524b79b84415ad114d47b52ad847",
+          "Name": "station",
+          "Description": "The station of the sample line\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b4f8aaf204b647e9b6cdf2d86bb3c0f8",
+          "Name": "sampleLinePrefix",
+          "Description": "The prefix of the sample line\n\nstring\nDefault value : \"SL\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8cba089d1e684644af198d678608222b",
+          "Name": "rightWidth",
+          "Description": "Positive value of the Sample Line width to the right of the alignment\n\ndouble\nDefault value : 20",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dc4ec7457a2b4899bac5c00915a80880",
+          "Name": "leftWidth",
+          "Description": "Positive value of the Sample Line width to the left of the alignment\n\ndouble\nDefault value : 20",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1c80491f0d134c63a393c818360201b3",
+          "Name": "bool",
+          "Description": "True if successful",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates sample line at station along the Alignment\n\nAlignmentExtensions.SampleLineByStation (alignment: Alignment, group: string, station: double, sampleLinePrefix: string = \"SL\", rightWidth: double = 20, leftWidth: double = 20): bool"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "4f37eb43966a4dfd93f10c1fa70f243c",
+      "End": "16769a4e1950452eaf666d58170508a4",
+      "Id": "9fc095aef1ca4621b9fbbeb422e2a165"
+    },
+    {
+      "Start": "4f37eb43966a4dfd93f10c1fa70f243c",
+      "End": "85616957b12f4cc4aa700b014768b2d8",
+      "Id": "acc00bb44e1147fc897a790a578ac475"
+    },
+    {
+      "Start": "4f37eb43966a4dfd93f10c1fa70f243c",
+      "End": "2b8a10b2eb214bafbe602da859422507",
+      "Id": "57657e1ffb804ad7805729349009ec14"
+    },
+    {
+      "Start": "d753c01d90ae4cb389de887a4e017cd3",
+      "End": "056434d0b6d44b11868e157d2de31dd8",
+      "Id": "b82ec91814fc4c62bee7de0ae2fdc358"
+    },
+    {
+      "Start": "2b12977a6bde4dc58ddeaea7f40d96f7",
+      "End": "dc4ec7457a2b4899bac5c00915a80880",
+      "Id": "3a13f2c2810d4cba86a2d2e112538745"
+    },
+    {
+      "Start": "2b12977a6bde4dc58ddeaea7f40d96f7",
+      "End": "8cba089d1e684644af198d678608222b",
+      "Id": "9b9c0cbfe0a24405bde640fc9fcf9268"
+    },
+    {
+      "Start": "b281f395bd1c45fbadf0efcf8a337f44",
+      "End": "db905b7666d9402083111ddf2a06ddad",
+      "Id": "ae071d0771db486da4cbe8b5a3f7d4d8"
+    },
+    {
+      "Start": "d2649d681d874489a99a54f2c073a409",
+      "End": "ed0f8d84bae944c79421ae7f677a4115",
+      "Id": "9f28195844e342d49d89da310fa389d4"
+    },
+    {
+      "Start": "d2649d681d874489a99a54f2c073a409",
+      "End": "08476354d6a84e518b22c2ee93b03d8b",
+      "Id": "ce997f6000bd48ed9ca7488ace5faf3a"
+    },
+    {
+      "Start": "b970fadb089a400486e02fd4e6eea7f4",
+      "End": "328545f7981147af91a4cc99f8dc4734",
+      "Id": "f64924452fbc42fb80c1e872125ddaaa"
+    },
+    {
+      "Start": "ee496569c1354098abcdb98697349078",
+      "End": "b25cd3423356400996cf4ebf2d6ebe7f",
+      "Id": "879fe18952a646619adb2ec8ac2e5aac"
+    },
+    {
+      "Start": "30ff1d42a55c43f7b9deb34764f628e2",
+      "End": "a5c3524b79b84415ad114d47b52ad847",
+      "Id": "bb0d8a7af27b49158d1233e3ec02e5c7"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.30",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "74d635263798496e8fb2552266e5dda8",
+        "b7d601878d4f4912b9a8f79db1f3c350"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 10000.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "74d635263798496e8fb2552266e5dda8",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Alinhamento",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1309.9230813201045,
+        "Y": 761.25445321915322
+      },
+      {
+        "Id": "aab526db83294a3caaa140164d763617",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Nome SampleLine",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1259.587701329245,
+        "Y": 529.32891774990185
+      },
+      {
+        "Id": "ee80fd909fd545588ccd5dd06e133fcc",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Width",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1260.0237416447428,
+        "Y": 671.25305639938051
+      },
+      {
+        "Id": "8bfb114f226d4e58b78cb84c7b0666cb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Alignment.StartStation",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -773.6663349177926,
+        "Y": 777.53634732233979
+      },
+      {
+        "Id": "ee69984559d648fd9722d4667619c13e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Alignment.EndStation",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -822.19008590839371,
+        "Y": 922.2728107726972
+      },
+      {
+        "Id": "031e41b1357e47839c3991f36d6dd67b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -510.64786708150984,
+        "Y": 1057.0954827047071
+      },
+      {
+        "Id": "53fcdd53ec454430a2c530864612bd58",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Offset",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1245.1909586008353,
+        "Y": 914.45407948652
+      },
+      {
+        "Id": "68df1a7f148249bbb3f0d1a7a8f2a07c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "List.Join",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -260.08615953389346,
+        "Y": 953.78990539070719
+      },
+      {
+        "Id": "b7d601878d4f4912b9a8f79db1f3c350",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "AlignmentExtensions.SampleLineByStation",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 38.5477086230833,
+        "Y": 591.76839351054
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "8e03d2385b334a4081779db2683f67e7",
+        "Title": "INPUT",
+        "Nodes": [
+          "74d635263798496e8fb2552266e5dda8",
+          "aab526db83294a3caaa140164d763617",
+          "ee80fd909fd545588ccd5dd06e133fcc",
+          "53fcdd53ec454430a2c530864612bd58"
+        ],
+        "Left": -1319.9230813201045,
+        "Top": 476.32891774990185,
+        "Width": 194.0,
+        "Height": 506.12516173661811,
+        "FontSize": 36.0,
+        "InitialTop": 529.32891774990185,
+        "InitialHeight": 530.12516173661811,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "5e63645bd49548b5af07ae68b88d75ed",
+        "Title": "SAMPLE LINES",
+        "Nodes": [
+          "8bfb114f226d4e58b78cb84c7b0666cb",
+          "ee69984559d648fd9722d4667619c13e",
+          "031e41b1357e47839c3991f36d6dd67b",
+          "68df1a7f148249bbb3f0d1a7a8f2a07c",
+          "b7d601878d4f4912b9a8f79db1f3c350"
+        ],
+        "Left": -832.19008590839371,
+        "Top": 538.76839351054,
+        "Width": 1159.737794531477,
+        "Height": 639.32708919416712,
+        "FontSize": 36.0,
+        "InitialTop": 591.76839351054,
+        "InitialHeight": 610.32708919416677,
+        "TextblockHeight": 43.0,
+        "Background": "#FFA4E1FF"
+      }
+    ],
+    "X": 1252.8952385945649,
+    "Y": -175.3760682628598,
+    "Zoom": 0.71834173240978383
+  }
+}
