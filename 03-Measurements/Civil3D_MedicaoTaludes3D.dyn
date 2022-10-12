@@ -29,6 +29,22 @@
       "Type": "string",
       "Value": "No file selected.",
       "Description": "Allows you to select a directory on the system to get its path"
+    },
+    {
+      "Id": "cac40bf6907e4e36b99ed3ef0e4f1f08",
+      "Name": "Start station:",
+      "Type": "number",
+      "Value": "0",
+      "NumberType": "Double",
+      "Description": "Creates a number."
+    },
+    {
+      "Id": "fb0bea3a0f824e7783e7927a0241ea31",
+      "Name": "End station:",
+      "Type": "number",
+      "Value": "0",
+      "NumberType": "Double",
+      "Description": "Creates a number."
     }
   ],
   "Outputs": [],
@@ -403,66 +419,6 @@
       ],
       "Replication": "Disabled",
       "Description": "Makes a new list out of the given inputs"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Baseline.Alignment",
-      "Id": "932930c351224ec487519d616efa8de9",
-      "Inputs": [
-        {
-          "Id": "edecf6e1b4b14ee7a5aa8d7f991ed73a",
-          "Name": "baseline",
-          "Description": "Autodesk.Civil.DynamoNodes.Baseline",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "7bc82327a6d04a42af9e52b9404e5124",
-          "Name": "Alignment",
-          "Description": "Alignment",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Get the alignment associated with the baseline.\n\nBaseline.Alignment: Alignment"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Alignment.StartStation",
-      "Id": "0a673e7ea5494b5a933865d7963a4a3d",
-      "Inputs": [
-        {
-          "Id": "12a32a5c73904e29916fbd87e101c06b",
-          "Name": "alignment",
-          "Description": "Autodesk.Civil.DynamoNodes.Alignment",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "30b3cb64a80642b7b77a6e728cf500cc",
-          "Name": "double",
-          "Description": "double",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Get the start station of the alignment.\n\nAlignment.StartStation: double"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1128,6 +1084,156 @@
       ],
       "Replication": "Disabled",
       "Description": "Allows you to select a directory on the system to get its path"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 0.0,
+      "Id": "cac40bf6907e4e36b99ed3ef0e4f1f08",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e1a7ceb4caee4e749acc8f64e5ae596e",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 0.0,
+      "Id": "fb0bea3a0f824e7783e7927a0241ea31",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "07b9b929c17b42089fd0c1490aa8918f",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[s];\n[e];",
+      "Id": "2aae783c143049119b39a0a8233b3dd6",
+      "Inputs": [
+        {
+          "Id": "e6fa136e7ac842aa9defbefa29b87638",
+          "Name": "s",
+          "Description": "s",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "aa81b7ec8a2e4f74a2557452b42d44ca",
+          "Name": "e",
+          "Description": "e",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aac2ba361ce347a78bb20fe59ddba4fd",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "35badd9f223b421baab06999294b0560",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Alignment.StartStation",
+      "Id": "0a673e7ea5494b5a933865d7963a4a3d",
+      "Inputs": [
+        {
+          "Id": "11b2a474d63543bd939e78953bd58eb9",
+          "Name": "alignment",
+          "Description": "Autodesk.Civil.DynamoNodes.Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ded5ec01314e4d399e9405e7b5d8159a",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the start station of the alignment.\n\nAlignment.StartStation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Baseline.Alignment",
+      "Id": "932930c351224ec487519d616efa8de9",
+      "Inputs": [
+        {
+          "Id": "81f740d959da4dc899cc1cf9d1f83ef2",
+          "Name": "baseline",
+          "Description": "Autodesk.Civil.DynamoNodes.Baseline",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "487b2093097f4cf58d02ebe72a9db1ef",
+          "Name": "Alignment",
+          "Description": "Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the alignment associated with the baseline.\n\nBaseline.Alignment: Alignment"
     }
   ],
   "Connectors": [
@@ -1138,13 +1244,13 @@
     },
     {
       "Start": "fb0f1e742d134e05b92af9d1a752ff16",
-      "End": "edecf6e1b4b14ee7a5aa8d7f991ed73a",
-      "Id": "7fad499d84534fa3a2c148e8d553599a"
+      "End": "ae5111e4648b4ca4830a1a686f5e584f",
+      "Id": "68a5e8ed16254fc1977edb04e9b21efb"
     },
     {
       "Start": "fb0f1e742d134e05b92af9d1a752ff16",
-      "End": "ae5111e4648b4ca4830a1a686f5e584f",
-      "Id": "68a5e8ed16254fc1977edb04e9b21efb"
+      "End": "81f740d959da4dc899cc1cf9d1f83ef2",
+      "Id": "7fad499d84534fa3a2c148e8d553599a"
     },
     {
       "Start": "f7dcd8c07c11448eadb31c1155de20b1",
@@ -1230,31 +1336,6 @@
       "Start": "f60bacf8265b4320b2c6e992c8c38afb",
       "End": "2c4593441cae47e0b1224e5efafbda0f",
       "Id": "3ff821ab3f5e4b7187f19ea9ae6c2680"
-    },
-    {
-      "Start": "7bc82327a6d04a42af9e52b9404e5124",
-      "End": "12a32a5c73904e29916fbd87e101c06b",
-      "Id": "8907c897472048e8bb5b9fff1b84f310"
-    },
-    {
-      "Start": "7bc82327a6d04a42af9e52b9404e5124",
-      "End": "fe2a8c942da6492e9789196a95a0cd40",
-      "Id": "5f3abdcd9dc548ef833de2f24ffe6eb9"
-    },
-    {
-      "Start": "30b3cb64a80642b7b77a6e728cf500cc",
-      "End": "78d9d450e3a04a20a7609fb06cb5c4a8",
-      "Id": "81f44dc88549431ab780ef7e0dd54e8f"
-    },
-    {
-      "Start": "30b3cb64a80642b7b77a6e728cf500cc",
-      "End": "373818bb85ac4039a51b818b5e0d796c",
-      "Id": "4d0bd5ff72cd4a33bcf3e095e9071a73"
-    },
-    {
-      "Start": "28395acfb4b8444795ab12788ccc8c17",
-      "End": "a2ae2ef425d249128b765f013c085a46",
-      "Id": "6389b896573544abbf4e8cace31efac3"
     },
     {
       "Start": "3e2acfeeb0b042c29fbf688b7301e03a",
@@ -1370,6 +1451,41 @@
       "Start": "994c53e220d747aaa236354ae4e246b7",
       "End": "6c7be5b41b6748a1a2de6242e063ca3f",
       "Id": "7a1c9e11f4944fe6aff6fe9352527b53"
+    },
+    {
+      "Start": "e1a7ceb4caee4e749acc8f64e5ae596e",
+      "End": "e6fa136e7ac842aa9defbefa29b87638",
+      "Id": "a4df456c5ec64bd1a7c4a69a10040e5c"
+    },
+    {
+      "Start": "07b9b929c17b42089fd0c1490aa8918f",
+      "End": "aa81b7ec8a2e4f74a2557452b42d44ca",
+      "Id": "97f2873740504180a188aa2c04a34794"
+    },
+    {
+      "Start": "aac2ba361ce347a78bb20fe59ddba4fd",
+      "End": "373818bb85ac4039a51b818b5e0d796c",
+      "Id": "c329035c74b741dc85e23ddc3885fff8"
+    },
+    {
+      "Start": "aac2ba361ce347a78bb20fe59ddba4fd",
+      "End": "78d9d450e3a04a20a7609fb06cb5c4a8",
+      "Id": "3b7910df0d164195bf49762edf13d9af"
+    },
+    {
+      "Start": "35badd9f223b421baab06999294b0560",
+      "End": "a2ae2ef425d249128b765f013c085a46",
+      "Id": "a9f6b670846149e7898ba89b9bac3e3d"
+    },
+    {
+      "Start": "487b2093097f4cf58d02ebe72a9db1ef",
+      "End": "fe2a8c942da6492e9789196a95a0cd40",
+      "Id": "5f3abdcd9dc548ef833de2f24ffe6eb9"
+    },
+    {
+      "Start": "487b2093097f4cf58d02ebe72a9db1ef",
+      "End": "11b2a474d63543bd939e78953bd58eb9",
+      "Id": "8907c897472048e8bb5b9fff1b84f310"
     }
   ],
   "Dependencies": [],
@@ -1447,34 +1563,14 @@
         "Y": 396.9125520440947
       },
       {
-        "Id": "932930c351224ec487519d616efa8de9",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Name": "Baseline.Alignment",
-        "ShowGeometry": true,
-        "Excluded": false,
-        "X": 41.141466735317408,
-        "Y": -227.12061222111583
-      },
-      {
-        "Id": "0a673e7ea5494b5a933865d7963a4a3d",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Name": "Alignment.StartStation",
-        "ShowGeometry": true,
-        "Excluded": false,
-        "X": 356.34995139337911,
-        "Y": -392.72974911129893
-      },
-      {
         "Id": "05b9a13b31384abd859b08b365ae82f4",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Name": "Alignment.EndStation",
         "ShowGeometry": true,
         "Excluded": false,
-        "X": 354.18038405724019,
-        "Y": -108.64848108061625
+        "X": 380.59037997658311,
+        "Y": -137.31951016996697
       },
       {
         "Id": "c64a302a13854a95a708e9c4365b163f",
@@ -1483,8 +1579,8 @@
         "Name": "Code Block",
         "ShowGeometry": true,
         "Excluded": false,
-        "X": 1098.5126978546048,
-        "Y": -371.13982377893518
+        "X": 1159.0761588433477,
+        "Y": -338.33461574336616
       },
       {
         "Id": "fe226c6ac2324aa9b379adfdd103d34f",
@@ -1493,8 +1589,8 @@
         "Name": "Python Script",
         "ShowGeometry": true,
         "Excluded": false,
-        "X": 787.00464945348665,
-        "Y": -307.13115994012821
+        "X": 739.05857617073218,
+        "Y": -415.64069421162566
       },
       {
         "Id": "fdd6e82d3ae04e5ebad1d69e06f3be21",
@@ -1503,8 +1599,8 @@
         "Name": "List.RemoveItemAtIndex",
         "ShowGeometry": true,
         "Excluded": false,
-        "X": 1410.7000279870103,
-        "Y": -505.951728088238
+        "X": 1471.2634889757533,
+        "Y": -473.14652005266896
       },
       {
         "Id": "c5bafa440818421e9bda422c0cee7a74",
@@ -1513,8 +1609,8 @@
         "Name": "List.Flatten",
         "ShowGeometry": true,
         "Excluded": false,
-        "X": 1044.44244004074,
-        "Y": -557.38268346876475
+        "X": 1105.0059010294829,
+        "Y": -524.57747543319579
       },
       {
         "Id": "9f497c24ae4f420b930b889061375cc8",
@@ -1523,8 +1619,8 @@
         "Name": "List.Insert",
         "ShowGeometry": true,
         "Excluded": false,
-        "X": 1716.9832130141358,
-        "Y": -459.5607543279645
+        "X": 1777.5466740028787,
+        "Y": -426.75554629239548
       },
       {
         "Id": "8443554188e8496a86efd1956fc317b7",
@@ -1635,6 +1731,56 @@
         "Excluded": false,
         "X": 3541.6400165222713,
         "Y": 319.77210744286344
+      },
+      {
+        "Id": "cac40bf6907e4e36b99ed3ef0e4f1f08",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Start station:",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 433.24465066764628,
+        "Y": -526.38624130568076
+      },
+      {
+        "Id": "fb0bea3a0f824e7783e7927a0241ea31",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "End station:",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 435.9269714404661,
+        "Y": -459.77872924914271
+      },
+      {
+        "Id": "2aae783c143049119b39a0a8233b3dd6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 592.28265367514882,
+        "Y": -505.07484162179543
+      },
+      {
+        "Id": "0a673e7ea5494b5a933865d7963a4a3d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Alignment.StartStation",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 381.05227405925223,
+        "Y": -274.54087840223042
+      },
+      {
+        "Id": "932930c351224ec487519d616efa8de9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Baseline.Alignment",
+        "ShowGeometry": true,
+        "Excluded": true,
+        "X": 101.70492772406033,
+        "Y": -194.31540418554698
       }
     ],
     "Annotations": [
@@ -1661,22 +1807,22 @@
         "Id": "e30f73620453486f8f0654cd0ff58709",
         "Title": "STATIONS",
         "Nodes": [
-          "932930c351224ec487519d616efa8de9",
           "0a673e7ea5494b5a933865d7963a4a3d",
           "05b9a13b31384abd859b08b365ae82f4",
           "c64a302a13854a95a708e9c4365b163f",
           "fe226c6ac2324aa9b379adfdd103d34f",
           "fdd6e82d3ae04e5ebad1d69e06f3be21",
           "c5bafa440818421e9bda422c0cee7a74",
-          "9f497c24ae4f420b930b889061375cc8"
+          "9f497c24ae4f420b930b889061375cc8",
+          "932930c351224ec487519d616efa8de9"
         ],
-        "Left": 31.141466735317408,
-        "Top": -610.38268346876475,
+        "Left": 91.704927724060326,
+        "Top": -577.57747543319579,
         "Width": 1881.8417462788184,
-        "Height": 594.73420238814856,
+        "Height": 533.25796526322881,
         "FontSize": 36.0,
-        "InitialTop": -557.38268346876475,
-        "InitialHeight": 593.73420238814856,
+        "InitialTop": -524.57747543319579,
+        "InitialHeight": 593.734202388149,
         "TextblockHeight": 43.0,
         "Background": "#FFE8F7AD"
       },
@@ -1722,8 +1868,8 @@
         "Background": "#FF48B9FF"
       }
     ],
-    "X": 149.31816563311293,
-    "Y": 379.41021554725563,
-    "Zoom": 0.29267179269044957
+    "X": 417.47101938073683,
+    "Y": 418.71973477360325,
+    "Zoom": 0.38662039813667071
   }
 }
