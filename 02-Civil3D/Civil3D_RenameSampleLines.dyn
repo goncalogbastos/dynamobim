@@ -1,0 +1,585 @@
+{
+  "Uuid": "2cbe015f-5ae1-4b74-82f7-5436dd9a5d0d",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3D_RenameSampleLines",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CivilObject.SetName@string",
+      "Id": "7861c4547ae64fb5bae073bf23b35c30",
+      "Inputs": [
+        {
+          "Id": "60828adacc294a648a6444ce5e2a3db8",
+          "Name": "civilObject",
+          "Description": "Autodesk.Civil.DynamoNodes.CivilObject",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "12894ca61b4b4719ba028d1a136e88e3",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4ddae2b4c9b54668aab97ea02b43f8d4",
+          "Name": "CivilObject",
+          "Description": "CivilObject",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Set the name of the civil object.\n\nCivilObject.SetName (name: string): CivilObject"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[1..n..1];",
+      "Id": "55ab2f0227a14b919ec2c399fc8131a5",
+      "Inputs": [
+        {
+          "Id": "d93185c60eaf4eaa8a5b627e4318a430",
+          "Name": "n",
+          "Description": "n",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a483208ffdf241bbb9f21f320c30d3fe",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Count@var[]..[]",
+      "Id": "bb3ee3680ca44f5aa04ead224d670222",
+      "Inputs": [
+        {
+          "Id": "22f4a63cea89470fa2c63c7745666db0",
+          "Name": "list",
+          "Description": "List to get the item count of.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bfd95dfefcc54bf6be524723e287d2c9",
+          "Name": "count",
+          "Description": "List length.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the number of items stored in the given list.\n\nList.Count (list: var[]..[]): int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "9042c74eeddc4ca2bccc306a9d5b3acd",
+      "Inputs": [
+        {
+          "Id": "003d288e17f84d57bfca0dc830cb45aa",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "112be33e34f3415bb301149f71b2d6f7",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2c7fcf5eb65544d992ea843b18055089",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "__author__ = 'Goncalo Bastos - bastos.g.goncalo@gmail.com'\r\n__copyright__ = '2022'\r\n__version__ = '1.0.0'\r\n\r\n##############################################################\r\n\r\nnames = IN[0]\r\ncode = IN[1]\r\nout=[]\r\nfor name in names:\r\n\tout.append(str(code)+str(name))\r\n\t\r\nOUT= out\r\n\t",
+      "VariableInputPorts": true,
+      "Id": "dcfcf6d763954b7a99ae7704c7dd0ff6",
+      "Inputs": [
+        {
+          "Id": "af6b4783053d4814b56f67ee79bbb82a",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0d060ae7f98a430e82ea453b9daabdf0",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a33485d55faf460e82e448e3e5c91622",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectsSelection, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "CCEC",
+        "CCEA",
+        "CCE8",
+        "CCE6",
+        "CCE4",
+        "CCE2",
+        "CCE0",
+        "CCDE",
+        "CCDC",
+        "CCDA",
+        "CCD8",
+        "CCD6",
+        "CCD4",
+        "CCD2",
+        "CCD0",
+        "CCCE",
+        "CCCC",
+        "CCCA",
+        "CCC8",
+        "CCC6",
+        "CCC4",
+        "CCC2",
+        "CCC0",
+        "CCBE",
+        "CCBC",
+        "CCBA",
+        "CCB8",
+        "CCB6",
+        "CCB4",
+        "CCB2",
+        "CCB0",
+        "CCAE",
+        "CCAC",
+        "CCAA",
+        "CCA8",
+        "CCA6",
+        "CCA4",
+        "CCA2",
+        "CCA0",
+        "CC9E",
+        "CC9C",
+        "CC9A",
+        "CC98",
+        "CC96",
+        "CC94",
+        "CC92",
+        "CC90",
+        "CC8E",
+        "CC8C",
+        "CC8A",
+        "CC88",
+        "CC86",
+        "CC84",
+        "CC82",
+        "CC80",
+        "CC7E",
+        "CC7C",
+        "CC7A",
+        "CC78",
+        "CC76",
+        "CC74",
+        "CC72",
+        "CC70",
+        "CC6E",
+        "CC6C",
+        "CC6A",
+        "CC68",
+        "CC66",
+        "CC64",
+        "CC62",
+        "CC60",
+        "CC5E",
+        "CC5C",
+        "CC5A",
+        "CC58",
+        "CC56",
+        "CC54",
+        "CC52",
+        "CC50",
+        "CC4E",
+        "CC4C",
+        "CC4A",
+        "CC48",
+        "CC46",
+        "CC44",
+        "CC42",
+        "CC40",
+        "CC3E",
+        "CC3C",
+        "CC3A",
+        "CC38",
+        "CC36",
+        "CC34",
+        "CC32",
+        "CC30",
+        "CC2E",
+        "CC2C",
+        "CC2A",
+        "CC28",
+        "CC26",
+        "CC24",
+        "CC22",
+        "CC20",
+        "CC1E",
+        "CC1C",
+        "CC1A",
+        "CC18",
+        "CC16",
+        "CC14",
+        "CC12",
+        "CC10",
+        "CC0E",
+        "CC0C",
+        "CC0A",
+        "CC08",
+        "CC06",
+        "CC04",
+        "CC02",
+        "CC00",
+        "CBFE",
+        "CBFC",
+        "CBFA",
+        "CBF8",
+        "CBF6",
+        "CBF4",
+        "CBF2",
+        "CBF0",
+        "CBEE",
+        "CBEC",
+        "CBEA",
+        "CBE8",
+        "CBE6",
+        "CBE4",
+        "CBE2",
+        "CBE0",
+        "CBDE",
+        "CBDC",
+        "CBDA",
+        "CBD8",
+        "CBD6",
+        "CBD4",
+        "CBD2",
+        "CBD0",
+        "CBCE",
+        "CBCC",
+        "CBCA",
+        "CBC8",
+        "CBC6",
+        "CBC4",
+        "CBC2",
+        "CBC0",
+        "CBBE",
+        "CBBC",
+        "CBBA",
+        "CBB8",
+        "CBB6",
+        "CBB4",
+        "CBB2",
+        "CBB0",
+        "CBAE",
+        "CBAC",
+        "CBAA",
+        "CBA8",
+        "CBA6",
+        "CBA4",
+        "CBA2",
+        "CBA0",
+        "CB9E",
+        "CB9C",
+        "CB9A",
+        "CB98",
+        "CB96",
+        "CB94",
+        "CB92",
+        "CB90",
+        "CB8E",
+        "CB8C",
+        "CB8A",
+        "CB88",
+        "CB86",
+        "CB84",
+        "CB82",
+        "CB80",
+        "CB7E",
+        "CB7C",
+        "CB7A",
+        "CB78",
+        "CB76",
+        "CB74",
+        "CB72",
+        "CB70",
+        "CB6E",
+        "CB6C",
+        "CB6A",
+        "CB68",
+        "CB66",
+        "CB64",
+        "CB62",
+        "CB60",
+        "CB5E",
+        "CB5C",
+        "CB5A",
+        "CB58",
+        "CB56",
+        "CB54",
+        "CB52",
+        "CB50"
+      ],
+      "Id": "4d155ef403aa4c66a4a8c5d7fe396613",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3e7ffd5572134e9b9fcff608f7653e66",
+          "Name": "Objects",
+          "Description": "Objects",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"SL-\";",
+      "Id": "5c03c681427e4d5d8467959fa321e018",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a531ae6418204ab9a393312df65475f9",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "a483208ffdf241bbb9f21f320c30d3fe",
+      "End": "003d288e17f84d57bfca0dc830cb45aa",
+      "Id": "59a2c9de371b48b6bb87d5a9d00f8f18"
+    },
+    {
+      "Start": "bfd95dfefcc54bf6be524723e287d2c9",
+      "End": "d93185c60eaf4eaa8a5b627e4318a430",
+      "Id": "822d40b21eb84172950b4b9a7716c61a"
+    },
+    {
+      "Start": "2c7fcf5eb65544d992ea843b18055089",
+      "End": "af6b4783053d4814b56f67ee79bbb82a",
+      "Id": "b3655232758b4e28ad39ab9e86e5c6f1"
+    },
+    {
+      "Start": "a33485d55faf460e82e448e3e5c91622",
+      "End": "12894ca61b4b4719ba028d1a136e88e3",
+      "Id": "9c106751c9274df39a328e41c21d3638"
+    },
+    {
+      "Start": "3e7ffd5572134e9b9fcff608f7653e66",
+      "End": "60828adacc294a648a6444ce5e2a3db8",
+      "Id": "2b98d7a05cf14197bab2c7f25a67810f"
+    },
+    {
+      "Start": "3e7ffd5572134e9b9fcff608f7653e66",
+      "End": "22f4a63cea89470fa2c63c7745666db0",
+      "Id": "95f7326d379a43959bd43ece3732b005"
+    },
+    {
+      "Start": "a531ae6418204ab9a393312df65475f9",
+      "End": "0d060ae7f98a430e82ea453b9daabdf0",
+      "Id": "e9587a8c7a7544b78a58471ab2d3000e"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.30",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "4d155ef403aa4c66a4a8c5d7fe396613"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "7861c4547ae64fb5bae073bf23b35c30",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CivilObject.SetName",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1869.876835182346,
+        "Y": 265.05902665292433
+      },
+      {
+        "Id": "55ab2f0227a14b919ec2c399fc8131a5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1118.3486096422732,
+        "Y": 448.41147377792339
+      },
+      {
+        "Id": "bb3ee3680ca44f5aa04ead224d670222",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "List.Count",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 885.86818102205007,
+        "Y": 418.89506722901018
+      },
+      {
+        "Id": "9042c74eeddc4ca2bccc306a9d5b3acd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "List.Flatten",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1286.9935393694748,
+        "Y": 450.72645027197376
+      },
+      {
+        "Id": "dcfcf6d763954b7a99ae7704c7dd0ff6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1540.1154120864153,
+        "Y": 457.24951587853258
+      },
+      {
+        "Id": "4d155ef403aa4c66a4a8c5d7fe396613",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Select Objects",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 363.67105723981848,
+        "Y": 300.62104094916475
+      },
+      {
+        "Id": "5c03c681427e4d5d8467959fa321e018",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "SAMPLE LINE CODE",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1355.0,
+        "Y": 594.0
+      }
+    ],
+    "Annotations": [],
+    "X": -930.82349230240766,
+    "Y": -53.934992556203269,
+    "Zoom": 1.1928837379421409
+  }
+}
