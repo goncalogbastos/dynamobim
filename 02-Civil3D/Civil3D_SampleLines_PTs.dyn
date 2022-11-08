@@ -659,7 +659,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "__author__ = 'Goncalo Bastos - bastos.g.goncalo@gmail.com'\r\n__copyright__ = '2022'\r\n__version__ = '1.0.0'\r\n\r\n##############################################################\r\n\r\n# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil3D\r\nclr.AddReference('AcMgd')\r\nclr.AddReference('AcCoreMgd')\r\nclr.AddReference('AcDbMgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\nclr.AddReference('ProtoGeometry')\r\nclr.AddReference('AutoCADNodes')\r\nclr.AddReference('Civil3DNodes')   \r\nclr.AddReference('Autodesk.Civil3DToolkit')\r\nclr.AddReference('DSCoreNodes')\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references from Civil3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\n# Import references from Dynamo\r\nimport Autodesk.AutoCAD.DynamoNodes as DA\r\nimport Autodesk.Civil.DynamoNodes as DC\r\nimport Autodesk.DesignScript.Geometry as DS\r\nimport DSCore\r\nfrom Autodesk.AutoCAD.DynamoNodes import *\r\nfrom Autodesk.Civil.DynamoNodes import *\r\n#from Autodesk.DesignScript.Geometry import *\r\nfrom DSCore import *\r\n\r\n\r\n##############################################################\r\n\r\ndistancias = IN[0]\r\nstations = IN[1]\r\nalign = IN[2][0]\r\n\r\nfinal = []\r\nfor dist in distancias:\r\n\ttemp = []\r\n\tif dist[0]==0 and dist [1]==0:\r\n\t\ttemp.append(1)\r\n\t\ttemp.append(1)\r\n\tif dist[2]==0 and dist [3]==0:\r\n\t\ttemp.append(1)\r\n\t\ttemp.append(1)\r\n\tif dist[0]==0 and dist[1]!=0:\r\n\t\ttemp.append(dist[1])\r\n\tif dist[0]!=0 and dist[1]==0:\r\n\t\ttemp.append(dist[0])\r\n\t\t\r\n\tif dist[2]==0 and dist[3]!=0:\r\n\t\ttemp.append(dist[3])\r\n\tif dist[2]!=0 and dist[3]==0:\r\n\t\ttemp.append(dist[2])\r\n\t\r\n\tfinal.append(temp)\r\n\r\n\r\nfor i,station in enumerate(stations):\r\n\tSL = DC.AlignmentExtensions.SampleLineByStation(align,\"PT\",station,\"SL\",final[i][1],final[i][0])\t\r\n\r\n\r\nOUT = final",
+      "Code": "__author__ = 'Goncalo Bastos - bastos.g.goncalo@gmail.com'\r\n__copyright__ = '2022'\r\n__version__ = '1.0.0'\r\n\r\n##############################################################\r\n\r\n# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil3D\r\nclr.AddReference('AcMgd')\r\nclr.AddReference('AcCoreMgd')\r\nclr.AddReference('AcDbMgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\nclr.AddReference('ProtoGeometry')\r\nclr.AddReference('AutoCADNodes')\r\nclr.AddReference('Civil3DNodes')   \r\nclr.AddReference('Autodesk.Civil3DToolkit')\r\nclr.AddReference('DSCoreNodes')\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references from Civil3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\n# Import references from Dynamo\r\nimport Autodesk.AutoCAD.DynamoNodes as DA\r\nimport Autodesk.Civil.DynamoNodes as DC\r\nimport Autodesk.DesignScript.Geometry as DS\r\nimport DSCore\r\nfrom Autodesk.AutoCAD.DynamoNodes import *\r\nfrom Autodesk.Civil.DynamoNodes import *\r\n#from Autodesk.DesignScript.Geometry import *\r\nfrom DSCore import *\r\n\r\n\r\n##############################################################\r\n\r\ndistancias = IN[0]\r\nstations = IN[1]\r\nalign = IN[2][0]\r\n\r\nfinal = []\r\nfor dist in distancias:\r\n\ttemp = []\r\n\tif dist[0]==0 and dist [1]==0:\r\n\t\ttemp.append(15)\r\n\t\ttemp.append(15)\r\n\tif dist[2]==0 and dist [3]==0:\r\n\t\ttemp.append(15)\r\n\t\ttemp.append(15)\r\n\tif dist[0]==0 and dist[1]!=0:\r\n\t\ttemp.append(dist[1])\r\n\tif dist[0]!=0 and dist[1]==0:\r\n\t\ttemp.append(dist[0])\r\n\t\t\r\n\tif dist[2]==0 and dist[3]!=0:\r\n\t\ttemp.append(dist[3])\r\n\tif dist[2]!=0 and dist[3]==0:\r\n\t\ttemp.append(dist[2])\r\n\t\r\n\tfinal.append(temp)\r\n\r\n\r\nfor i,station in enumerate(stations):\r\n\tSL = DC.AlignmentExtensions.SampleLineByStation(align,\"PT\",station,\"SL\",final[i][1],final[i][0])\t\r\n\r\n\r\nOUT = final",
       "VariableInputPorts": true,
       "Id": "2e72aa8cbf504723bd7c17ea0ec3b26f",
       "Inputs": [
@@ -1128,8 +1128,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3803.3956624253274,
-        "Y": -1121.5900566487958
+        "X": 3823.5356997002441,
+        "Y": -1276.7868144731549
       },
       {
         "ShowGeometry": true,
@@ -1183,8 +1183,8 @@
       }
     ],
     "Annotations": [],
-    "X": 329.45182271104204,
-    "Y": 657.93218667467772,
-    "Zoom": 0.29389841378961989
+    "X": -6056.2459713271346,
+    "Y": 2295.5491532629467,
+    "Zoom": 1.6781604675302291
   }
 }
