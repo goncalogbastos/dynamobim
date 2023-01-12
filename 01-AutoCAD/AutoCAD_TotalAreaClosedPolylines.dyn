@@ -1,0 +1,367 @@
+{
+  "Uuid": "f90a3485-73dd-40fa-8767-b1db2b2bde2b",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "AutoCAD_TotalAreaClosedPolylines",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectsSelection, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "968D",
+        "968C",
+        "968B",
+        "968A",
+        "9689",
+        "9688",
+        "9687",
+        "9686",
+        "9685",
+        "9684",
+        "9683",
+        "9682",
+        "9681",
+        "9680",
+        "967F",
+        "967E",
+        "967D",
+        "967C",
+        "967B",
+        "967A",
+        "9679",
+        "9678",
+        "9677",
+        "9676",
+        "9675",
+        "9674",
+        "9673",
+        "9672",
+        "9671",
+        "9670",
+        "966F",
+        "966E",
+        "966D",
+        "966C",
+        "966B",
+        "966A",
+        "9669",
+        "9668",
+        "9667",
+        "9666",
+        "9665",
+        "9664",
+        "9663",
+        "9662",
+        "9661",
+        "9660",
+        "965F",
+        "965E",
+        "965D",
+        "965C",
+        "965B",
+        "965A",
+        "9659",
+        "9658",
+        "9657",
+        "9656"
+      ],
+      "Id": "7296e9dcfc25421894d91fa6451d36a7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a555e93385514628b6fdf37267600f8b",
+          "Name": "Objects",
+          "Description": "Objects",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Geometry",
+      "Id": "954d70fce2f64373b59b501c21d26b40",
+      "Inputs": [
+        {
+          "Id": "59d4468634cb40138128711dc277e0e6",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e26c1544fb594762a326bf0a43fffe0f",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get Dynamo representation of this object.\n\nObject.Geometry: Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.Area",
+      "Id": "9896736e3e514c0fb112dab52b9a0be4",
+      "Inputs": [
+        {
+          "Id": "35a6650ce65341fd98a2c5f975f45837",
+          "Name": "surface",
+          "Description": "Autodesk.DesignScript.Geometry.Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b420846c4cb34e138ac821352b4d5fd0",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the total surface area.\n\nSurface.Area: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.ByPatch@Autodesk.DesignScript.Geometry.Curve",
+      "Id": "4fcc464a00224dbe9479ef2b2aaf81fa",
+      "Inputs": [
+        {
+          "Id": "e1ab8fbf517c412a93b89142a28b1ad6",
+          "Name": "closedCurve",
+          "Description": "Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1d8cd56c10684c568f6e2b20b00a5e9f",
+          "Name": "Surface",
+          "Description": "Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a Surface by filling in the interior of a closed boundary defined by input Curves.\n\nSurface.ByPatch (closedCurve: Curve): Surface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.Sum@double[]",
+      "Id": "b06d37dda8e54a0ebd09eec44406ded2",
+      "Inputs": [
+        {
+          "Id": "bf19c4ceda3b458686865bcb654af8d6",
+          "Name": "values",
+          "Description": "The numbers to sum\n\ndouble[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f19a4577df004da980a22173e2117d10",
+          "Name": "sum",
+          "Description": "The sum of the values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Find the sum of a series of numbers\n\nMath.Sum (values: double[]): double"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "__author__ = 'Goncalo Bastos - bastos.g.goncalo@gmail.com'\r\n__copyright__ = '2022'\r\n__version__ = '1.0.0'\r\n\r\n##############################################################\r\n\r\n# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil3D\r\nclr.AddReference('AcMgd')\r\nclr.AddReference('AcCoreMgd')\r\nclr.AddReference('AcDbMgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\nclr.AddReference('ProtoGeometry')\r\nclr.AddReference('AutoCADNodes')\r\nclr.AddReference('Civil3DNodes')   \r\nclr.AddReference('Autodesk.Civil3DToolkit')\r\nclr.AddReference('DSCoreNodes')\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references from Civil3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\n# Import references from Dynamo\r\nimport Autodesk.AutoCAD.DynamoNodes as DA\r\nimport Autodesk.Civil.DynamoNodes as DC\r\nimport Autodesk.DesignScript.Geometry as DS\r\nimport DSCore\r\nfrom Autodesk.AutoCAD.DynamoNodes import *\r\nfrom Autodesk.Civil.DynamoNodes import *\r\n#from Autodesk.DesignScript.Geometry import *\r\nfrom DSCore import *\r\n\r\n\r\n##############################################################\r\n\r\nAREA = IN[0]\r\n\r\n\r\nadoc = Application.DocumentManager.MdiActiveDocument\r\neditor = adoc.Editor\r\n\r\n\r\n\r\n\r\nOUT = editor.WriteMessage(\"\\n\"+ \"Area Total: \" + str(AREA) +\"\\n\")",
+      "VariableInputPorts": true,
+      "Id": "7d37b904f6334068847ff4c8a9890f6a",
+      "Inputs": [
+        {
+          "Id": "da7d804073b3428bb010840ff63817ef",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "96d5cf0e65284a14a10edc6dc317c990",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "a555e93385514628b6fdf37267600f8b",
+      "End": "59d4468634cb40138128711dc277e0e6",
+      "Id": "c1f962e22edb4c86b50a457083944ce6"
+    },
+    {
+      "Start": "e26c1544fb594762a326bf0a43fffe0f",
+      "End": "e1ab8fbf517c412a93b89142a28b1ad6",
+      "Id": "5e2b85e64392474d8c451088bc7055da"
+    },
+    {
+      "Start": "b420846c4cb34e138ac821352b4d5fd0",
+      "End": "bf19c4ceda3b458686865bcb654af8d6",
+      "Id": "39c6ddf9308047728d1ad5ea18679b39"
+    },
+    {
+      "Start": "1d8cd56c10684c568f6e2b20b00a5e9f",
+      "End": "35a6650ce65341fd98a2c5f975f45837",
+      "Id": "4421bb5b4de14dd493493e1db3c6644a"
+    },
+    {
+      "Start": "f19a4577df004da980a22173e2117d10",
+      "End": "da7d804073b3428bb010840ff63817ef",
+      "Id": "fc63484f0f5443859c2e5d20005b957c"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.30",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "7296e9dcfc25421894d91fa6451d36a7"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 100.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Select Objects",
+        "Id": "7296e9dcfc25421894d91fa6451d36a7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -177.59104593316488,
+        "Y": 318.36098144035395
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Geometry",
+        "Id": "954d70fce2f64373b59b501c21d26b40",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 205.90895406683512,
+        "Y": 325.36098144035395
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.Area",
+        "Id": "9896736e3e514c0fb112dab52b9a0be4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1234.5,
+        "Y": 336.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.ByPatch",
+        "Id": "4fcc464a00224dbe9479ef2b2aaf81fa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 703.83904455548327,
+        "Y": 324.25523791502837
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Math.Sum",
+        "Id": "b06d37dda8e54a0ebd09eec44406ded2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1515.0,
+        "Y": 336.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "7d37b904f6334068847ff4c8a9890f6a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1837.7566765578636,
+        "Y": 336.47477744807122
+      }
+    ],
+    "Annotations": [],
+    "X": 404.39470405142276,
+    "Y": 287.85597302040537,
+    "Zoom": 0.41863150706747487
+  }
+}
