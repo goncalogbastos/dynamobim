@@ -1,0 +1,628 @@
+{
+  "Uuid": "5cf809de-2681-499a-a188-aa8bb2a6ee21",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "AutoCAD_PointCoordinatesToPolyline",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "8276b0f50f444b6a816246cb9fc62620",
+      "Name": "File Path",
+      "Type": "string",
+      "Value": "No file selected.",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "Id": "da328feaaadc4c62b2c8cc5d272e1b59",
+      "Name": "<Sheet Name>",
+      "Type": "string",
+      "Value": "",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Id": "2715cd53468747e2b6f5094b444f67b0",
+      "Inputs": [
+        {
+          "Id": "1b9e9bb1c18542a19d05fab60fedc60f",
+          "Name": "file",
+          "Description": "File representing the Microsoft Excel spreadsheet.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cef82f72cc54422abba8720b09366815",
+          "Name": "sheetName",
+          "Description": "Name of the worksheet containing the data.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6dd00efc036a42f49b6a8509f80b43a7",
+          "Name": "readAsStrings",
+          "Description": "Toggle to switch between reading Excel file as strings.\n\nbool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1a398e6458eb4af1bc6d57747a2a1c5f",
+          "Name": "showExcel",
+          "Description": "Toggle to switch between showing and hiding the main Excel window.\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ddf23e16895b4694a4c570119c1149ed",
+          "Name": "data",
+          "Description": "Rows of data from the Excel worksheet.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Read data from a Microsoft Excel spreadsheet. Data is read by row and returned in a series of lists by row. Rows and columns are zero-indexed; for example, the value in cell A1 will appear in the data list at [0,0]. This node requires Microsoft Excel to be installed.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "fdcae467940f4085a89448cb9a6e215e",
+      "Inputs": [
+        {
+          "Id": "df86fbb4bb8d4c1aa65a8f0f6eec9535",
+          "Name": "path",
+          "Description": "Path to the file.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d45b2d237b8a48109ebd3f81fcbd99af",
+          "Name": "file",
+          "Description": "File object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a file object from a path."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Transpose@var[]..[]",
+      "Id": "1d11ee8359da4a5da436592eaddcc8db",
+      "Inputs": [
+        {
+          "Id": "3106e6415aed4109b24f7c541ac939bc",
+          "Name": "lists",
+          "Description": "A list of lists to be transposed.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "65612a16d476429d8345f91ed50c6339",
+          "Name": "lists",
+          "Description": "A list of transposed lists.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Swaps rows and columns in a list of lists. If there are some rows that are shorter than others, null values are inserted as place holders in the resultant array such that it is always rectangular.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
+      "Id": "d532285cc702499bba8d7a66b7329c68",
+      "Inputs": [
+        {
+          "Id": "8d5eb2a7189f4e5ba88bb1e19aa839f7",
+          "Name": "x",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3726da2e71cb4acc9a82f920beeef236",
+          "Name": "y",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2c5b73d9de6446c8a1a8053f83371497",
+          "Name": "z",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cea2416ab657426d8aaaeabb38f14c0b",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Form a Point given 3 cartesian coordinates\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[0];\na[1];",
+      "Id": "9438ef2b0b5d4236853218f605850169",
+      "Inputs": [
+        {
+          "Id": "c3c43ccdd58b43debe941f0fd54f47f4",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "963acb82379b4b75ba5c4bc8ce0a7910",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6f22615d2fe74115ad8b056988bd48e8",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"@AUX\";",
+      "Id": "8e890316a6984079b6015ec0e0a52fdf",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "de508710bf104a968c44f81cd8078286",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "5e7d00abf16d401d804a533d62b229bb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "800bde7598244128bf0b88dacbfcc894",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.ModelSpace",
+      "Id": "24fe62c2b62d4e24aac25f0d8b162f66",
+      "Inputs": [
+        {
+          "Id": "30be141244d643b0a31880420f152e64",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b30117eaebc947618fcd9a2ad4156275",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the model space block table record.\n\nDocument.ModelSpace: Block"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Polyline.ByPoints@Autodesk.DesignScript.Geometry.Point[],string,Autodesk.AutoCAD.DynamoNodes.Block",
+      "Id": "ae031d6e98b14631a27440de30837748",
+      "Inputs": [
+        {
+          "Id": "c5299073062944d7aa78549727496d38",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "325020813da749cebdc154f41b30681a",
+          "Name": "layer",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "adbe9ac18c5d44869fb23dff23e40a0c",
+          "Name": "block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1f71c28f440844a3baa85805dd901d5e",
+          "Name": "Polyline",
+          "Description": "Polyline",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create an AutoCAD polyline by a point list, using elevation from the first vertex.\n\nPolyline.ByPoints (points: Point[], layer: string, block: Block): Polyline"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "",
+      "InputValue": "No file selected.",
+      "NodeType": "ExtensionNode",
+      "Id": "8276b0f50f444b6a816246cb9fc62620",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "75b917bca47e458ca59ccd7b09da28da",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "42c6e9adba3344df9653d3b8ffdb6adc",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "051695f956954bdeaa56b1dfe1f0d405",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "",
+      "Id": "da328feaaadc4c62b2c8cc5d272e1b59",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bcf332fcce1f42298f2dda6b80f159c8",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "ddf23e16895b4694a4c570119c1149ed",
+      "End": "3106e6415aed4109b24f7c541ac939bc",
+      "Id": "adf47c8232cb4b73af6e1c11ec32f79b"
+    },
+    {
+      "Start": "d45b2d237b8a48109ebd3f81fcbd99af",
+      "End": "1b9e9bb1c18542a19d05fab60fedc60f",
+      "Id": "6f30c56e350546529ce3b3b501f94bb5"
+    },
+    {
+      "Start": "65612a16d476429d8345f91ed50c6339",
+      "End": "c3c43ccdd58b43debe941f0fd54f47f4",
+      "Id": "61ed79bb643a45b9b8c05c31c9bf620f"
+    },
+    {
+      "Start": "cea2416ab657426d8aaaeabb38f14c0b",
+      "End": "c5299073062944d7aa78549727496d38",
+      "Id": "033d0d817e8b4001937c6ef77735a312"
+    },
+    {
+      "Start": "963acb82379b4b75ba5c4bc8ce0a7910",
+      "End": "8d5eb2a7189f4e5ba88bb1e19aa839f7",
+      "Id": "8f55fa185d6a47f29c063680ecc6eb39"
+    },
+    {
+      "Start": "6f22615d2fe74115ad8b056988bd48e8",
+      "End": "3726da2e71cb4acc9a82f920beeef236",
+      "Id": "d18dfa3f64d840d2ae817141404f6d2d"
+    },
+    {
+      "Start": "de508710bf104a968c44f81cd8078286",
+      "End": "325020813da749cebdc154f41b30681a",
+      "Id": "5e1808373d3b4dbfb5d7955d47d3c08d"
+    },
+    {
+      "Start": "800bde7598244128bf0b88dacbfcc894",
+      "End": "30be141244d643b0a31880420f152e64",
+      "Id": "de64dcc4fd4043c68e4df274849ec583"
+    },
+    {
+      "Start": "b30117eaebc947618fcd9a2ad4156275",
+      "End": "adbe9ac18c5d44869fb23dff23e40a0c",
+      "Id": "685ac62fe7754de2ad76285fbc0f2956"
+    },
+    {
+      "Start": "75b917bca47e458ca59ccd7b09da28da",
+      "End": "df86fbb4bb8d4c1aa65a8f0f6eec9535",
+      "Id": "ee16a474e1f342ed83708923173be026"
+    },
+    {
+      "Start": "051695f956954bdeaa56b1dfe1f0d405",
+      "End": "6dd00efc036a42f49b6a8509f80b43a7",
+      "Id": "32ebba91bb0f4355bf9fbcd640418ade"
+    },
+    {
+      "Start": "051695f956954bdeaa56b1dfe1f0d405",
+      "End": "1a398e6458eb4af1bc6d57747a2a1c5f",
+      "Id": "c7173725f1ef4a73a08aa9fc6161c159"
+    },
+    {
+      "Start": "bcf332fcce1f42298f2dda6b80f159c8",
+      "End": "cef82f72cc54422abba8720b09366815",
+      "Id": "30cd9904409e4bf7973841a7d346200f"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -78185.314148655758,
+      "EyeY": 1123.1408634545469,
+      "EyeZ": 89423.32088678662,
+      "LookX": 1835.6764310059079,
+      "LookY": -1988.649466923107,
+      "LookZ": -8872.4360831953818,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ImportExcel",
+        "Id": "2715cd53468747e2b6f5094b444f67b0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 511.80436751094862,
+        "Y": 305.77786617906014
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File From Path",
+        "Id": "fdcae467940f4085a89448cb9a6e215e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 258.68820004765439,
+        "Y": 258.63502273268796
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Transpose",
+        "Id": "1d11ee8359da4a5da436592eaddcc8db",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 871.2515310500155,
+        "Y": 314.81327970139682
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.ByCoordinates",
+        "Id": "d532285cc702499bba8d7a66b7329c68",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1250.8762907310202,
+        "Y": 308.25607345828439
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "9438ef2b0b5d4236853218f605850169",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1100.813733345846,
+        "Y": 314.37502835277803
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "8e890316a6984079b6015ec0e0a52fdf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1404.0045312374971,
+        "Y": 461.27237996368331
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "5e7d00abf16d401d804a533d62b229bb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1400.8772386639935,
+        "Y": 579.11221302540139
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.ModelSpace",
+        "Id": "24fe62c2b62d4e24aac25f0d8b162f66",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1623.6971074118183,
+        "Y": 574.42127416514563
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Polyline.ByPoints",
+        "Id": "ae031d6e98b14631a27440de30837748",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1928.1837950081717,
+        "Y": 306.13239176753933
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "8276b0f50f444b6a816246cb9fc62620",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 71.409943707655032,
+        "Y": 259.26282259282624
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "42c6e9adba3344df9653d3b8ffdb6adc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 251.83645080003771,
+        "Y": 417.08069307974722
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "<Sheet Name>",
+        "Id": "da328feaaadc4c62b2c8cc5d272e1b59",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 73.043002066460872,
+        "Y": 360.27652447168373
+      }
+    ],
+    "Annotations": [],
+    "X": 70.188933276679,
+    "Y": 136.66454303835334,
+    "Zoom": 0.57995549188198037
+  }
+}
