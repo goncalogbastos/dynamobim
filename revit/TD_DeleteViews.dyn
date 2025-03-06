@@ -1,0 +1,466 @@
+{
+  "Uuid": "bad08081-5e15-4f4a-80d9-ad078c778474",
+  "IsCustomNode": false,
+  "Description": "Obtém e apagar as vistas de um documento, tendo como opção manter a vista Navisworks.",
+  "Name": "TD_Views",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "3e8b6b92cec84dbb9bfd6655c4dad172",
+      "Name": "Manter vista Navisworks?",
+      "Type": "boolean",
+      "Type2": "boolean",
+      "Value": "true",
+      "Description": "Enables selection between True and False",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [
+    {
+      "Id": "ded8f8d93dc549ab9853d876e5ae61d9",
+      "Name": "Deleted Views",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualizes a node's output"
+    }
+  ],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "Code": "import sys\r\nimport clr\r\nimport Autodesk\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('RevitAPI')\r\nfrom Autodesk.Revit.DB import *\r\nfrom Autodesk.Revit.DB.Structure import *\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import *\r\nclr.AddReference('System')\r\nfrom System.Collections.Generic import List\r\nclr.AddReference('RevitNodes')\r\nimport Revit\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.AddReference('RevitServices')\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\n\r\nnavisworks = IN[0]\r\n\r\nallViews = FilteredElementCollector(doc).OfClass(View).ToElements()\r\nfilteredViews = []\r\n\r\n\r\nfor view in allViews:\r\n    if navisworks:\r\n        if view.Name != \"Navisworks\":\r\n            if \"Splash\" not in view.Name:\r\n                filteredViews.append(view)\r\n    else:\r\n        filteredViews.append(view)\r\n            \r\n\r\nOUT = filteredViews",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "92d413587f624bc487c0bc86f8670add",
+      "NodeType": "PythonScriptNode",
+      "Inputs": [
+        {
+          "Id": "daf7106245a744c48c229ed109a93221",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e8ec2a9b6012401f8a56890434aa0d65",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "de82df79284d4c899858b23792040f49",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "4c1c724ea5304d93ae808745a55e2205",
+          "Name": "list",
+          "Description": "List containing nulls and empty sublists to clean\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "04d3176788774f789948405b12f61f70",
+          "Name": "preserveIndices",
+          "Description": "Provide an option to preserve the indices of the data\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8adf75e473bd4446b3b503ef21bbdb51",
+          "Name": "list",
+          "Description": "List of transposed lists",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.Clean@var[]..[],bool",
+      "Replication": "Auto",
+      "Description": "Cleans data of nulls and empty lists from a given list of arbitrary dimension\n\nList.Clean (list: var[]..[], preserveIndices: bool = true): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "8c9c612fd0f34316a5c69c2498037f1c",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "101f6134a5284ecea5732f9c9c4d3131",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly",
+      "Code": "false;"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "Code": "import sys\r\nimport clr\r\nimport Autodesk\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('RevitAPI')\r\nfrom Autodesk.Revit.DB import *\r\nfrom Autodesk.Revit.DB.Structure import *\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import *\r\nclr.AddReference('System')\r\nfrom System.Collections.Generic import List\r\nclr.AddReference('RevitNodes')\r\nimport Revit\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.AddReference('RevitServices')\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\n\r\nviews = IN[0]\r\ndeletedViews = []\r\n\r\nTransactionManager.Instance.EnsureInTransaction(doc)\r\n\r\nfor view in views:\r\n    try:\r\n        \r\n        view.Delete()\r\n        deletedViews.append(view)\r\n    except:\r\n        pass\r\n\r\nTransactionManager.Instance.TransactionTaskDone()\r\n\r\n\r\n\r\nOUT = deletedViews",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "b5aaf9abd9d04bdeae99eeef44c0da04",
+      "NodeType": "PythonScriptNode",
+      "Inputs": [
+        {
+          "Id": "c796fbeddc9147aea14540a45a432ca5",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4e1007bd1b6740bf91467cee3c660d9f",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "3e8b6b92cec84dbb9bfd6655c4dad172",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "880f7fb3438142afaba8e381d5e7abe1",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Enables selection between True and False",
+      "InputValue": true
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 200.0,
+      "Id": "ded8f8d93dc549ab9853d876e5ae61d9",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "d5355a2949cf4ae58cf7d9768264aca8",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "201de7e042a742fda6c263a5565b2f22",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualizes a node's output"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "e8ec2a9b6012401f8a56890434aa0d65",
+      "End": "4c1c724ea5304d93ae808745a55e2205",
+      "Id": "a1cbae1e9c3d4069b823cc6ea0639845",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "8adf75e473bd4446b3b503ef21bbdb51",
+      "End": "c796fbeddc9147aea14540a45a432ca5",
+      "Id": "455928eff2164068a5503993a8607c3b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "101f6134a5284ecea5732f9c9c4d3131",
+      "End": "04d3176788774f789948405b12f61f70",
+      "Id": "c36abcb5a80f4218a3fadefbc9071191",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "4e1007bd1b6740bf91467cee3c660d9f",
+      "End": "d5355a2949cf4ae58cf7d9768264aca8",
+      "Id": "656f9cdbaeff4d0188c06d270d536975",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "880f7fb3438142afaba8e381d5e7abe1",
+      "End": "daf7106245a744c48c229ed109a93221",
+      "Id": "e6c6772cd6f046b9ac4974a91335b671",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "Goncalo Bastos",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "92d413587f624bc487c0bc86f8670add",
+        "Name": "Get All Views",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 198.75847485819531,
+        "Y": 762.72344644719374
+      },
+      {
+        "Id": "de82df79284d4c899858b23792040f49",
+        "Name": "List.Clean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 690.652974396121,
+        "Y": 762.72344644719374
+      },
+      {
+        "Id": "8c9c612fd0f34316a5c69c2498037f1c",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 481.85834881884739,
+        "Y": 896.89725876942475
+      },
+      {
+        "Id": "b5aaf9abd9d04bdeae99eeef44c0da04",
+        "Name": "Delete Views",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1080.7397421703174,
+        "Y": 762.72344644719374
+      },
+      {
+        "Id": "3e8b6b92cec84dbb9bfd6655c4dad172",
+        "Name": "Manter vista Navisworks?",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -196.91558204883603,
+        "Y": 782.65659533332484
+      },
+      {
+        "Id": "ded8f8d93dc549ab9853d876e5ae61d9",
+        "Name": "Deleted Views",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1460.8208666344633,
+        "Y": 766.71049222471788
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "10f57b44b85943079b2b532868042bd9",
+        "Title": "Description",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "91279437667b4c6b90dedb6d44f4537e"
+        ],
+        "HasNestedGroups": false,
+        "Left": -556.15760483278632,
+        "Top": 705.73027750457982,
+        "Width": 315.0,
+        "Height": 281.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "bc688959-ce34-4bf5-90f8-6ddd23f80989",
+        "InitialTop": 778.73027750457982,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 63.0,
+        "Background": "#FFA4E1FF"
+      },
+      {
+        "Id": "517bef8dcb8c457284d3791cd64e0081",
+        "Title": "Input",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "3e8b6b92cec84dbb9bfd6655c4dad172"
+        ],
+        "HasNestedGroups": false,
+        "Left": -206.91558204883603,
+        "Top": 709.65659533332484,
+        "Width": 286.0,
+        "Height": 205.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "883066aa-1fe2-44a4-9bd1-c3df86bfe9f6",
+        "InitialTop": 782.65659533332484,
+        "InitialHeight": 347.01242231544711,
+        "TextblockHeight": 63.0,
+        "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "f209a7e108454ea88cb0b70b56557174",
+        "Title": "Output",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "ded8f8d93dc549ab9853d876e5ae61d9"
+        ],
+        "HasNestedGroups": false,
+        "Left": 1450.8208666344633,
+        "Top": 693.71049222471788,
+        "Width": 297.0,
+        "Height": 209.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "07655dc1-2d65-4fed-8d6a-37235d3e3a8d",
+        "InitialTop": 766.71049222471788,
+        "InitialHeight": 166.0,
+        "TextblockHeight": 63.0,
+        "Background": "#FFFFC999"
+      },
+      {
+        "Id": "65e02ffbd6874527aced5b2c56563b9e",
+        "Title": "Obter vistas para apagar",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "92d413587f624bc487c0bc86f8670add",
+          "de82df79284d4c899858b23792040f49",
+          "8c9c612fd0f34316a5c69c2498037f1c",
+          "b5aaf9abd9d04bdeae99eeef44c0da04"
+        ],
+        "HasNestedGroups": false,
+        "Left": 188.75847485819531,
+        "Top": 689.72344644719374,
+        "Width": 1070.9812673121221,
+        "Height": 339.173812322231,
+        "FontSize": 36.0,
+        "GroupStyleId": "4d68be4a-a04d-4945-9dd5-cdf61079d790",
+        "InitialTop": 762.72344644719374,
+        "InitialHeight": 296.173812322231,
+        "TextblockHeight": 63.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "91279437667b4c6b90dedb6d44f4537e",
+        "Title": "Nome da rotina: TD-DeleteViews.dyn\nVersão: 1.0\nData: 17/12/2024\nElaborou: GGB\n\nDescrição:\nObtém e apagar as vistas de um documento, tendo como opção manter a vista Navisworks.\n\n\nPackages usados:\n•   Esta rotina não usa packages externos.",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [],
+        "HasNestedGroups": false,
+        "Left": -546.15760483278632,
+        "Top": 786.73027750457982,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 400.40547468142671,
+    "Y": -161.45433719273194,
+    "Zoom": 0.67820253971347966
+  }
+}

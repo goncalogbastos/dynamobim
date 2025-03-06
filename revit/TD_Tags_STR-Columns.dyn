@@ -1,0 +1,1051 @@
+{
+  "Uuid": "9bfe5904-a620-449d-a938-6aa346cc0838",
+  "IsCustomNode": false,
+  "Description": "Tags automáticas em elementos da categoria Structural Columns, na current view.",
+  "Name": "TD_Tags_STR-Columns",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "37231a2eddc743e6a8860061ab796488",
+      "Name": "Tag distance from element in X",
+      "Type": "number",
+      "Type2": "number",
+      "Value": "0",
+      "MaximumValue": 5.0,
+      "MinimumValue": -5.0,
+      "StepValue": 0.001,
+      "NumberType": "Double",
+      "Description": "Produces numeric values",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "2bcaec05957d46008e372b2a724cb09c",
+      "Name": "Tag distance from element in Y",
+      "Type": "number",
+      "Type2": "number",
+      "Value": "0",
+      "MaximumValue": 5.0,
+      "MinimumValue": -5.0,
+      "StepValue": 0.001,
+      "NumberType": "Double",
+      "Description": "Produces numeric values",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "7a1aa9db07674c2395a313d73ae7fcd1",
+      "Name": "Select Model Elements",
+      "Type": "selection",
+      "Type2": "hostSelection",
+      "Value": "",
+      "Description": "Select multiple elements from the Revit document.",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [
+    {
+      "Id": "caccbd65ceee455f846be246cdc79359",
+      "Name": "Tags created",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualizes a node's output"
+    }
+  ],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 592,
+      "SelectedString": "OST_StructuralColumns",
+      "Id": "1c071b5650c14f9295135d26f5b9cc45",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5c9e716b484c41a3a3303945bc73adbf",
+          "Name": "Category",
+          "Description": "The selected Category.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "All built-in categories."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "Id": "8c57fccb1e5e4a53ac9d5e0a0be2d721",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "98e85002562e4c4e94d0e5af49c822a5",
+          "Name": "Category",
+          "Description": "The Category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e247680341c54f0486564d912a6a7a87",
+          "Name": "Elements",
+          "Description": "An element class.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Get all elements of the specified category from the model."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "dec4d9deefc84d0ab99163a8763ae7d6",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "89f862c0539d485d904f2ff042d9fc07",
+          "Name": "list1",
+          "Description": "List of objects to be compared with list2\n\nvar[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4655e72b220648d1935f93e7ac3a6ebb",
+          "Name": "list2",
+          "Description": "List of objects to be compared with list1\n\nvar[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "afa1b265b90f4d87aa5cd1dce7eaa80e",
+          "Name": "list",
+          "Description": "The new list that contains objects that are in both List1 and List2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.SetIntersection@var[],var[]",
+      "Replication": "Auto",
+      "Description": "Returns a new list that includes objects that are present in both List1 and List2.\n\nList.SetIntersection (list1: var[], list2: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "cf9b4bb6544848be98a7d4dea9b22316",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "d3a53abc650c4940ab6b2f10feedb333",
+          "Name": "geom",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8b017b6ddfbf49878a2f670c6393a69a",
+          "Name": "BoundingBox",
+          "Description": "BoundingBox",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.BoundingBox.ByGeometry@Autodesk.DesignScript.Geometry.Geometry[]",
+      "Replication": "Auto",
+      "Description": "Create an axis-aligned BoundingBox around input Geometry.\n\nBoundingBox.ByGeometry (geom: Geometry[]): BoundingBox"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "0ff3b948666d469eb08c396e85890dcb",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "98ad22af126d4653afdf0b50f2c35d5f",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7e71fab96f2040e996ef51721de3f82f",
+          "Name": "var[]",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Element.Geometry",
+      "Replication": "Auto",
+      "Description": "Get all of the Geometry associated with this object\n\nElement.Geometry ( ): var[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "4945afe5f61a42829083964ca8dc3b49",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "839e963284214ed5a6d920169c061ae4",
+          "Name": "boundingBox",
+          "Description": "Autodesk.DesignScript.Geometry.BoundingBox",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a00e1dec8077416db9ed8a891c8c2f94",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.BoundingBox.MaxPoint",
+      "Replication": "Auto",
+      "Description": "The maximum point\n\nBoundingBox.MaxPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "a533b137be924b068d883ea424141bfb",
+      "NodeType": "FunctionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6c0f6da2a6af40a19ab980d01e1f89be",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Application.Document.Current",
+      "Replication": "Auto",
+      "Description": "Get the current document\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "a9289c3b17894972a7aa2a2b29af99a4",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1bd2d01498a049d2b06b917e5ac649af",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Enables selection between True and False",
+      "InputValue": false
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "75c705191d7d498eb962453051d01b1b",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "75394ef1eae0400b988aaa5c99a27689",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Enables selection between True and False",
+      "InputValue": true
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "6ea21ce82fe749cca327538f413bb567",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "b457a3fd99624871ba01ce70306aee98",
+          "Name": "document",
+          "Description": "Revit.Application.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c06a091d741a4ccab5e8cd3483237c52",
+          "Name": "View",
+          "Description": "View",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Application.Document.ActiveView",
+      "Replication": "Auto",
+      "Description": "Get the active view for the document\n\nDocument.ActiveView: View"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "a0a2348ab0f04e1b9d342d58385486b1",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "bebbf17ce75e4b1cbf21cf7b2c736b5b",
+          "Name": "view",
+          "Description": "View to tag in\n\nView",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c3d9f9eb29214cb8954bf38fc6bee193",
+          "Name": "element",
+          "Description": "Element to tag\n\nElement",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "574debde9ce94b369755062d3c8aff36",
+          "Name": "location",
+          "Description": "Location point\n\nPoint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "51f220cb247c48219f0b976c3613fd3c",
+          "Name": "horizontal",
+          "Description": "Optional: Place tag horizontal, defaults to true\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "de314419199e45c4af8110ded5961d8b",
+          "Name": "addLeader",
+          "Description": "Optional: Add a leader, defaults to false\n\nbool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "335a63300f26463f9788bc76cc6c70e9",
+          "Name": "Tag",
+          "Description": "Tag",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Tag.ByElementAndLocation@Revit.Elements.Views.View,Revit.Elements.Element,Autodesk.DesignScript.Geometry.Point,bool,bool",
+      "Replication": "Auto",
+      "Description": "Create a Revit Tag for a Revit Element at a specified location point\n\nTag.ByElementAndLocation (view: View, element: Element, location: Point, horizontal: bool = true, addLeader: bool = false): Tag"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "062aa624fbb044bc8308d39cee83122e",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "c62b02ce020e40649c6fa3699d7f2a8c",
+          "Name": "x",
+          "Description": "X coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "46f06978704b4afdb33cfabe61dfed46",
+          "Name": "y",
+          "Description": "Y coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a33f13e1c6c040e3b54e285f44278fa8",
+          "Name": "z",
+          "Description": "Z coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "73bacdc422794b8a8d3cabf62ed5007b",
+          "Name": "Vector",
+          "Description": "Vector created by coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Vector.ByCoordinates@double,double,double",
+      "Replication": "Auto",
+      "Description": "Form a Vector by 3 Euclidean coordinates\n\nVector.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Vector"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "695c73166f4b478390ff0f5c6cf02694",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "39e0db0d8ac64a2289f7a501558c2a32",
+          "Name": "point",
+          "Description": "Autodesk.DesignScript.Geometry.Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9da7cf542fa64dadbb8a14de6294ca27",
+          "Name": "vectorToAdd",
+          "Description": "Vector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "53da0113ba7a4adca4d6e015ad3ce386",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.Add@Autodesk.DesignScript.Geometry.Vector",
+      "Replication": "Auto",
+      "Description": "Add a vector to a point. The same as Translate(Vector).\n\nPoint.Add (vectorToAdd: Vector): Point"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NumberType": "Double",
+      "MaximumValue": 5.0,
+      "MinimumValue": -5.0,
+      "StepValue": 0.001,
+      "Id": "37231a2eddc743e6a8860061ab796488",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "15804427f6ff45b394a2c6c1d63ea3ad",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Produces numeric values",
+      "InputValue": 0.0
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NumberType": "Double",
+      "MaximumValue": 5.0,
+      "MinimumValue": -5.0,
+      "StepValue": 0.001,
+      "Id": "2bcaec05957d46008e372b2a724cb09c",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d1be95a063b8439aa94cc70698860659",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Produces numeric values",
+      "InputValue": 0.0
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [],
+      "Id": "7a1aa9db07674c2395a313d73ae7fcd1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "77d63502922e405d89bb081e91c395ac",
+          "Name": "Elements",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select multiple elements from the Revit document."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 200.0,
+      "Id": "caccbd65ceee455f846be246cdc79359",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "7f4321f68e8c4782a4ef20acc5b74085",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0cc1da430d5a4a1fbf5b8504e15baeff",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualizes a node's output"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "5c9e716b484c41a3a3303945bc73adbf",
+      "End": "98e85002562e4c4e94d0e5af49c822a5",
+      "Id": "b06b5353aef640839f8a9d576e56bd35",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e247680341c54f0486564d912a6a7a87",
+      "End": "4655e72b220648d1935f93e7ac3a6ebb",
+      "Id": "87f46ec61a17468da53b298c7de13749",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "afa1b265b90f4d87aa5cd1dce7eaa80e",
+      "End": "98ad22af126d4653afdf0b50f2c35d5f",
+      "Id": "3d8bb3c85b1e4111975ec11acadb6a09",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "afa1b265b90f4d87aa5cd1dce7eaa80e",
+      "End": "c3d9f9eb29214cb8954bf38fc6bee193",
+      "Id": "0dc68bde985b41f5aec0d86736ea1a1c",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "8b017b6ddfbf49878a2f670c6393a69a",
+      "End": "839e963284214ed5a6d920169c061ae4",
+      "Id": "3d96e828d1714e87ad215a07d4ef6786",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7e71fab96f2040e996ef51721de3f82f",
+      "End": "d3a53abc650c4940ab6b2f10feedb333",
+      "Id": "eea9d80daa024daf8139eb3aea9b0fa8",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "a00e1dec8077416db9ed8a891c8c2f94",
+      "End": "39e0db0d8ac64a2289f7a501558c2a32",
+      "Id": "df5e3157325242a7827a9c7797ff6e05",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6c0f6da2a6af40a19ab980d01e1f89be",
+      "End": "b457a3fd99624871ba01ce70306aee98",
+      "Id": "14284e4935814c69b0de6a2bd27fe11f",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1bd2d01498a049d2b06b917e5ac649af",
+      "End": "de314419199e45c4af8110ded5961d8b",
+      "Id": "cc1f9d09c2c246c3bb99b2cf8e50b09a",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "75394ef1eae0400b988aaa5c99a27689",
+      "End": "51f220cb247c48219f0b976c3613fd3c",
+      "Id": "41004b47a6e5460e9811d5c4ea213be5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "c06a091d741a4ccab5e8cd3483237c52",
+      "End": "bebbf17ce75e4b1cbf21cf7b2c736b5b",
+      "Id": "4a26d8dd71064687a5e4162ab9d3c273",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "335a63300f26463f9788bc76cc6c70e9",
+      "End": "7f4321f68e8c4782a4ef20acc5b74085",
+      "Id": "afeef6c941294c8ea7c0c91092a6da3e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "73bacdc422794b8a8d3cabf62ed5007b",
+      "End": "9da7cf542fa64dadbb8a14de6294ca27",
+      "Id": "99e7f644a8934da0af5f8e23fc2875ee",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "53da0113ba7a4adca4d6e015ad3ce386",
+      "End": "574debde9ce94b369755062d3c8aff36",
+      "Id": "18c1ea5265b74efdbc28b00ef9186d8e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "15804427f6ff45b394a2c6c1d63ea3ad",
+      "End": "c62b02ce020e40649c6fa3699d7f2a8c",
+      "Id": "9d28ad77cc2a44e6acb8bdc480de2782",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d1be95a063b8439aa94cc70698860659",
+      "End": "46f06978704b4afdb33cfabe61dfed46",
+      "Id": "dfa1c5a13207420fb6a6294ba677f2de",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "77d63502922e405d89bb081e91c395ac",
+      "End": "89f862c0539d485d904f2ff042d9fc07",
+      "Id": "8b299b46eccb4375aba9062e4db4d6db",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAKjAqMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9U6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBlFFFAD6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBlFFFAD6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAMnVvE2k6DIiajqVpZSSZ8tJplRn9gCRk1zl58YPDVnJta5mf08uBjn6V8iftx6fDqHxg0sybleKwjZHQ4Knc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bT/rnXCah/x82f8Av13en/8AINtP+udAFmiilxQA6mU+mUAYPj7/AJFO9/D+tfor8Gf+SUeEP+wVbf8AosV+dXj7/kU738P61+ivwZ/5JR4Q/wCwVbf+ixQB2lFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAMooooAfRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB8K/tqf8lg0//sHR/wDoTV4an3BXuX7an/JYNP8A+wdH/wChNXhqfcFAFDUv+Pmy/wB+u60//kG2n+5XC6l/x82X+/Xdaf8A8g20/wBygCdetSqoK1EvWpVYBaAHVFRTKAMHx9/yKd7+H9a/RX4M/wDJKPCH/YKtv/RYr86vH3/Ip3v4f1r9Ffgz/wAko8If9gq2/wDRYoA7SiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ff21P8AksGn/wDYOj/9CavDU+4K9y/bU/5LBp//AGDo/wD0Jq8NT7goAzNQ/wCPmz/367vT/wDkG2n/AFzrhNQ/4+bP/fru9P8A+Qbaf9c6ALNLmkooAfTKfTKAOe8ff8ine/h/Wv0Z+DX/ACSjwh/2Crb/ANFivzm8ff8AIp3v4f1r9Gfg1/ySjwh/2Crb/wBFigDs6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4V/bU/5LBp//AGDo/wD0Jq8NT7gr3L9tT/ksGn/9g6P/ANCavDU+4KAM3UVP2mz/AN+u609T/Ztp/wBc64vUlH2qy/66f4V3OnqP7NtP+udAElPoqTcPWgCOiiigDnvH3/Ip3v4f1r9Ffgz/AMko8If9gq2/9Fivzq8ff8ine/h/Wv0V+DP/ACSjwh/2Crb/ANFigDtKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4V/bU/wCSwaf/ANg6P/0Jq8NT7gr3L9tT/ksGn/8AYOj/APQmrw1PuCgChqX/AB82X+/Xdaf/AMg20/3K4XUv+Pmy/wB+u60//kG2n+5QBNS5NJRQA+mU+mUAYPj7/kU738P61+ivwZ/5JR4Q/wCwVbf+ixX51ePv+RTvfw/rX6K/Bn/klHhD/sFW3/osUAdpRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFADKKKKAH0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfCv7an/JYNP8A+wdH/wChNXhqfcFe5ftqf8lg0/8A7B0f/oTV4an3BQBn6p/x82X++f6V3Om/8g21/wCuYrhtU/4+bL/fP9K7nTf+Qba/9cxQBOBTxRipulAEG00bTU20elN+WgDnPH3/ACKd7+H9a/RX4M/8ko8If9gq2/8ARYr86vH3/Ip3v4f1r9Ffgz/ySjwh/wBgq2/9FigDtKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4V/bU/5LBp//YOj/wDQmrw1PuCvcv21P+Swaf8A9g6P/wBCavDU+4KAKOqH/SbL/fP9K7rTT/xLbX/crz/U2P2my5/j/wAK7vTT/wAS21/65igC2vWpl+6KhXrUy/dFAEdNyadTKAMHx9/yKd7+H9a/RX4M/wDJKPCH/YKtv/RYr86vH3/Ip3v4f1r9Ffgz/wAko8If9gq2/wDRYoA7SiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ff21P8AksGn/wDYOj/9CavDU+4K9y/bU/5LBp//AGDo/wD0Jq8NT7goAz9U/wCPmy/3z/Su503/AJBtr/1zFcNqn/HzZf75/pXc6b/yDbX/AK5igCxT6btNOoAbtNG01NtHpRtHpQBzXj7/AJFO9/D+tfor8Gf+SUeEP+wVbf8AosV+dXj7/kU738P61+ivwZ/5JR4Q/wCwVbf+ixQB2lFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAMooooAfRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB8K/tqf8lg0//sHR/wDoTV4an3BXuX7an/JYNP8A+wdH/wChNXhqfcFAFLVP+Pmy/wB8/wBK7nTf+Qba/wC5XDap/wAfNl/vn+ldzpv/ACDbX/coAt4X/Jpdw9agzRmgCxUVFMoAwfH3/Ip3v4f1r9Ffgz/ySjwh/wBgq2/9Fivzq8ff8ine/h/Wv0V+DP8AySjwh/2Crb/0WKAO0ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBlFFFAD6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhX9tT/ksGn/APYOj/8AQmrw1PuCvcv21P8AksGn/wDYOj/9CavDU+4KAM/VP+Pmy/3z/Su503/kG2v/AFzFcNqn/HzZf75/pXc6b/yDbX/rmKALFFFLigB1Mp9MoAwfH3/Ip3v4f1r9Ffgz/wAko8If9gq2/wDRYr86vH3/ACKd7+H9a/RX4M/8ko8If9gq2/8ARYoA7SiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ff21P+Swaf/wBg6P8A9CavDU+4K9y/bU/5LBp//YOj/wDQmrw1PuCgDM1RT9psuP4/8K7rTVP9m2v/AFzFcVqij7TZf75/pXc6ao/s21/3KAJ161KqgrUS9alVgFoAZRRRQBz3j7/kU738P61+ivwZ/wCSUeEP+wVbf+ixX51ePv8AkU738P61+ivwZ/5JR4Q/7BVt/wCixQB2lFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAMooooAfRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB8K/tqf8AJYNP/wCwdH/6E1eGp9wV7l+2p/yWDT/+wdH/AOhNXhqfcFAGfqn/AB82X++f6V3Om/8AINtf+uYrhtU/4+bL/fP9K7nTf+Qba/8AXMUAWKXNJRQA+mU+mUAc94+/5FO9/D+tfoz8Gv8AklHhD/sFW3/osV+c3j7/AJFO9/D+tfoz8Gv+SUeEP+wVbf8AosUAdnRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFADKKKKAH0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfCv7an/ACWDT/8AsHR/+hNXhqfcFe5ftqf8lg0//sHR/wDoTV4an3BQBmaop+02XH8f+Fd1pqn+zbX/AK5iuK1RR9psv98/0rudNUf2ba/7lAEoFPFGKk3KKAGUUUUAc94+/wCRTvfw/rX6K/Bn/klHhD/sFW3/AKLFfnV4+/5FO9/D+tfor8Gf+SUeEP8AsFW3/osUAdpRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFADKKKKAH0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfCv7an/JYNP/7B0f8A6E1eGp9wV7l+2p/yWDT/APsHR/8AoTV4an3BQBn6p/x82X++f6V3Om/8g21/65iuG1T/AI+bL/fP9K7nTf8AkG2v/XMUAWKXJpKKAH0yn0ygDB8ff8ine/h/Wv0V+DP/ACSjwh/2Crb/ANFivzq8ff8AIp3v4f1r9Ffgz/ySjwh/2Crb/wBFigDtKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4V/bU/5LBp//AGDo/wD0Jq8NT7gr3L9tT/ksGn/9g6P/ANCavDU+4KAM/VP+Pmy/3z/Su503/kG2v/XMVw2qf8fNl/vn+ldzpv8AyDbX/rmKAJwKeKMVN0oAg2mjaam2j0pPloA5vx9/yKd7+H9a/RX4M/8AJKPCH/YKtv8A0WK/Orx9/wAine/h/Wv0V+DP/JKPCH/YKtv/AEWKAO0ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBlFFFAD6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhX9tT/ksGn/8AYOj/APQmrw1PuCvcv21P+Swaf/2Do/8A0Jq8NT7goAz9U/4+bL/fP9K7nTf+Qba/9cxXDap/x82X++f6V3Om/wDINtf+uYoAt0UUUASN901Dk1M33TUFAGD4+/5FO9/D+tfor8Gf+SUeEP8AsFW3/osV+dXj7/kU738P61+ivwZ/5JR4Q/7BVt/6LFAHaUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAyiiigB9FFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAHwr+2p/yWDT/APsHR/8AoTV4an3BXuX7an/JYNP/AOwdH/6E1eGp9wUAZWp/8fNl/v8A+Fd3pv8AyDbX/rmK4bVFP2my4/j/AMK7rTVP9m2v/XMUAWqKKVetADqZU6/dFR0Ac94+/wCRTvfw/rX6K/Bn/klHhD/sFW3/AKLFfnV4+/5FO9/D+tfor8Gf+SUeEP8AsFW3/osUAdpRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFADKKKKAH0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfCv7an/JYNP/7B0f8A6E1eGp9wV7l+2p/yWCw/7B0f/oTV4an3BQBR1RR9psv98/0rudNUf2ba/wC5XD6p/wAfNl/vn+ldzpv/ACDbX/coAsUUUUAS1FRTKAMHx9/yKd7+H9a/RX4M/wDJKPCH/YKtv/RYr86vH3/Ip3v4f1r9Ffgz/wAko8If9gq2/wDRYoA7SiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+FP22P8Akr+n/wDYOT/0Jq8Nb/VrXuX7bH/JX9P/AOwcn/oTV4a3+rWgChqn/HzZf75/pXc6b/yDbX/rmK4bVP8Aj5sv98/0rudN/wCQba/9cxQBYoopcUAOplPplAGD4+/5FO9/D+tfor8Gf+SUeEP+wVbf+ixX51ePv+RTvfw/rX6K/Bn/AJJR4Q/7BVt/6LFAHaUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAyiiigB9FFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAHwp+2t/yV+w/wCwdH/6E1eHL90V7j+2t/yV+w/7B0f/AKE1eHL90UAZmqKftNlx/H/hXdaap/s21/65iuK1RR9psv8AfP8ASu501R/Ztr/uUATr1qVVBWol61KrALQAyiiigDnvH3/Ip3v4f1r9Ffgz/wAko8If9gq2/wDRYr86vH3/ACKd7+H9a/RX4M/8ko8If9gq2/8ARYoA7SiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ff21P+Swaf/wBg6P8A9CavDU+4K9y/bU/5LBp//YOj/wDQmrw1PuCgDP1T/j5sv98/0rudN/5Btr/1zFcNqn/HzZf75/pXc6b/AMg21/65igCxS5pKKAH0yn0ygDnvH3/Ip3v4f1r9Gfg1/wAko8If9gq2/wDRYr85vH3/ACKd7+H9a/Rn4Nf8ko8If9gq2/8ARYoA7OiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ff21P+Swaf/wBg6P8A9CavDU+4K9y/bU/5LBp//YOj/wDQmrw1PuCgDP1T/j5sv98/0rudN/5Btr/1zFcNqn/HzZf75/pXc6b/AMg21/65igCcCnijFTdKAIqKKKAOe8ff8ine/h/Wv0V+DP8AySjwh/2Crb/0WK/Orx9/yKd7+H9a/RX4M/8AJKPCH/YKtv8A0WKAO0ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBlFFFAD6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhX9tT/AJLBp/8A2Do//Qmrw1PuCvcv21P+SwWH/YOj/wDQmrw1PuCgDP1T/j5sv98/0rutM/5B1r/1zFcLqn/HzZf75/pXc6b/AMg21/65igC8pG0c0u4etQUZoAfTKfTKAMHx9/yKd7+H9a/RX4M/8ko8If8AYKtv/RYr86vH3/Ip3v4f1r9Ffgz/AMko8If9gq2/9FigDtKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4T/bX/AOSwWH/YOj/9CavDT9wV9u/tO/s/y/EiCLxHo5z4hsU2iI8CdBnC57Hk18QyK8E0ltNG0NzC22WGQYZD7jqKAKWqf8fNl/vn+ldzpv8AyDbX/rmK4bVD/pNl/vn+ldzpv/INtf8ArmKALFKvWkooAlb5gDUbDdQ0kMO0y3EcO7p5jBc/maksbe+1S4SDTtKvb526NHA2z88YoA5nx9/yKd7+H9a/Rn4Mn/i1HhD/ALBVt/6LFfJ+l/sm+NfH+mi21iSHw5YT/feJllkK/wC7x/Ovsrwl4eh8J+GNL0WCQyxafbR2yu3UhVAyf896ANmiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooASvA/j5+zXYfEK3n1zQ410/xREN4eMAJdbRwrAYyT2Oe5r32koA/JbxDY3Ol60NPvoWtb+0lZJoH6qRj9K7W1mhtdJtpJ5PLQRjnaT/ACr7X+Ln7M/hP4vXsGo6hG1pq8S7RfQjLEehGcGjwT+y/wCBfBkULf2YuoXkf/LzPkE/8BBxQB8e6DoeveLJAmhaFd6nn+JBtH616r4c/ZN8X+IIzLq+owaNbPjNuqt5w/EZFfYdvp9vaJsghjhT+6igVLtX0/SgDxnwn+yv4M8PyJNdxTa7MvX+0HEq/gpHA/GvV9J0LTtDh8jT7CCyiHRIIwo/Sr/lr6fpTqAFooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBlFFFAD6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQA+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGUUUUAPooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBlFFFAD6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAZRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/2Q==",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "Goncalo Bastos",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "1c071b5650c14f9295135d26f5b9cc45",
+        "Name": "Categories",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -1550.814255586532,
+        "Y": 5763.3242637613985
+      },
+      {
+        "Id": "8c57fccb1e5e4a53ac9d5e0a0be2d721",
+        "Name": "All Elements of Category",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -1189.814255586532,
+        "Y": 5763.3242637613985
+      },
+      {
+        "Id": "dec4d9deefc84d0ab99163a8763ae7d6",
+        "Name": "List.SetIntersection",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -855.278321177272,
+        "Y": 5657.9678201202187
+      },
+      {
+        "Id": "cf9b4bb6544848be98a7d4dea9b22316",
+        "Name": "BoundingBox.ByGeometry",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -232.08930496709525,
+        "Y": 5950.1758081901389
+      },
+      {
+        "Id": "0ff3b948666d469eb08c396e85890dcb",
+        "Name": "Element.Geometry",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -543.08930496709525,
+        "Y": 5950.1758081901389
+      },
+      {
+        "Id": "4945afe5f61a42829083964ca8dc3b49",
+        "Name": "BoundingBox.MaxPoint",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 136.91069503290475,
+        "Y": 5950.1758081901389
+      },
+      {
+        "Id": "a533b137be924b068d883ea424141bfb",
+        "Name": "Document.Current",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 837.279287644458,
+        "Y": 5626.3389428397186
+      },
+      {
+        "Id": "a9289c3b17894972a7aa2a2b29af99a4",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1146.2792876444555,
+        "Y": 5921.3389428397186
+      },
+      {
+        "Id": "75c705191d7d498eb962453051d01b1b",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1145.2072726684073,
+        "Y": 5797.5164710631989
+      },
+      {
+        "Id": "6ea21ce82fe749cca327538f413bb567",
+        "Name": "Document.ActiveView",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1146.279287644458,
+        "Y": 5626.3389428397186
+      },
+      {
+        "Id": "a0a2348ab0f04e1b9d342d58385486b1",
+        "Name": "Tag.ByElementAndLocation",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1481.279287644458,
+        "Y": 5694.3389428397186
+      },
+      {
+        "Id": "062aa624fbb044bc8308d39cee83122e",
+        "Name": "Vector.ByCoordinates",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 136.91069503290475,
+        "Y": 6098.1758081901389
+      },
+      {
+        "Id": "695c73166f4b478390ff0f5c6cf02694",
+        "Name": "Point.Add",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 484.91069503290475,
+        "Y": 6007.1758081901389
+      },
+      {
+        "Id": "37231a2eddc743e6a8860061ab796488",
+        "Name": "Tag distance from element in X",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -1941.5551355040911,
+        "Y": 6032.7475938945418
+      },
+      {
+        "Id": "2bcaec05957d46008e372b2a724cb09c",
+        "Name": "Tag distance from element in Y",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -1943.110304094831,
+        "Y": 6169.8495854551766
+      },
+      {
+        "Id": "7a1aa9db07674c2395a313d73ae7fcd1",
+        "Name": "Select Model Elements",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -1928.93230880794,
+        "Y": 5687.35940188599
+      },
+      {
+        "Id": "caccbd65ceee455f846be246cdc79359",
+        "Name": "Tags created",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1822.9827786751891,
+        "Y": 5693.8707488908785
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "784f94c42ea34cd999f9fc3ca6d5a104",
+        "Title": "Elementos da categoria Structural Column",
+        "DescriptionText": "Este grupo de nós filtra os elementos selecionados no Revit pelo utilizador e mantém uma lista apenas com elementos da categoria Structural Columns",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "8c57fccb1e5e4a53ac9d5e0a0be2d721",
+          "dec4d9deefc84d0ab99163a8763ae7d6",
+          "1c071b5650c14f9295135d26f5b9cc45"
+        ],
+        "HasNestedGroups": false,
+        "Left": -1560.814255586532,
+        "Top": 5584.9678201202187,
+        "Width": 936.53593440926,
+        "Height": 310.35644364117979,
+        "FontSize": 36.0,
+        "GroupStyleId": "4d68be4a-a04d-4945-9dd5-cdf61079d790",
+        "InitialTop": 5657.9678201202187,
+        "InitialHeight": 250.35644364117979,
+        "TextblockHeight": 63.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "cd044f873452473f926b358583ed0015",
+        "Title": "Localização do Tag",
+        "DescriptionText": "Este conjunto de nós localiza o ponto máximo da bounding box de cada elemento e determina o ponto de inserção da Tag com base na deslocação que o utilizador dá em relação a esse ponto.\r\nExemplo:\r\nPara uma bounding box com a forma de um quadrado (pilar com seção quadrada), o ponto de inserção da Tag será as coordenadas do canto superior direito adicionadas dos deslocamento em X e Y dados pelo utilizador nos INPUT",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "cf9b4bb6544848be98a7d4dea9b22316",
+          "0ff3b948666d469eb08c396e85890dcb",
+          "4945afe5f61a42829083964ca8dc3b49",
+          "695c73166f4b478390ff0f5c6cf02694",
+          "062aa624fbb044bc8308d39cee83122e"
+        ],
+        "HasNestedGroups": false,
+        "Left": -553.08930496709525,
+        "Top": 5854.1758081901389,
+        "Width": 1281.0,
+        "Height": 441.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "4d68be4a-a04d-4945-9dd5-cdf61079d790",
+        "InitialTop": 5950.1758081901389,
+        "InitialHeight": 293.0,
+        "TextblockHeight": 86.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "58c53e399d154fbfa8e17eb4b7a051a0",
+        "Title": "Output",
+        "DescriptionText": "Insere a Tag na localização determinada anteriormente e na vista ativa, para cada elemento selecionado.",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "a533b137be924b068d883ea424141bfb",
+          "a9289c3b17894972a7aa2a2b29af99a4",
+          "75c705191d7d498eb962453051d01b1b",
+          "6ea21ce82fe749cca327538f413bb567",
+          "a0a2348ab0f04e1b9d342d58385486b1",
+          "caccbd65ceee455f846be246cdc79359"
+        ],
+        "HasNestedGroups": false,
+        "Left": 827.279287644458,
+        "Top": 5553.3389428397186,
+        "Width": 1282.7034910307314,
+        "Height": 500.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "07655dc1-2d65-4fed-8d6a-37235d3e3a8d",
+        "InitialTop": 5626.3389428397186,
+        "InitialHeight": 440.0,
+        "TextblockHeight": 63.0,
+        "Background": "#FFFFC999"
+      },
+      {
+        "Id": "c0b2285bed674f05befea5571d4757fe",
+        "Title": "Input",
+        "DescriptionText": "O utilizador deverá selecionar os elementos diretamente no modelo e definir a distância em X e Y que as Tags deverão estar do elemento.",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "37231a2eddc743e6a8860061ab796488",
+          "2bcaec05957d46008e372b2a724cb09c",
+          "7a1aa9db07674c2395a313d73ae7fcd1"
+        ],
+        "HasNestedGroups": false,
+        "Left": -1953.110304094831,
+        "Top": 5591.35940188599,
+        "Width": 369.55516859073987,
+        "Height": 710.49018356918623,
+        "FontSize": 36.0,
+        "GroupStyleId": "883066aa-1fe2-44a4-9bd1-c3df86bfe9f6",
+        "InitialTop": 5687.35940188599,
+        "InitialHeight": 627.49018356918623,
+        "TextblockHeight": 86.0,
+        "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "14f3db16021c45b2a2abc95d1e21f562",
+        "Title": "Description",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "787e75adca2a49d3a97ccd0763dfd07f"
+        ],
+        "HasNestedGroups": false,
+        "Left": -2261.6407004510843,
+        "Top": 5594.6589314326775,
+        "Width": 288.0,
+        "Height": 295.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "bc688959-ce34-4bf5-90f8-6ddd23f80989",
+        "InitialTop": 5667.6589314326775,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 63.0,
+        "Background": "#FFA4E1FF"
+      },
+      {
+        "Id": "787e75adca2a49d3a97ccd0763dfd07f",
+        "Title": "Nome da rotina: TD-Tags-STR-Columns\nVersão: 2.0\nData: 28/08/2024\nElaborou: GGB\n\nDescrição:\nTags automáticas em elementos da categoria Structural Columns, na current view. Utilizador manipula localização das Tags.\n\n\nPackages usados:\n•   Esta rotina não usa packages externos.",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [],
+        "HasNestedGroups": false,
+        "Left": -2251.6407004510843,
+        "Top": 5675.6589314326775,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 808.72528963817308,
+    "Y": -1619.0758338912747,
+    "Zoom": 0.34584793634355893
+  }
+}
